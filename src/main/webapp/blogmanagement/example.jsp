@@ -11,7 +11,6 @@
     <link href="${pageContext.request.contextPath}/blogmanagement/css/font-awesome.css" rel="stylesheet">
     <link href="${pageContext.request.contextPath}/blogmanagement/css/animate.css" rel="stylesheet">
     <link href="${pageContext.request.contextPath}/blogmanagement/css/style.css" rel="stylesheet">
-    <link href="${pageContext.request.contextPath}/blogmanagement/css/echartmain.css" rel="stylesheet">
 </head>
 
 <body class="gray-bg">

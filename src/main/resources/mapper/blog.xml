@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.rex.blog.mapper.BlogMapper">
+    <resultMap id="blog" type="com.rex.blog.entity.Blog">
+        <result column="ID" property="id"/>
+        <result column="BLOG_TITLE" property="blogTitle"/>
+        <result column="BLOG_TYPE" property="blogType"/>
+        <result column="BLOG_CONTENT" property="blogContent"/>
+        <result column="BLOG_AUTHOR" property="blogAuthor"/>
+        <result column="CREATE_TIME" property="createTime"/>
+        <result column="UPDATE_TIME" property="updateTime"/>
+    </resultMap>
+
+    <!-- 新增博客 -->
+    <insert id="addBlog" useGeneratedKeys="true" keyProperty="id">
+        insert into tb_blog(
+        BLOG_TITLE,
+        BLOG_TYPE,
+        BLOG_CONTENT,
+        CREATE_TIME
+        )values (
+        #{blogTitle},
+        #{blogType},
+        #{blogContent},
+        now()
+        )
+    </insert>
+
+</mapper>

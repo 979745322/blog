@@ -1,0 +1,24 @@
+body {
+    -moz-user-select: text; /*火狐*/
+    -webkit-user-select: text; /*webkit浏览器*/
+    -ms-user-select: text; /*IE10*/
+    -khtml-user-select: text; /*早期浏览器*/
+    user-select: text;
+}
+
+.label_blog_title {
+    margin-top: 6px;
+    font-size: 16px;
+    text-align: right;
+}
+
+.input_blog_title {
+    height: 34px;
+}
+
+.div_blog_top {
+    height: 60px;
+}
+.div_blog_button {
+    margin-top: 20px;
+}

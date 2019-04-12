@@ -48,10 +48,16 @@
                     </a>
                 </li>
                 <li>
-                    <a class="J_menuItem" href="${pageContext.request.contextPath}/blogmanage/blog">
+                    <a class="J_menuItem">
                         <i class="fa fa-home"></i>
                         <span class="nav-label">博客管理</span>
                     </a>
+                    <ul class="nav nav-second-level">
+                        <li><a class="J_menuItem" href="${pageContext.request.contextPath}/blogmanage/blogList">博客列表</a>
+                        </li>
+                        <li><a class="J_menuItem" href="${pageContext.request.contextPath}/blogmanage/blogWriting">写博客</a>
+                        </li>
+                    </ul>
                 </li>
 
                 <li class="line"></li>
@@ -67,39 +73,39 @@
                 <div class="navbar-header"><a class="navbar-minimalize minimalize-styl-2 btn btn-info " href="#"><i
                         class="fa fa-bars"></i> </a>
                 </div>
-                <ul class="nav navbar-top-links navbar-right">
-                    <li class="dropdown">
-                        <a class="dropdown-toggle count-info" data-toggle="dropdown" href="#">
-                            <%--<i><s:property value="#session.user.getUsername()"/></i>--%>
-                        </a>
-                        <ul class="dropdown-menu dropdown-messages">
-                            <li>
-                                <div class="">
-                                    <a class="J_menuItem" href="info.jsp">
-                                        查看个人信息
-                                    </a>
-                                </div>
-                            </li>
+                <%--<ul class="nav navbar-top-links navbar-right">--%>
+                    <%--<li class="dropdown">--%>
+                        <%--<a class="dropdown-toggle count-info" data-toggle="dropdown" href="#">--%>
+                            <%--&lt;%&ndash;<i><s:property value="#session.user.getUsername()"/></i>&ndash;%&gt;--%>
+                        <%--</a>--%>
+                        <%--<ul class="dropdown-menu dropdown-messages">--%>
+                            <%--<li>--%>
+                                <%--<div class="">--%>
+                                    <%--<a class="J_menuItem" href="info.jsp">--%>
+                                        <%--查看个人信息--%>
+                                    <%--</a>--%>
+                                <%--</div>--%>
+                            <%--</li>--%>
 
-                            <li>
-                                <div class="">
-                                    <a class="J_menuItem" href="updateinfo.jsp">
-                                        修改个人信息
-                                    </a>
-                                </div>
-                            </li>
+                            <%--<li>--%>
+                                <%--<div class="">--%>
+                                    <%--<a class="J_menuItem" href="updateinfo.jsp">--%>
+                                        <%--修改个人信息--%>
+                                    <%--</a>--%>
+                                <%--</div>--%>
+                            <%--</li>--%>
 
-                            <li>
-                                <div class="text-center link-block">
-                                    <a class="J_menuItem" href="login.html">
-                                        <strong> 退出登录</strong>
-                                    </a>
-                                </div>
-                            </li>
-                        </ul>
-                    </li>
+                            <%--<li>--%>
+                                <%--<div class="text-center link-block">--%>
+                                    <%--<a class="J_menuItem" href="login.html">--%>
+                                        <%--<strong> 退出登录</strong>--%>
+                                    <%--</a>--%>
+                                <%--</div>--%>
+                            <%--</li>--%>
+                        <%--</ul>--%>
+                    <%--</li>--%>
 
-                </ul>
+                <%--</ul>--%>
             </nav>
         </div>
         <div class="row J_mainContent" id="content-main">

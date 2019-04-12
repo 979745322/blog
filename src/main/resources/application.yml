@@ -9,7 +9,7 @@ spring:
       prefix: /
       suffix: .jsp
 
-#mybatis:
-#  mapper-locations: classpath:mapper/*.xml
-#  config-location: classpath:mybatis-config.xml
-#  type-aliases-package: com.rex.entity
+mybatis:
+  mapper-locations: classpath:mapper/*.xml
+  config-location: classpath:mybatis-config.xml
+  type-aliases-package: com.rex.blog.entity

@@ -4,14 +4,13 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>- 博客管理</title>
+    <title>- 博客列表</title>
     <meta name="keywords" content="">
     <meta name="description" content="">
     <link href="${pageContext.request.contextPath}/blogmanagement/css/bootstrap.min.css" rel="stylesheet">
     <link href="${pageContext.request.contextPath}/blogmanagement/css/font-awesome.css" rel="stylesheet">
     <link href="${pageContext.request.contextPath}/blogmanagement/css/animate.css" rel="stylesheet">
     <link href="${pageContext.request.contextPath}/blogmanagement/css/style.css" rel="stylesheet">
-    <link href="${pageContext.request.contextPath}/blogmanagement/css/echartmain.css" rel="stylesheet">
 </head>
 
 <body class="gray-bg">
@@ -20,7 +19,7 @@
         <div class="col-sm-12">
             <div class="ibox float-e-margins">
                 <div class="ibox-title">
-                    <h5>博客管理</h5>
+                    <h5>博客列表</h5>
                 </div>
                 <div class="row">
                     <div class="col-sm-12">
