@@ -76,7 +76,7 @@ public class BlogManageController {
     @ResponseBody
     @RequestMapping("/addBlog")
     public Map<String, Object> addBlog(@Valid @RequestBody Blog blog, BindingResult bindingResult) {
-        log.info("addSubject入参:blog{}", blog);
+        log.info("addBlog入参:{}", blog);
         final Map<String, Object> map = Maps.newHashMap();
         if (bindingResult.hasErrors()) {
             bindingResult.getAllErrors().forEach(error -> log.info("errors:{}",error.getDefaultMessage()));

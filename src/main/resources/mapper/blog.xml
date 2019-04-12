@@ -18,12 +18,16 @@
         BLOG_TITLE,
         BLOG_TYPE,
         BLOG_CONTENT,
-        CREATE_TIME
+        BLOG_AUTHOR,
+        CREATE_TIME,
+        DELETE_FLAG
         )values (
         #{blogTitle},
         #{blogType},
         #{blogContent},
-        now()
+        #{blogAuthor},
+        now(),
+        '1'
         )
     </insert>
 
