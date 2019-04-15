@@ -2,6 +2,8 @@ var ue = UE.getEditor('myEditor');
 ue.ready(function () {
     $(".edui-editor-messageholder.edui-default").css({"visibility": "hidden"});
     ue.setHeight(500);
+    ue.setContent($("#div_blog_content").html);
+    // ue.setContent(${blog.blogContent});
     //设置编辑器的内容
     // ue.setContent('hello');
     // //获取html内容，返回: <p>hello</p>
@@ -15,6 +17,7 @@ function publishBlog() {
         id: $('#blogId').val(),
         blogTitle: $('#blogTitle').val(),
         blogType: $('#blogType').val(),
+        blogState: $('#blogState').val(),
         blogContent: ue.getContent()
     };
     console.log(JSON.stringify(blog));
@@ -24,5 +27,6 @@ function publishBlog() {
 function saveBlog() {
     console.log("保存");
 }
+
 
 

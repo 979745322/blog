@@ -30,6 +30,9 @@ public class Blog {
     // 作者
     private String blogAuthor;
 
+    // 博客状态
+    private String blogState;
+
     // 创建时间
     private Date createTime;
 
@@ -44,4 +47,17 @@ public class Blog {
         return DateTimeHelper.formatToString(updateTime,DateTimeHelper.FORMAT_24);
     }
 
+    @Override
+    public String toString() {
+        return "Blog{" +
+                "id=" + id +
+                ", blogType='" + blogType + '\'' +
+                ", blogTitle='" + blogTitle + '\'' +
+                ", blogContent='" + blogContent + '\'' +
+                ", blogAuthor='" + blogAuthor + '\'' +
+                ", blogState='" + blogState + '\'' +
+                ", createTime=" + createTime +
+                ", updateTime=" + updateTime +
+                '}';
+    }
 }

@@ -4,7 +4,7 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>- 写博客</title>
+    <title>- 编辑博客</title>
     <meta name="keywords" content="">
     <meta name="description" content="">
     <link href="${pageContext.request.contextPath}/blogmanagement/css/bootstrap.min.css" rel="stylesheet">
@@ -20,7 +20,7 @@
         <div class="col-sm-12">
             <div class="ibox float-e-margins">
                 <div class="ibox-title">
-                    <h5>写博客</h5>
+                    <h5>编辑博客</h5>
                 </div>
                 <div class="row">
                     <div class="col-sm-12">
@@ -29,25 +29,25 @@
                                 <div class="form-group div_blog_title">
                                     <label class="col-sm-1 control-label label_blog_title">标题:</label>
                                     <div class="col-sm-5">
-                                        <input id="blogId" type="hidden">
-                                        <input class="form-control input_blog_title" type="text" id="blogTitle" name="blogTitle">
+                                        <input id="blogId" type="hidden" value="${blog.id}">
+                                        <input class="form-control input_blog_title" type="text" id="blogTitle"
+                                               name="blogTitle" value="${blog.blogTitle}">
                                     </div>
                                     <label class="col-sm-1 control-label label_blog_title">博客类型:</label>
                                     <div class="col-sm-2">
-                                        <select class="form-control input_blog_title" id="blogType" name="blogType">
+                                        <select class="form-control input_blog_title" id="blogType" name="blogType" value="${blog.blogType}">
                                             <option value="1">生活娱乐</option>
                                             <option value="2">技术笔记</option>
                                         </select>
                                     </div>
                                     <label class="col-sm-1 control-label label_blog_title">博客状态:</label>
                                     <div class="col-sm-2">
-                                        <select class="form-control input_blog_title" id="blogState" name="blogState">
+                                        <select class="form-control input_blog_title" id="blogState" name="blogState" value="${blog.blogState}">
                                             <option value="1">草稿</option>
                                             <option value="2">公开</option>
                                             <option value="3">私密</option>
                                         </select>
                                     </div>
-
                                 </div>
                                 <div></div>
                             </div>
@@ -57,6 +57,9 @@
                                 <div class="col-sm-1">
                                     <button class="btn btn-success div_blog_button" onclick="publishBlog()">发表</button>
                                 </div>
+                            </div>
+                            <div id="div_blog_content">
+                                ${blog.blogContent}
                             </div>
                         </div>
                     </div>
@@ -85,6 +88,5 @@
 <!-- 自定义js -->
 <script src="${pageContext.request.contextPath}/blogmanagement/js/content.js"></script>
 <script src="${pageContext.request.contextPath}/blogmanagement/js/blogwriting.js"></script>
-
 </body>
 </html>

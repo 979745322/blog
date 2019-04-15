@@ -8,9 +8,56 @@
         <result column="BLOG_TYPE" property="blogType"/>
         <result column="BLOG_CONTENT" property="blogContent"/>
         <result column="BLOG_AUTHOR" property="blogAuthor"/>
+        <result column="BLOG_STATE" property="blogState"/>
         <result column="CREATE_TIME" property="createTime"/>
         <result column="UPDATE_TIME" property="updateTime"/>
     </resultMap>
+
+    <!-- 查询博客 -->
+    <select id="blogQueryPage" resultType="blog">
+        select
+        ID id,
+        BLOG_TITLE blogTitle,
+        BLOG_TYPE blogType,
+        BLOG_AUTHOR blogAuthor,
+        BLOG_STATE blogState,
+        CREATE_TIME createTime,
+        UPDATE_TIME updateTime
+        from
+        tb_blog tb
+        where tb.DELETE_FLAG = '1'
+        <if test="blogTitle!=null and blogTitle!=''">
+            and tb.BLOG_TITLE like concat('%',#{blogTitle},'%')
+        </if>
+        <if test="blogType!=null and blogType!='' and blogType!=0">
+            and tb.BLOG_TYPE = #{blogType}
+        </if>
+        <if test="blogState!=null and blogState!='' and blogState!=0">
+            and tb.BLOG_STATE = #{blogState}
+        </if>
+        <if test="startTime!=null and startTime!=''">
+            and tb.CREATE_TIME &gt; #{startTime}
+        </if>
+        <if test="endTime!=null and endTime!=''">
+            and tb.CREATE_TIME &lt; #{endTime}
+        </if>
+    </select>
+
+    <!-- 根据id查询博客 -->
+    <select id="selectBlog" resultType="blog">
+        select
+        ID id,
+        BLOG_TITLE blogTitle,
+        BLOG_TYPE blogType,
+        BLOG_CONTENT blogContent,
+        BLOG_AUTHOR blogAuthor,
+        BLOG_STATE blogState,
+        CREATE_TIME createTime,
+        UPDATE_TIME updateTime
+        from
+        tb_blog tb
+        where tb.ID = #{id}
+    </select>
 
     <!-- 新增博客 -->
     <insert id="addBlog" useGeneratedKeys="true" keyProperty="id">
@@ -19,6 +66,7 @@
         BLOG_TYPE,
         BLOG_CONTENT,
         BLOG_AUTHOR,
+        BLOG_STATE,
         CREATE_TIME,
         DELETE_FLAG
         )values (
@@ -26,6 +74,7 @@
         #{blogType},
         #{blogContent},
         #{blogAuthor},
+        #{blogState},
         now(),
         '1'
         )
