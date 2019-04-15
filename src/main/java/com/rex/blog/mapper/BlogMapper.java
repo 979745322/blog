@@ -40,4 +40,10 @@ public interface BlogMapper {
      * @return 返回博客实体
      */
     Blog selectBlog(@Param("id") Long id);
+
+    /**
+     * 根据ID删除博客
+     * @param id 博客id
+     */
+    void deleteBlog(@Param("id") Long id);
 }

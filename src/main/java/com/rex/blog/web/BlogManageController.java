@@ -65,13 +65,14 @@ public class BlogManageController {
     }
 
     /**
-     * 根据ID修改博客
+     * 根据ID查询博客
      * @param id 博客id
      * @return 返回博客实体
      */
     @ResponseBody
     @RequestMapping("/selectBlog")
-    public Map<String, Object> selectBlog(String id) {
+    public Map<String, Object> selectBlog(@RequestBody String id) {
+        log.info("id:{}",id);
         final Map<String, Object> map = Maps.newHashMap();
         map.put("state", "success");
         map.put("blog", blogService.selectBlog(Long.valueOf(id)));

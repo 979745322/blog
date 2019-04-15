@@ -58,7 +58,7 @@
                                     <button class="btn btn-success div_blog_button" onclick="publishBlog()">发表</button>
                                 </div>
                             </div>
-                            <div id="div_blog_content">
+                            <div id="div_blog_content" class="none">
                                 ${blog.blogContent}
                             </div>
                         </div>

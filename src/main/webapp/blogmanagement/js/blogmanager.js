@@ -77,8 +77,8 @@ function blogTable(pageInfo) {
         tableTr.push("<td>" + list[i].createTime + "</td>");
         // 操作
         tableTr.push("<td>" +
-            "<button data-toggle=\"modal\" data-target=\"#myModal\" onclick=\"detailBlog(" + list[i].id + "," + pageInfo.pageNum + ")\" class=\"btn btn-default\">查看</button>&nbsp;&nbsp;" +
-            "<button onclick=\"updateBlog(" + list[i].id + "," + pageInfo.pageNum + ")\" class=\"btn btn-info\">编辑</button>&nbsp;&nbsp;" +
+            "<button data-toggle=\"modal\" data-target=\"#myModal\" onclick=\"detailBlog(" + list[i].id + ")\" class=\"btn btn-default\">查看</button>&nbsp;&nbsp;" +
+            "<button onclick=\"updateBlog(" + list[i].id + ")\" class=\"btn btn-info\">编辑</button>&nbsp;&nbsp;" +
             "<button onclick=\"deleteBlog(" + list[i].id + "," + pageInfo.pageNum + ")\" class=\"btn btn-danger\">删除</button></td>");
 
         tableTr.push("</tr>");
@@ -93,8 +93,7 @@ function blogTable(pageInfo) {
  * @param id 博客id
  * @param pageNum 当前页
  */
-function detailBlog(id, pageNum) {
-    console.log("id:" + id + "pageNum:" + pageNum);
+function detailBlog(id) {
     $("#div_modal_body").html(ajaxdata("/blogmanage/selectBlog", id).blog.blogContent);
 }
 
@@ -103,7 +102,7 @@ function detailBlog(id, pageNum) {
  * @param id 博客id
  * @param pageNum 当前页
  */
-function updateBlog(id, pageNum) {
+function updateBlog(id) {
     window.location="/blogmanage/updateBlog?id="+id;
 }
 
@@ -113,7 +112,10 @@ function updateBlog(id, pageNum) {
  * @param pageNum 当前页
  */
 function deleteBlog(id, pageNum) {
-
+    if(confirm("确认删除该博客？")){
+        alert(ajaxdata("/blogmanage/deleteBlog",id).state);
+        querySubmit(pageNum);
+    }
 }
 
 

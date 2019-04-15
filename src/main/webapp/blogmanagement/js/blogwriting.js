@@ -2,7 +2,10 @@ var ue = UE.getEditor('myEditor');
 ue.ready(function () {
     $(".edui-editor-messageholder.edui-default").css({"visibility": "hidden"});
     ue.setHeight(500);
-    ue.setContent($("#div_blog_content").html);
+    if($('#blogId').val()!==""){
+        ue.setContent($("#div_blog_content")[0].innerHTML);
+    }
+    // ue.setContent($("#div_blog_content")[0].innerHTML);
     // ue.setContent(${blog.blogContent});
     //设置编辑器的内容
     // ue.setContent('hello');
@@ -22,10 +25,7 @@ function publishBlog() {
     };
     console.log(JSON.stringify(blog));
     alert(ajaxdata("/blogmanage/addBlog",blog).state);
-}
-
-function saveBlog() {
-    console.log("保存");
+    window.location = "/blogmanage/blogList";
 }
 
 

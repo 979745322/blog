@@ -80,4 +80,23 @@
         )
     </insert>
 
+    <!-- 修改博客 -->
+    <update id="updateBlog">
+        UPDATE tb_blog
+        SET BLOG_TITLE = #{blogTitle},
+        BLOG_TYPE = #{blogType},
+        BLOG_CONTENT = #{blogContent},
+        BLOG_AUTHOR = #{blogAuthor},
+        BLOG_STATE = #{blogState},
+        BLOG_TITLE = #{blogTitle},
+        UPDATE_TIME = now()
+        WHERE ID = #{id}
+    </update>
+
+    <!-- 删除博客 -->
+    <update id="deleteBlog">
+        UPDATE tb_blog
+        SET DELETE_FLAG = '0'
+        WHERE ID = #{id}
+    </update>
 </mapper>

@@ -93,6 +93,12 @@
             <div id="div_modal_body" class="modal-body">
 
             </div>
+            <div class="modal-footer">
+                <label class="col-sm-10"></label>
+                <div class="col-sm-2">
+                    <button class="btn btn-default" data-dismiss="modal">关闭</button>
+                </div>
+            </div>
         </div>
     </div>
 </div>

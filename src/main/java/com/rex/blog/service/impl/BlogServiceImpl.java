@@ -39,7 +39,13 @@ public class BlogServiceImpl implements BlogService {
 
     @Override
     public String updateBlog(Blog blog) {
-        return null;
+        try{
+            blogMapper.updateBlog(blog);
+        }catch (Exception e){
+            log.info("e:{}",e);
+            return "修改失败！";
+        }
+        return "修改成功";
     }
 
     @Override
@@ -56,6 +62,12 @@ public class BlogServiceImpl implements BlogService {
 
     @Override
     public String deleteBlog(Long id) {
-        return null;
+        try{
+            blogMapper.deleteBlog(id);
+        }catch (Exception e){
+            log.info("e:{}",e);
+            return "删除失败！";
+        }
+        return "删除成功";
     }
 }
