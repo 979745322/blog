@@ -4,13 +4,16 @@ import com.google.common.collect.Maps;
 import com.rex.blog.entity.Blog;
 import com.rex.blog.service.BlogQueryCondition;
 import com.rex.blog.service.BlogService;
+import com.rex.blog.utils.SaveFile;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
 
 import javax.validation.Valid;
@@ -123,6 +126,24 @@ public class BlogManageController {
     }
 
     /**
+     * 根据ID删除博客
+     *
+     * @return 返回博客实体
+     */
+    @ResponseBody
+    @RequestMapping("/fileUpload")
+    public Map<String, Object> fileUpload(@RequestParam MultipartFile file) {
+
+        SaveFile saveFile = new SaveFile();
+        saveFile.saveFile(file);
+
+        final Map<String, Object> map = Maps.newHashMap();
+        map.put("state", "aaa");
+
+        return map;
+    }
+
+    /**
      * 默认首页
      *
      * @return 返回首页
@@ -137,7 +158,7 @@ public class BlogManageController {
      *
      * @return 返回主页
      */
-    @RequestMapping("/mainpage")
+    @RequestMapping("/mainPage")
     public String mainPage() {
         return "blogmanagement/mainpage";
     }
@@ -160,5 +181,15 @@ public class BlogManageController {
     @RequestMapping("/blogWriting")
     public String blogWriting() {
         return "blogmanagement/blogwriting";
+    }
+
+    /**
+     * 博客类别管理
+     *
+     * @return 博客类别管理页
+     */
+    @RequestMapping("/blogTypeManage")
+    public String blogTypeManage() {
+        return "blogmanagement/blogtypemanage";
     }
 }

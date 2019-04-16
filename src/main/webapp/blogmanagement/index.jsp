@@ -42,7 +42,7 @@
                 </li>
                 <li class="line"></li>
                 <li>
-                    <a class="J_menuItem" href="${pageContext.request.contextPath}/blogmanage/mainpage">
+                    <a class="J_menuItem" href="${pageContext.request.contextPath}/blogmanage/mainPage">
                         <i class="fa fa-home"></i>
                         <span class="nav-label">主页</span>
                     </a>
@@ -54,6 +54,8 @@
                     </a>
                     <ul class="nav nav-second-level">
                         <li><a class="J_menuItem" href="${pageContext.request.contextPath}/blogmanage/blogList">博客列表</a>
+                        </li>
+                        <li><a class="J_menuItem" href="${pageContext.request.contextPath}/blogmanage/blogTypeManage">博客类别</a>
                         </li>
                         <li><a class="J_menuItem" href="${pageContext.request.contextPath}/blogmanage/blogWriting">写博客</a>
                         </li>
@@ -110,8 +112,8 @@
         </div>
         <div class="row J_mainContent" id="content-main">
             <iframe id="J_iframe" width="100%" height="100%"
-                    src="${pageContext.request.contextPath}/blogmanage/mainpage" frameborder="0"
-                    data-id="${pageContext.request.contextPath}/blogmanage/mainpage" seamless></iframe>
+                    src="${pageContext.request.contextPath}/blogmanage/mainPage" frameborder="0"
+                    data-id="${pageContext.request.contextPath}/blogmanage/mainPage" seamless></iframe>
         </div>
     </div>
     <!--右侧部分结束-->

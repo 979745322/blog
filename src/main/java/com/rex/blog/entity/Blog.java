@@ -31,6 +31,7 @@ public class Blog {
     private String blogAuthor;
 
     // 博客状态
+    @NotBlank(message = "博客状态不能为空！")
     private String blogState;
 
     // 创建时间
