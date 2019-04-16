@@ -58,12 +58,15 @@ body {
 .div_blogSearch {
     width: 33%;
 }
-.div_blogSearch_top{
+
+.div_blogSearch_top {
     margin-top: 10px;
 }
-.div_modal{
+
+.div_modal {
     width: 100%;
 }
-.div_modal_dialog{
+
+.div_modal_dialog {
     width: 90%;
 }

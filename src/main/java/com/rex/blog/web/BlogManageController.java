@@ -51,6 +51,7 @@ public class BlogManageController {
 
     /**
      * 根据ID修改博客
+     *
      * @param id 博客id
      * @return 返回编辑博客页
      */
@@ -66,13 +67,14 @@ public class BlogManageController {
 
     /**
      * 根据ID查询博客
+     *
      * @param id 博客id
      * @return 返回博客实体
      */
     @ResponseBody
     @RequestMapping("/selectBlog")
     public Map<String, Object> selectBlog(@RequestBody String id) {
-        log.info("id:{}",id);
+        log.info("id:{}", id);
         final Map<String, Object> map = Maps.newHashMap();
         map.put("state", "success");
         map.put("blog", blogService.selectBlog(Long.valueOf(id)));
@@ -82,6 +84,7 @@ public class BlogManageController {
 
     /**
      * 根据ID删除博客
+     *
      * @param id 博客id
      * @return 返回博客实体
      */
@@ -135,7 +138,7 @@ public class BlogManageController {
      * @return 返回主页
      */
     @RequestMapping("/mainpage")
-    public String zhuye() {
+    public String mainPage() {
         return "blogmanagement/mainpage";
     }
 
