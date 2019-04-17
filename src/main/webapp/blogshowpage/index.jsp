@@ -6,7 +6,7 @@
   To change this template use File | Settings | File Templates.
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
-
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
 <!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
@@ -181,18 +181,20 @@
         <div class="fh5co-narrow-content">
             <h2 class="fh5co-heading animate-box" data-animate-effect="fadeInLeft">Recent Blog</h2>
             <div class="row row-bottom-padded-md">
+                <c:forEach items="${blogTypeList}" var="blogType">
                 <div class="col-md-3 col-sm-6 col-padding animate-box" data-animate-effect="fadeInLeft">
                     <div class="blog-entry">
-                        <a href="#" class="blog-img"><img src="/blogshowpage/images/img-1.jpg" class="img-responsive" alt="Free HTML5 Bootstrap Template by FreeHTML5.co"></a>
+                        <a href="#" class="blog-img"><img src="/uploadImg/<c:out value="${blogType.blogTypeImg}"/>" class="img-responsive"></a>
                         <div class="desc">
-                            <h3><a href="#">Inspirational Website</a></h3>
+                            <h3><a href="#"><c:out value="${blogType.blogTypeName}"/></a></h3>
                             <span><small>by Admin </small> / <small> Web Design </small> / <small> <i class="icon-comment"></i> 14</small></span>
-                            <p>Design must be functional and functionality must be translated into visual aesthetics</p>
+                            <p><c:out value="${blogType.blogTypeDescription}"/></p>
                             <a href="#" class="lead">Read More <i class="icon-arrow-right3"></i></a>
                         </div>
                     </div>
                 </div>
-                <div class="col-md-3 col-sm-6 col-padding animate-box" data-animate-effect="fadeInLeft">
+                </c:forEach>
+                <%--<div class="col-md-3 col-sm-6 col-padding animate-box" data-animate-effect="fadeInLeft">
                     <div class="blog-entry">
                         <a href="#" class="blog-img"><img src="/blogshowpage/images/img-2.jpg" class="img-responsive" alt="Free HTML5 Bootstrap Template by FreeHTML5.co"></a>
                         <div class="desc">
@@ -224,7 +226,7 @@
                             <a href="#" class="lead">Read More <i class="icon-arrow-right3"></i></a>
                         </div>
                     </div>
-                </div>
+                </div>--%>
             </div>
         </div>
 

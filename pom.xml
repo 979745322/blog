@@ -9,9 +9,9 @@
         <relativePath/> <!-- lookup parent from repository -->
     </parent>
     <groupId>com.rex</groupId>
-    <artifactId>demosubject</artifactId>
+    <artifactId>blog</artifactId>
     <version>0.0.1-SNAPSHOT</version>
-    <name>demoSubject</name>
+    <name>blog</name>
     <description>Demo project for Spring Boot</description>
 
     <properties>
@@ -99,7 +99,7 @@
                 <artifactId>spring-boot-maven-plugin</artifactId>
                 <version>1.4.2.RELEASE</version>
                 <configuration>
-                    <mainClass>com.rex.DemoSubjectApplication</mainClass>
+                    <mainClass>com.rex.blog.BlogApplication</mainClass>
                 </configuration>
             </plugin>
         </plugins>

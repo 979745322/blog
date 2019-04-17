@@ -39,7 +39,7 @@
                                 </div>
                             </form>
                             <div class="form-group div_blogAdd">
-                                <button type="button" data-toggle="modal" data-target="#myModal" onclick="addBlogTypeButton" class="btn btn-success">新增
+                                <button type="button" data-toggle="modal" data-target="#myModal" onclick="addBlogTypeButton()" class="btn btn-success">新增
                                 </button>
                             </div>
                             <p style="clear:both"></p>
@@ -69,7 +69,6 @@
                     <input type="hidden" id="blogTypeId">
                     <div class="form-group"><label class="col-sm-3 control-label">博客类型名称:</label>
                         <div class="col-sm-8"><input class="form-control" type="text" id="blogTypeName"></div>
-
                     </div>
                     <div class="form-group"><label class="col-sm-3 control-label">博客类型封面:</label>
                         <input class="form-control" type="hidden" id="input_blogTypeImg">

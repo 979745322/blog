@@ -72,8 +72,8 @@ function blogTable(pageInfo) {
  * 新增博客类型按钮
  */
 function addBlogTypeButton() {
-    $('#div_detailType_body form')[0].reset();
     $('#modal_title_blogType').html("添加博客类型");
+    clearBlogTypeForm();
 }
 
 /**
@@ -151,7 +151,7 @@ function checkFile() {
  * @param id 博客类型id
  */
 function updateBlogType(id) {
-    $('#div_detailType_body form')[0].reset();
+    clearBlogTypeForm();
     $('#modal_title_blogType').html("修改博客类型");
     var blogType = ajaxdata("/blogmanage/selectBlogType", id).blogType;
     $('#blogTypeId').attr('value', blogType.id);
@@ -161,6 +161,17 @@ function updateBlogType(id) {
     $('#blogTypeDescription').html(blogType.blogTypeDescription);
 }
 
+/**
+ * 清空博客类型表单
+ */
+function clearBlogTypeForm() {
+    $('#div_detailType_body form')[0].reset();
+    $('#blogTypeId').attr('value', "");
+    $('#blogTypeName').attr('value', "");
+    $('#input_blogTypeImg').attr("value", "");
+    $('#img_blogTypePreviewImg').removeAttr("src");
+    $('#blogTypeDescription').html("");
+}
 /**
  * 删除博客类型
  * @param id 博客id
