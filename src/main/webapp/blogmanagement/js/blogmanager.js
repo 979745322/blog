@@ -1,5 +1,9 @@
 $(document).ready(function () {
     querySubmit(1);
+    var blogTypeList = ajaxdata("/blogmanage/selectBlogTypeAll", "").blogTypeList;
+    $.each(blogTypeList, function (n, value) {
+        $("#select_blogType").append("<option value=" + value.id + ">" + value.blogTypeName + "</option>")
+    });
 });
 
 // 清空所有查询框
@@ -7,6 +11,7 @@ function clearForm() {
     $('#div_searchBlogList form')[0].reset();
     querySubmit(1);
 }
+
 /**
  * 查询分页
  * @param pageNum 页数
@@ -22,7 +27,6 @@ function querySubmit(pageNum) {
     };
     var pageInfo = ajaxdata("/blogmanage/page", pageData).pageInfo;
     $("#div_blogTable").html(blogTable(pageInfo));
-    $("#div_blogTable").trigger("create");
     pageInfoBar(pageInfo, "div_pageBar");
 }
 
@@ -53,14 +57,7 @@ function blogTable(pageInfo) {
         var blogTitle = list[i].blogTitle.length > 20 ? list[i].blogTitle.substring(0, 21) + "..." : list[i].blogTitle;
         tableTr.push("<td>" + blogTitle + "</td>");
         // 类型
-        switch (list[i].blogType) {
-            case "1" :
-                tableTr.push("<td>生活娱乐</td>");
-                break;
-            case "2" :
-                tableTr.push("<td>技术笔记</td>");
-                break;
-        }
+        tableTr.push("<td>" + ajaxdata("/blogmanage/selectBlogType", parseInt(list[i].blogType)).blogType.blogTypeName + "</td>");
         // 状态
         switch (list[i].blogState) {
             case "1" :
@@ -103,7 +100,7 @@ function detailBlog(id) {
  * @param pageNum 当前页
  */
 function updateBlog(id) {
-    window.location="/blogmanage/updateBlog?id="+id;
+    window.location = "/blogmanage/updateBlog?id=" + id;
 }
 
 /**
@@ -112,8 +109,8 @@ function updateBlog(id) {
  * @param pageNum 当前页
  */
 function deleteBlog(id, pageNum) {
-    if(confirm("确认删除该博客？")){
-        alert(ajaxdata("/blogmanage/deleteBlog",id).state);
+    if (confirm("确认删除该博客？")) {
+        alert(ajaxdata("/blogmanage/deleteBlog", id).state);
         querySubmit(pageNum);
     }
 }

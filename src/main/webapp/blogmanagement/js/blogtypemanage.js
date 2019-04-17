@@ -1,5 +1,9 @@
 $(document).ready(function () {
     querySubmit(1);
+    // 文件选择成功，显示文件名称
+    $('#blogTypeImg').change(function () {
+        uploadBlogTypeImg();
+    });
 });
 
 // 清空所有查询框
@@ -7,6 +11,7 @@ function clearForm() {
     $('#div_searchBlogList form')[0].reset();
     querySubmit(1);
 }
+
 /**
  * 查询分页
  * @param pageNum 页数
@@ -18,7 +23,6 @@ function querySubmit(pageNum) {
     };
     var pageInfo = ajaxdata("/blogmanage/blogTypePage", pageData).pageInfo;
     $("#div_blogTable").html(blogTable(pageInfo));
-    $("#div_blogTable").trigger("create");
     pageInfoBar(pageInfo, "div_pageBar");
 }
 
@@ -54,7 +58,7 @@ function blogTable(pageInfo) {
         // 操作
         tableTr.push("<td>" +
             // "<button data-toggle=\"modal\" data-target=\"#myModal\" onclick=\"detailBlog(" + list[i].id + ")\" class=\"btn btn-default\">查看</button>&nbsp;&nbsp;" +
-            "<button data-toggle=\"modal\" data-target=\"#myModal\" onclick=\"updateBlogType(" + list[i].id + "," + pageInfo.pageNum + ")\" class=\"btn btn-info\">编辑</button>&nbsp;&nbsp;" +
+            "<button data-toggle=\"modal\" data-target=\"#myModal\" onclick=\"updateBlogType(" + list[i].id + ")\" class=\"btn btn-info\">编辑</button>&nbsp;&nbsp;" +
             "<button onclick=\"deleteBlog(" + list[i].id + "," + pageInfo.pageNum + ")\" class=\"btn btn-danger\">删除</button></td>");
 
         tableTr.push("</tr>");
@@ -75,32 +79,31 @@ function addBlogTypeButton() {
 /**
  * 添加博客类型
  */
-function addBlogType(){
-    // 上传博客封面图片
-    if(uploadBlogTypeImg()){
-        var blogType = {
-            id: $('#blogTypeId').val(),
-            blogTypeName: $('#blogTypeName').val(),
-            blogTypeImg: checkFile().name,
-            blogTypeDescription: $('#blogTypeDescription').val()
-        };
-        console.log(JSON.stringify(blogType));
-        var stateMsg = ajaxdata("/blogmanage/addBlogType", blogType).state;
-        alert(stateMsg);
-        if(stateMsg==="新增成功！"||stateMsg==="修改成功！"){
-            $(".btn_blogType_close").click();
-            querySubmit(1);
-        }
+function addBlogType() {
+    if (($('#input_blogTypeImg').val() === "" || $('#input_blogTypeImg').val() === null) && !checkFile()) {
+        alert('请选择博客类型封面');
+        return false;
+    }
+    var blogType = {
+        id: $('#blogTypeId').val(),
+        blogTypeName: $('#blogTypeName').val(),
+        blogTypeImg: $('#input_blogTypeImg').val(),
+        blogTypeDescription: $('#blogTypeDescription').val()
+    };
+    var stateMsg = ajaxdata("/blogmanage/addBlogType", blogType).state;
+    alert(stateMsg);
+    if (stateMsg === "新增成功！" || stateMsg === "修改成功！") {
+        $(".btn_blogType_close").click();
+        querySubmit(1);
     }
 }
 
 // 上传博客类型封面图片 上传成功返回true，上传失败返回false
 function uploadBlogTypeImg() {
-    var booleanUpload = false;
     var file = checkFile();
     if (!file) {
         alert('请选择博客类型封面');
-        return booleanUpload;
+        return false;
     }
 
     // 构建form数据
@@ -116,22 +119,22 @@ function uploadBlogTypeImg() {
         dataType: "JSON",
         processData: false,		//用于对data参数进行序列化处理 这里必须false
         contentType: false, 	//必须
-        async:false,
-        success: function(result){
+        async: false,
+        success: function (result) {
             console.log(result.state);
-            if(result.state==="图片上传成功！"){
-                console.log(result.state);
-                booleanUpload = true;
+            if (result.state === "图片上传成功！") {
+                $('#input_blogTypeImg').attr("value", file.name);
+                $('#img_blogTypePreviewImg').attr("src", "/upload/" + file.name);
             }
         },
-        error: function(result){
+        error: function (result) {
             alert("ajax error")
         }
     });
-    return booleanUpload;
 }
+
 // 检测是否选择文件，如果选择，返回文件对象;如果没选择，返回false
-function checkFile(){
+function checkFile() {
 
     // 获取文件对象(该对象的类型是[object FileList]，其下有个length属性)
     var fileList = $('#blogTypeImg')[0].files;
@@ -146,15 +149,15 @@ function checkFile(){
 /**
  * 编辑博客类型
  * @param id 博客类型id
- * @param pageNum 当前页
  */
-function updateBlogType(id,pageNum) {
+function updateBlogType(id) {
     $('#div_detailType_body form')[0].reset();
     $('#modal_title_blogType').html("修改博客类型");
     var blogType = ajaxdata("/blogmanage/selectBlogType", id).blogType;
     $('#blogTypeId').attr('value', blogType.id);
     $('#blogTypeName').attr('value', blogType.blogTypeName);
-    $('#blogTypeImg').attr('value', blogType.blogTypeImg);
+    $('#input_blogTypeImg').attr("value", blogType.blogTypeImg);
+    $('#img_blogTypePreviewImg').attr("src", "/upload/" + blogType.blogTypeImg);
     $('#blogTypeDescription').html(blogType.blogTypeDescription);
 }
 
@@ -164,8 +167,8 @@ function updateBlogType(id,pageNum) {
  * @param pageNum 当前页
  */
 function deleteBlog(id, pageNum) {
-    if(confirm("确认删除该博客类型？")){
-        alert(ajaxdata("/blogmanage/deleteBlog",id).state);
+    if (confirm("确认删除该博客类型？")) {
+        alert(ajaxdata("/blogmanage/deleteBlogType", id).state);
         querySubmit(pageNum);
     }
 }

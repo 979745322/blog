@@ -4,6 +4,8 @@ import com.github.pagehelper.PageInfo;
 import com.rex.blog.entity.BlogType;
 import org.springframework.web.multipart.MultipartFile;
 
+import java.util.List;
+
 /**
  * 博客类型接口层
  */
@@ -47,4 +49,10 @@ public interface BlogTypeService {
      * @return 返回删除博客结果
      */
     String deleteBlogType(Long id);
+
+    /**
+     * 查询所有博客类型
+     * @return 所有博客类型集合
+     */
+    List<BlogType> selectBlogTypeAll();
 }

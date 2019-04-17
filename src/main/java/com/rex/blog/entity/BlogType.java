@@ -19,7 +19,6 @@ public class BlogType {
     private String blogTypeName;
 
     // 博客类型图片路径
-    @NotBlank(message = "博客类型封面不能为空！")
     private String blogTypeImg;
 
     // 博客类型描述

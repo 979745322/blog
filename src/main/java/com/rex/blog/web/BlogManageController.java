@@ -205,6 +205,38 @@ public class BlogManageController {
 
         return map;
     }
+
+    /**
+     * 根据ID删除博客类型
+     *
+     * @param id 博客id
+     * @return 返回删除状态
+     */
+    @ResponseBody
+    @RequestMapping("/deleteBlogType")
+    public Map<String, Object> deleteBlogType(@RequestBody String id) {
+        log.info("id:{}", id);
+        final Map<String, Object> map = Maps.newHashMap();
+        map.put("state", blogTypeService.deleteBlogType(Long.valueOf(id)));
+
+        return map;
+    }
+
+    /**
+     * 查询所有博客类型
+     *
+     * @return 返回博客实体
+     */
+    @ResponseBody
+    @RequestMapping("/selectBlogTypeAll")
+    public Map<String, Object> selectBlogTypeAll() {
+        final Map<String, Object> map = Maps.newHashMap();
+        map.put("state", "success");
+        map.put("blogTypeList", blogTypeService.selectBlogTypeAll());
+
+        return map;
+    }
+
     /**=======================================页面跳转======================================*/
     /**
      * 默认首页

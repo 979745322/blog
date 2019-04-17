@@ -46,4 +46,17 @@ public interface BlogTypeMapper {
      * @param id 博客类型id
      */
     void deleteBlogType(@Param("id") Long id);
+
+    /**
+     * 根据ID查找博客类型
+     * @return 返回博客类型实体
+     */
+    List<BlogType> selectBlogTypeAll();
+
+    /**
+     * 查询该博客类型下的博客数量
+     * @param id 博客类型id
+     * @return 返回博客数量
+     */
+    Integer countBlog(@Param("id") Long id);
 }

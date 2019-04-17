@@ -36,8 +36,6 @@
                                     <label class="col-sm-1 control-label label_blog_title">博客类型:</label>
                                     <div class="col-sm-2">
                                         <select class="form-control input_blog_title" id="blogType" name="blogType" value="${blog.blogType}">
-                                            <option value="1">生活娱乐</option>
-                                            <option value="2">技术笔记</option>
                                         </select>
                                     </div>
                                     <label class="col-sm-1 control-label label_blog_title">博客状态:</label>

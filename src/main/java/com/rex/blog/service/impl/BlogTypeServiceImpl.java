@@ -2,12 +2,10 @@ package com.rex.blog.service.impl;
 
 import com.github.pagehelper.PageHelper;
 import com.github.pagehelper.PageInfo;
-import com.rex.blog.entity.Blog;
 import com.rex.blog.entity.BlogType;
 import com.rex.blog.mapper.BlogTypeMapper;
 import com.rex.blog.service.BlogQueryCondition;
 import com.rex.blog.service.BlogTypeService;
-import com.rex.blog.utils.SaveFile;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -64,6 +62,21 @@ public class BlogTypeServiceImpl implements BlogTypeService {
 
     @Override
     public String deleteBlogType(Long id) {
-        return null;
+        try{
+            // 查询该博客类型下是否存在博客 若存在则提示“该博客类型存在博客，删除失败”
+            if(blogTypeMapper.countBlog(id)>0){
+                return "该博客类型存在博客，删除失败！";
+            }
+            blogTypeMapper.deleteBlogType(id);
+        }catch (Exception e){
+            log.info("e:{}",e);
+            return "删除失败！";
+        }
+        return "删除成功！";
+    }
+
+    @Override
+    public List<BlogType> selectBlogTypeAll() {
+        return blogTypeMapper.selectBlogTypeAll();
     }
 }

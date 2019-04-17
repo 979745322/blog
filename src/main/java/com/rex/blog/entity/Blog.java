@@ -41,11 +41,11 @@ public class Blog {
     private Date updateTime;
 
     public String getCreateTime() {
-        return DateTimeHelper.formatToString(createTime,DateTimeHelper.FORMAT_24);
+        return createTime == null ? "" : DateTimeHelper.formatToString(createTime, DateTimeHelper.FORMAT_24);
     }
 
     public String getUpdateTime() {
-        return DateTimeHelper.formatToString(updateTime,DateTimeHelper.FORMAT_24);
+        return updateTime == null ? "" : DateTimeHelper.formatToString(updateTime, DateTimeHelper.FORMAT_24);
     }
 
     @Override

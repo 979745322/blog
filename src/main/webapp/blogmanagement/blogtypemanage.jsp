@@ -69,14 +69,16 @@
                     <input type="hidden" id="blogTypeId">
                     <div class="form-group"><label class="col-sm-3 control-label">博客类型名称:</label>
                         <div class="col-sm-8"><input class="form-control" type="text" id="blogTypeName"></div>
+
                     </div>
                     <div class="form-group"><label class="col-sm-3 control-label">博客类型封面:</label>
-                        <div class="col-sm-8"><input class="form-control" type="file" id="blogTypeImg"></div>
+                        <input class="form-control" type="hidden" id="input_blogTypeImg">
+                        <div class="col-sm-5"><input class="form-control" type="file" id="blogTypeImg"></div>
+                        <div class="col-sm-4"><img id="img_blogTypePreviewImg" class="img_blogTypeImg"></div>
                     </div>
                     <div class="form-group"><label class="col-sm-3 control-label">博客类型描述:</label>
                         <div class="col-sm-8"><textarea class="form-control" id="blogTypeDescription"></textarea></div>
                     </div>
-                    <%--<img src="${pageContext.request.contextPath}/upload/aaa%20(1).png">--%>
                 </form>
             </div>
             <div class="modal-footer">

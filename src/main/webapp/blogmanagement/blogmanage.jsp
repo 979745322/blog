@@ -47,8 +47,6 @@
                                         博客类型：<select class="form-control input_blog_title" id="select_blogType"
                                                      name="blogType">
                                         <option value="0">全部</option>
-                                        <option value="1">生活娱乐</option>
-                                        <option value="2">技术笔记</option>
                                     </select>
                                     </div>
                                     <div class="form-group div_blogSearch">

@@ -1,3 +1,9 @@
+$(document).ready(function () {
+    var blogTypeList = ajaxdata("/blogmanage/selectBlogTypeAll", "").blogTypeList;
+    $.each(blogTypeList,function(n,value) {
+        $("#blogType").append("<option value="+value.id+">"+value.blogTypeName+"</option>")
+    });
+});
 var ue = UE.getEditor('myEditor');
 ue.ready(function () {
     $(".edui-editor-messageholder.edui-default").css({"visibility": "hidden"});
