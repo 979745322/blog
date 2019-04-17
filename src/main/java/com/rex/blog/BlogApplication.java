@@ -1,13 +1,15 @@
 package com.rex.blog;
 
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.SpringApplication;
-import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
-import org.springframework.boot.autoconfigure.web.servlet.MultipartAutoConfiguration;
 import org.springframework.boot.builder.SpringApplicationBuilder;
 import org.springframework.boot.web.servlet.MultipartConfigFactory;
 import org.springframework.boot.web.servlet.support.SpringBootServletInitializer;
 import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.Configuration;
+import org.springframework.web.servlet.config.annotation.ResourceHandlerRegistry;
+import org.springframework.web.servlet.config.annotation.WebMvcConfigurerAdapter;
 
 import javax.servlet.MultipartConfigElement;
 
@@ -25,11 +27,25 @@ public class BlogApplication extends SpringBootServletInitializer {
     }
 
     @Bean
-    MultipartConfigElement multipartConfigElement() {
+    MultipartConfigElement multipartConfigElement() { // 设置临时路径
         // 上传地址
-        String path = this.getClass().getResource("/").getPath() + "importExcelFiles/";
+        String path = "C:/Users/rex.li/IdeaProjects/blog/src/main/webapp/uploadImg/";
         MultipartConfigFactory factory = new MultipartConfigFactory();
         factory.setLocation(path);
         return factory.createMultipartConfig();
+    }
+
+    @Configuration
+    public class UploadFilePathConfig extends WebMvcConfigurerAdapter {
+        // 设置虚拟路径
+        @Value("${file.staticAccessPath}")
+        private String staticAccessPath;
+        @Value("${file.uploadFolder}")
+        private String uploadFolder;
+
+        @Override
+        public void addResourceHandlers(ResourceHandlerRegistry registry) {
+            registry.addResourceHandler(staticAccessPath).addResourceLocations("file:" + uploadFolder);
+        }
     }
 }

@@ -70,13 +70,19 @@ body {
 .div_modal_dialog {
     width: 90%;
 }
-.div_blogAdd{
+
+.div_blogAdd {
     margin-top: 20px;
     margin-left: 20px;
 }
 
-.form_blogType{
+.form_blogType {
     margin-top: 20px;
+}
+
+.img_blogTypeImg {
+    height: 100px;
+    width: 100px;
 }
 
 

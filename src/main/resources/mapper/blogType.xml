@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.rex.blog.mapper.BlogTypeMapper">
+    <resultMap id="blogType" type="com.rex.blog.entity.BlogType">
+        <result column="ID" property="id"/>
+        <result column="BLOGTYPE_NAME" property="blogTypeName"/>
+        <result column="BLOGTYPE_IMG" property="blogTypeImg"/>
+        <result column="BLOGTYPE_DESCRIPTION" property="blogTypeDescription"/>
+    </resultMap>
+
+    <!-- 查询博客类型 -->
+    <select id="blogTypeQueryPage" resultType="blogType">
+        select
+        ID id,
+        BLOGTYPE_NAME blogTypeName,
+        BLOGTYPE_IMG blogTypeImg,
+        BLOGTYPE_DESCRIPTION blogTypeDescription
+        from
+        tb_blog_type tbt
+        <if test="blogType!=null and blogType!=''">
+            where tbt.BLOGTYPE_NAME like concat('%',#{blogType},'%')
+        </if>
+    </select>
+
+    <!-- 根据id查询博客 -->
+    <select id="selectBlogType" resultType="blogType">
+        select
+        ID id,
+        BLOGTYPE_NAME blogTypeName,
+        BLOGTYPE_IMG blogTypeImg,
+        BLOGTYPE_DESCRIPTION blogTypeDescription
+        from
+        tb_blog_type tbt
+        where tbt.ID = #{id}
+    </select>
+
+    <!-- 新增博客 -->
+    <insert id="addBlogType">
+        insert into tb_blog_type(
+        BLOGTYPE_NAME,
+        BLOGTYPE_IMG,
+        BLOGTYPE_DESCRIPTION
+        )values (
+        #{blogTypeName},
+        #{blogTypeImg},
+        #{blogTypeDescription}
+        )
+    </insert>
+
+    <!-- 修改博客 -->
+    <update id="updateBlogType">
+        UPDATE tb_blog
+        SET BLOGTYPE_NAME = #{blogTypeName},
+        BLOGTYPE_IMG = #{blogTypeImg},
+        BLOGTYPE_DESCRIPTION = #{blogTypeDescription}
+        WHERE ID = #{id}
+    </update>
+
+    <!-- 删除博客 -->
+    <update id="deleteBlogType">
+        UPDATE tb_blog
+        SET DELETE_FLAG = '0'
+        WHERE ID = #{id}
+    </update>
+</mapper>

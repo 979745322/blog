@@ -39,7 +39,7 @@
                                 </div>
                             </form>
                             <div class="form-group div_blogAdd">
-                                <button type="button" data-toggle="modal" data-target="#myModal" class="btn btn-success">新增
+                                <button type="button" data-toggle="modal" data-target="#myModal" onclick="addBlogTypeButton" class="btn btn-success">新增
                                 </button>
                             </div>
                             <p style="clear:both"></p>
@@ -62,11 +62,11 @@
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
                 </button>
-                <h4 id="modal_title_blogType" class="modal-title">添加博客类型</h4>
+                <h4 id="modal_title_blogType" class="modal-title"></h4>
             </div>
             <div id="div_detailType_body">
                 <form class="form-horizontal form_blogType">
-                    <input type="hidden" value="" id="blogTypeId">
+                    <input type="hidden" id="blogTypeId">
                     <div class="form-group"><label class="col-sm-3 control-label">博客类型名称:</label>
                         <div class="col-sm-8"><input class="form-control" type="text" id="blogTypeName"></div>
                     </div>
@@ -76,7 +76,7 @@
                     <div class="form-group"><label class="col-sm-3 control-label">博客类型描述:</label>
                         <div class="col-sm-8"><textarea class="form-control" id="blogTypeDescription"></textarea></div>
                     </div>
-                    <img src="${pageContext.request.contextPath}/../../../target/classes/importExcelFiles/aaa%20(1).png">
+                    <%--<img src="${pageContext.request.contextPath}/upload/aaa%20(1).png">--%>
                 </form>
             </div>
             <div class="modal-footer">
@@ -86,7 +86,7 @@
                 </div>
                 <label class="col-sm-2"></label>
                 <div class="col-sm-2">
-                    <button class="btn btn-default" data-dismiss="modal">关闭</button>
+                    <button class="btn btn-default btn_blogType_close" data-dismiss="modal">关闭</button>
                 </div>
                 <label class="col-sm-3"></label>
             </div>

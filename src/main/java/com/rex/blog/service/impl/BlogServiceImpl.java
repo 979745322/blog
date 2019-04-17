@@ -32,9 +32,9 @@ public class BlogServiceImpl implements BlogService {
             blogMapper.addBlog(blog);
         } catch (Exception e) {
             log.info("e:{}", e);
-            return "新增失败";
+            return "新增失败！";
         }
-        return "新增成功";
+        return "新增成功！";
     }
 
     @Override
@@ -45,7 +45,7 @@ public class BlogServiceImpl implements BlogService {
             log.info("e:{}",e);
             return "修改失败！";
         }
-        return "修改成功";
+        return "修改成功！";
     }
 
     @Override
@@ -68,6 +68,6 @@ public class BlogServiceImpl implements BlogService {
             log.info("e:{}",e);
             return "删除失败！";
         }
-        return "删除成功";
+        return "删除成功！";
     }
 }

@@ -26,7 +26,7 @@ function publishBlog() {
     };
     var stateMsg = ajaxdata("/blogmanage/addBlog", blog).state;
     alert(stateMsg);
-    if (stateMsg === "新增成功" || stateMsg === "修改成功") {
+    if (stateMsg === "新增成功！" || stateMsg === "修改成功！") {
         window.location = "/blogmanage/blogList";
     }
 }

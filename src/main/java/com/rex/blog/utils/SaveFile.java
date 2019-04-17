@@ -24,19 +24,9 @@ public class SaveFile {
         filename += file.getOriginalFilename();
         log.info("filename:{}", filename);
 
-        // 上传地址
-        String path = this.getClass().getResource("/").getPath() + "importExcelFiles/";
-        log.info("path:{}", path);
-
         // 文件传输保存
         final File dir = new File(filename);
 
-        // 如果文件不存在就创建
-        if (!dir.exists()) {
-            dir.mkdirs();
-        } else {
-            dir.delete();
-        }
         try {
             // 将内存中的文件写入磁盘
             file.transferTo(dir);
