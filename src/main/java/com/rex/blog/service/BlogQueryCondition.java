@@ -12,7 +12,7 @@ public class BlogQueryCondition {
     /**
      * 每页个数
      */
-    final Integer pageSize = 5;
+    final Integer pageSize = 10;
 
     /**
      * 最大页数

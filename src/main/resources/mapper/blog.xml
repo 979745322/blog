@@ -41,6 +41,7 @@
         <if test="endTime!=null and endTime!=''">
             and tb.CREATE_TIME &lt; #{endTime}
         </if>
+        ORDER BY tb.CREATE_TIME DESC
     </select>
 
     <!-- 根据id查询博客 -->
