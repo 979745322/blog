@@ -67,7 +67,7 @@
             <ul>
                 <li><a href="/index">Home</a></li>
                 <li><a href="/blogType">blogType</a></li>
-                <li class="fh5co-active"><a href="/bloglist?pageNum=1">Blog</a></li>
+                <li><a href="/bloglist?pageNum=1">Blog</a></li>
                 <li><a href="portfolio.html">Portfolio</a></li>
                 <li><a href="about.html">About</a></li>
                 <li><a href="contact.html">Contact</a></li>
@@ -88,24 +88,10 @@
 
     <div id="fh5co-main">
         <div class="fh5co-narrow-content">
-            <h2 class="fh5co-heading animate-box" data-animate-effect="fadeInLeft">Recent Blogs</h2>
-            <div class="row row-bottom-padded-md">
-                <hr class="hr_blog"/>
-                <c:forEach items="${pageInfo.list}" var="list">
-                    <div class="col-md-12 col-sm-12 col-padding animate-box" data-animate-effect="fadeInLeft">
-                        <div class="blog-entry">
-                            <div class="desc">
-                                <h2><a href="/blog?blogId=${list.id}">${list.blogTitle}</a></h2>
-                                <c:forEach items="${blogTypeList}" var="blogType">
-                                    <c:if test="${list.blogType==blogType.id}">
-                                        <p class="p_blogTypeName">${blogType.blogTypeName}</p>
-                                    </c:if>
-                                </c:forEach>
-                                <p class="p_createTime">${list.createTime}</p>
-                            </div>
-                        </div>
-                    </div>
-                </c:forEach>
+            <h2><a href="/blogTypeDetail?blogTypeId=${blog.blogType}&&pageNum=1" class="fh5co-heading animate-box"
+                   data-animate-effect="fadeInLeft"><i class="icon-arrow-left3"></i>Back BlogType</a></h2>
+            <div class="row row-bottom-padded-md dcss">
+                ${blog.blogContent}
             </div>
         </div>
 

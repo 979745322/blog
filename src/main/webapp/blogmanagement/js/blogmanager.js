@@ -25,8 +25,9 @@ function querySubmit(pageNum) {
         startTime: $('#input_StartTime').val(),
         endTime: $('#input_EndTime').val()
     };
+    var blogTypeList = ajaxdata("/blogmanage/selectBlogTypeAll", "").blogTypeList;
     var pageInfo = ajaxdata("/blogmanage/page", pageData).pageInfo;
-    $("#div_blogTable").html(blogTable(pageInfo));
+    $("#div_blogTable").html(blogTable(pageInfo, blogTypeList));
     pageInfoBar(pageInfo, "div_pageBar");
 }
 
@@ -34,7 +35,7 @@ function querySubmit(pageNum) {
  * 拼接查询博客列表
  * @param pageInfo 分页信息
  */
-function blogTable(pageInfo) {
+function blogTable(pageInfo, blogTypeList) {
     var list = pageInfo.list;
     var table = [];
     table.push("<table class=\"table table-striped\">");
@@ -57,7 +58,12 @@ function blogTable(pageInfo) {
         var blogTitle = list[i].blogTitle.length > 20 ? list[i].blogTitle.substring(0, 21) + "..." : list[i].blogTitle;
         tableTr.push("<td>" + blogTitle + "</td>");
         // 类型
-        tableTr.push("<td>" + ajaxdata("/blogmanage/selectBlogType", parseInt(list[i].blogType)).blogType.blogTypeName + "</td>");
+        $.each(blogTypeList, function (n, value) {
+            if (value.id == list[i].blogType) {
+                tableTr.push("<td>" + value.blogTypeName + "</td>");
+                return false;
+            }
+        });
         // 状态
         switch (list[i].blogState) {
             case "1" :

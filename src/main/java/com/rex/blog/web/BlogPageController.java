@@ -1,19 +1,15 @@
 package com.rex.blog.web;
 
-import com.google.common.collect.Maps;
 import com.rex.blog.service.BlogQueryCondition;
 import com.rex.blog.service.BlogService;
 import com.rex.blog.service.BlogTypeService;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
-import java.util.Map;
 
 /**
  * 博客页面控制层
@@ -36,10 +32,10 @@ public class BlogPageController {
      *
      * @return 返回首页
      */
-    @RequestMapping({"","/","/index"})
+    @RequestMapping({"", "/", "/index"})
     public ModelAndView index() {
         final ModelAndView mav = new ModelAndView();
-        mav.addObject("blogTypeList", blogTypeService.selectBlogTypeAll());
+        mav.addObject("blogTypeList", blogTypeService.selectRecentBlogType());
         mav.setViewName("blogshowpage/index");
 
         return mav;
@@ -58,6 +54,7 @@ public class BlogPageController {
 
         return mav;
     }
+
     /**
      * 博客页
      *
@@ -65,12 +62,46 @@ public class BlogPageController {
      */
     @RequestMapping("/bloglist")
     public ModelAndView blog(@RequestParam int pageNum) {
-        log.info("pageNum:================={}",pageNum);
         final BlogQueryCondition condition = new BlogQueryCondition();
         condition.setPageNum(pageNum);
+        condition.setBlogState("2");
         final ModelAndView mav = new ModelAndView();
         mav.addObject("pageInfo", blogService.blogQueryPage(condition));
+        mav.addObject("blogTypeList", blogTypeService.selectBlogTypeAll());
         mav.setViewName("blogshowpage/bloglist");
+
+        return mav;
+    }
+
+    /**
+     * 查看博客
+     *
+     * @return 返回博客详情页
+     */
+    @RequestMapping("/blog")
+    public ModelAndView blog(@RequestParam Long blogId) {
+        final ModelAndView mav = new ModelAndView();
+        mav.addObject("blog", blogService.selectBlog(blogId));
+        mav.setViewName("blogshowpage/blog");
+
+        return mav;
+    }
+
+    /**
+     * 根据博客类型查看博客
+     *
+     * @return 返回博客类型详情页
+     */
+    @RequestMapping("/blogTypeDetail")
+    public ModelAndView blogTypeDetail(@RequestParam Long blogTypeId, @RequestParam int pageNum) {
+        final BlogQueryCondition condition = new BlogQueryCondition();
+        condition.setBlogType(String.valueOf(blogTypeId));
+        condition.setPageNum(pageNum);
+        condition.setBlogState("2");
+        final ModelAndView mav = new ModelAndView();
+        mav.addObject("pageInfo", blogService.blogQueryPage(condition));
+        mav.addObject("blogType", blogTypeService.selectBlogType(blogTypeId));
+        mav.setViewName("blogshowpage/blogtypedetail");
 
         return mav;
     }

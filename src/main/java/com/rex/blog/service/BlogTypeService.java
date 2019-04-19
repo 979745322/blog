@@ -55,4 +55,12 @@ public interface BlogTypeService {
      * @return 所有博客类型集合
      */
     List<BlogType> selectBlogTypeAll();
+
+    /**
+     * 查询最新发表的博客类型
+     * @return 所有按最新发表时间排序的博客类型集合
+     */
+    List<BlogType> selectRecentBlogType();
+
+
 }

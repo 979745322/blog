@@ -46,6 +46,23 @@
         tb_blog_type tbt
     </select>
 
+    <!-- 查询所有博客类型 -->
+    <select id="selectRecentBlogType" resultType="blogType">
+        SELECT
+        tbt.ID id,
+        tbt.BLOGTYPE_NAME blogTypeName,
+        tbt.BLOGTYPE_IMG blogTypeImg,
+        tbt.BLOGTYPE_DESCRIPTION blogTypeDescription
+        FROM
+        tb_blog_type tbt
+        LEFT JOIN tb_blog tb ON tb.BLOG_TYPE = tbt.ID
+        WHERE tb.ID IS NOT NULL
+        GROUP BY
+        tb.BLOG_TYPE
+        ORDER BY
+        tb.CREATE_TIME DESC
+    </select>
+
     <!-- 新增博客类型 -->
     <insert id="addBlogType">
         insert into tb_blog_type(

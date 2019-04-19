@@ -88,25 +88,27 @@
 
     <div id="fh5co-main">
         <div class="fh5co-narrow-content">
-            <h2 class="fh5co-heading animate-box" data-animate-effect="fadeInLeft">Read Our Blog</h2>
+            <h2 class="fh5co-heading animate-box" data-animate-effect="fadeInLeft">BlogType</h2>
             <div id="div_blogTypeShow" class="row row-bottom-padded-md">
                 <c:forEach items="${blogTypeList}" var="blogType">
                     <div class="col-md-3 col-sm-6 col-padding animate-box" data-animate-effect="fadeInLeft">
                         <div class="blog-entry">
-                            <a href="#" class="blog-img"><img src="/uploadImg/<c:out value="${blogType.blogTypeImg}"/>"
-                                                              id="blogTypeImg<c:out value="${blogType.id}"/>"
-                                                              class="img-responsive"></a>
+                            <a href="/blogTypeDetail?blogTypeId=${blogType.id}&&pageNum=1" class="blog-img"><img
+                                    src="/uploadImg/${blogType.blogTypeImg}"
+                                    id="blogTypeImg${blogType.id}"
+                                    class="img-responsive"></a>
                             <div class="desc">
-                                <h3><a href="#"><c:out value="${blogType.blogTypeName}"/></a></h3>
+                                <h3>
+                                    <a href="/blogTypeDetail?blogTypeId=${blogType.id}&&pageNum=1">${blogType.blogTypeName}</a>
+                                </h3>
                                 <c:if test="${fn:length(blogType.blogTypeDescription)>=46 }">
-                                    <p class="p_blogTypeDescription"><c:out
-                                            value="${fn:substring(blogType.blogTypeDescription,0,46)}"/>...</p>
+                                    <p class="p_blogTypeDescription">${fn:substring(blogType.blogTypeDescription,0,46)}...</p>
                                 </c:if>
                                 <c:if test="${fn:length(blogType.blogTypeDescription)<46 }">
-                                    <p class="p_blogTypeDescription"><c:out
-                                            value="${blogType.blogTypeDescription}"/></p>
+                                    <p class="p_blogTypeDescription">${blogType.blogTypeDescription}</p>
                                 </c:if>
-                                <a href="#" class="lead">Read More <i class="icon-arrow-right3"></i></a>
+                                <a href="/blogTypeDetail?blogTypeId=${blogType.id}&&pageNum=1" class="lead">Read More <i
+                                        class="icon-arrow-right3"></i></a>
                             </div>
                         </div>
                     </div>

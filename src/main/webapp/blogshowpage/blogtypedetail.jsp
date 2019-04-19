@@ -2,22 +2,23 @@
   Created by IntelliJ IDEA.
   User: rex.li
   Date: 2019/4/16
-  Time: 8:57
+  Time: 10:13
   To change this template use File | Settings | File Templates.
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
+
 <!DOCTYPE html>
 <!--[if lt IE 7]> <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
 <!--[if IE 7]> <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
 <!--[if IE 8]> <html class="no-js lt-ie9"> <![endif]-->
 <!--[if gt IE 8]><!-->
-<html class="no-js"> <!--<![endif]-->
+<html class="no-js height_max"> <!--<![endif]-->
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title>Home</title>
+    <title></title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="description" content=""/>
     <meta name="keywords" content=""/>
@@ -34,6 +35,7 @@
 
     <!-- Place favicon.ico and apple-touch-icon.png in the root directory -->
     <link rel="shortcut icon" href="favicon.ico">
+
 
     <!-- Animate.css -->
     <link rel="stylesheet" href="${pageContext.request.contextPath}/blogshowpage/css/animate.css">
@@ -63,8 +65,8 @@
         <h1 id="fh5co-logo"><a href="/index">Blog</a></h1>
         <nav id="fh5co-main-menu" role="navigation">
             <ul>
-                <li class="fh5co-active"><a href="/index">Home</a></li>
-                <li><a href="/blogType">BlogType</a></li>
+                <li><a href="/index">Home</a></li>
+                <li><a href="/blogType">blogType</a></li>
                 <li><a href="/bloglist?pageNum=1">Blog</a></li>
                 <li><a href="portfolio.html">Portfolio</a></li>
                 <li><a href="about.html">About</a></li>
@@ -84,75 +86,52 @@
 
     </aside>
 
-    <div id="fh5co-main">
-        <aside id="fh5co-hero" class="js-fullheight">
-            <div class="flexslider js-fullheight">
-                <ul class="slides">
-                    <li style="background-image: url(/blogshowpage/images/img_bg_1.jpg);">
-                        <div class="overlay"></div>
-                        <div class="container-fluid">
-                            <div class="row">
-                                <div class="col-md-8 col-md-offset-2 text-center js-fullheight slider-text">
-                                    <div class="slider-text-inner">
-                                        <h1>欢迎来到我的个人博客</h1>
-                                        <!--<p><a class="btn btn-primary btn-demo popup-vimeo" href=""> <i class="icon-monitor"></i> Live Preview</a> <a class="btn btn-primary btn-learn">Learn More<i class="icon-arrow-right3"></i></a></p>-->
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </li>
-                    <li style="background-image: url(/blogshowpage/images/img_bg_2.jpg);">
-                        <div class="overlay"></div>
-                        <div class="container-fluid">
-                            <div class="row">
-                                <div class="col-md-8 col-md-offset-2 text-center js-fullheight slider-text">
-                                    <div class="slider-text-inner">
-                                        <h1>Welcome to my personal blog</h1>
-                                        <!--<p><a class="btn btn-primary btn-demo popup-vimeo" href="#"> <i class="icon-monitor"></i> Live Preview</a> <a class="btn btn-primary btn-learn">Learn More<i class="icon-arrow-right3"></i></a></p>-->
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </li>
-                    <li style="background-image: url(/blogshowpage/images/img_bg_3.jpg);">
-                        <div class="overlay"></div>
-                        <div class="container-fluid">
-                            <div class="row">
-                                <div class="col-md-8 col-md-offset-2 text-center js-fullheight slider-text">
-                                    <div class="slider-text-inner">
-                                        <h1>生活就是如此</h1>
-                                        <h1>Life is real</h1>
-                                        <!--<p><a class="btn btn-primary btn-demo popup-vimeo" href=""> <i class="icon-monitor"></i> Live Preview</a> <a class="btn btn-primary btn-learn">Learn More<i class="icon-arrow-right3"></i></a></p>-->
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </li>
-                </ul>
-            </div>
-        </aside>
-
+    <div id="fh5co-main" class="height_max img_blogTypeBackground"
+         style="background-image: url('/uploadImg/${blogType.blogTypeImg}')">
+        <%--<img id="blogTypeImg${blogType.id}" class="img_blogTypeBackground" style="background-image: url('/uploadImg/${blogType.blogTypeImg}')">--%>
         <div class="fh5co-narrow-content">
-            <h2 class="fh5co-heading animate-box" data-animate-effect="fadeInLeft">Recent Blog</h2>
-            <div id="div_blogTypeShow" class="row row-bottom-padded-md">
-                <c:forEach begin="0" end="3" step="1" items="${blogTypeList}" var="blogType">
-                    <div class="col-md-3 col-sm-6 col-padding animate-box" data-animate-effect="fadeInLeft">
+            <h2><a href="/blogType" class="fh5co-heading animate-box"
+                   data-animate-effect="fadeInLeft"><i class="icon-arrow-left3"></i>Back BlogType</a></h2>
+            <div class="row row-bottom-padded-md">
+                <h1>${blogType.blogTypeName}</h1>
+                <hr class="hr_blog"/>
+                <c:forEach items="${pageInfo.list}" var="list">
+                    <div class="col-md-12 col-sm-12 col-padding animate-box" data-animate-effect="fadeInLeft">
                         <div class="blog-entry">
-                            <a href="/blogTypeDetail?blogTypeId=${blogType.id}&&pageNum=1" class="blog-img"><img src="/uploadImg/${blogType.blogTypeImg}"
-                                                              id="blogTypeImg${blogType.id}" class="img-responsive"></a>
                             <div class="desc">
-                                <h3><a href="/blogTypeDetail?blogTypeId=${blogType.id}&&pageNum=1">${blogType.blogTypeName}</a></h3>
-                                <c:if test="${fn:length(blogType.blogTypeDescription)>=46 }">
-                                    <p class="p_blogTypeDescription">${fn:substring(blogType.blogTypeDescription,0,46)}...</p>
-                                </c:if>
-                                <c:if test="${fn:length(blogType.blogTypeDescription)<46 }">
-                                    <p class="p_blogTypeDescription">${blogType.blogTypeDescription}</p>
-                                </c:if>
-                                <a href="/blogTypeDetail?blogTypeId=${blogType.id}&&pageNum=1" class="lead">Read More <i class="icon-arrow-right3"></i></a>
+                                <h2><a href="/blog?blogId=${list.id}">${list.blogTitle}</a></h2>
+                                <c:forEach items="${blogTypeList}" var="blogType">
+                                    <c:if test="${list.blogType==blogType.id}">
+                                        <p class="p_blogTypeName">${blogType.blogTypeName}</p>
+                                    </c:if>
+                                </c:forEach>
+                                <p class="p_createTime">${list.createTime}</p>
                             </div>
                         </div>
                     </div>
                 </c:forEach>
+                <div class="div_pageBar">
+                    <ul class="pagination">
+                        <%--<c:if test="${pageInfo.pageNum>1}">
+                            <li class="prev-next"><a href="#" aria-label="Previous"><span
+                                    aria-hidden="true">«</span></a></li>
+                        </c:if>
+                        <c:forEach items="${pageInfo.navigatepageNums}" var="navigatepageNums" varStatus="st">
+
+                            <c:if test="${pageInfo.pageNum == navigatepageNums[st.index]}">
+                                <li class="query-content-page-cur"><a href="#">${navigatepageNums[st.index]}</a></li>
+                            </c:if>
+                            <c:if test="${pageInfo.pageNum == navigatepageNums[st.index]}">
+                                <li><a href="#">${navigatepageNums[st.index]}</a></li>
+                            </c:if>
+
+                        </c:forEach>
+                        <c:if test="${pageInfo.pageNum < pageInfo.pages}">
+                            <li class="bus-border-right prev-next"><a href="#" aria-label="Next"><span
+                                    aria-hidden="true">»</span></a></li>
+                        </c:if>--%>
+                    </ul>
+                </div>
             </div>
         </div>
 

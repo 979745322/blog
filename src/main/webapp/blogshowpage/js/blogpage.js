@@ -1,4 +1,5 @@
 $(document).ready(function () {
+    $(".height_max").css("min-height",$(document).height());
     $('#div_blogTypeShow').imagesLoaded()
         /*.always( function( instance ) {    //always事件，在所有图片都加载完成（成功与否不论）时触发
             //console.log('all images loaded');
@@ -19,7 +20,5 @@ $(document).ready(function () {
                 zoom : '1',//缩放比例
                 method : 'auto'//提交方法，用于不同的浏览器环境，默认为‘auto’
             });
-            $("#div_blogTypeShow img[id='"+image.img.id+"']").attr("class","blog-img");
         });
-
 });
