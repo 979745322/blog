@@ -22,3 +22,7 @@ $(document).ready(function () {
             });
         });
 });
+function redirect(options) {
+    var url = options.attr('val');
+    window.location.href = url;
+}

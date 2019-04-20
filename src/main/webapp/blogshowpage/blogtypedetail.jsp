@@ -56,31 +56,33 @@
     <script src="${pageContext.request.contextPath}/blogshowpage/js/respond.min.js"></script>
     <![endif]-->
 
+    <!-- 国际化文档 JS -->
+    <script src="${pageContext.request.contextPath}/blogshowpage/js/zh-CN.js"></script>
 </head>
 <body>
 <div id="fh5co-page">
-    <a href="#" class="js-fh5co-nav-toggle fh5co-nav-toggle"><i></i></a>
+    <a href="javascript:;" onclick="redirect($(this))" val="#" class="js-fh5co-nav-toggle fh5co-nav-toggle"><i></i></a>
     <aside id="fh5co-aside" role="complementary" class="border js-fullheight">
 
-        <h1 id="fh5co-logo"><a href="/index">Blog</a></h1>
+        <h1 id="fh5co-logo"><a href="javascript:;" onclick="redirect($(this))" val="/index"><script>document.write(I18N_BLOG_SHOW_PAGE_MENUE.BLOG);</script></a></h1>
         <nav id="fh5co-main-menu" role="navigation">
             <ul>
-                <li><a href="/index">Home</a></li>
-                <li><a href="/blogType">blogType</a></li>
-                <li><a href="/bloglist?pageNum=1">Blog</a></li>
-                <li><a href="portfolio.html">Portfolio</a></li>
-                <li><a href="about.html">About</a></li>
-                <li><a href="contact.html">Contact</a></li>
+                <li><a href="javascript:;" onclick="redirect($(this))" val="/index"><script>document.write(I18N_BLOG_SHOW_PAGE_MENUE.BLOG_HOME);</script></a></li>
+                <li><a href="javascript:;" onclick="redirect($(this))" val="/blogType"><script>document.write(I18N_BLOG_SHOW_PAGE_MENUE.BLOG_BLOG_TYPE);</script></a></li>
+                <li><a href="javascript:;" onclick="redirect($(this))" val="/bloglist?pageNum=1"><script>document.write(I18N_BLOG_SHOW_PAGE_MENUE.BLOG_RECENT_BLOGS);</script></a></li>
+                <%--<li><a href="javascript:;" onclick="redirect($(this))" val="portfolio.html">Portfolio</a></li>
+                <li><a href="javascript:;" onclick="redirect($(this))" val="about.html">About</a></li>
+                <li><a href="javascript:;" onclick="redirect($(this))" val="contact.html">Contact</a></li>--%>
             </ul>
         </nav>
 
         <div class="fh5co-footer">
-            <p>Copyright &copy; 2019.Company name All rights reserved.</p>
+            <p><script>document.write(I18N_BLOG_SHOW_PAGE_MENUE.BLOG_PAGE_FOOT);</script></p>
             <ul>
-                <li><a href="#"><i class="icon-facebook2"></i></a></li>
-                <li><a href="#"><i class="icon-twitter2"></i></a></li>
-                <li><a href="#"><i class="icon-instagram"></i></a></li>
-                <li><a href="#"><i class="icon-linkedin2"></i></a></li>
+                <li><a href="javascript:;" onclick="redirect($(this))" val="#"><i class="icon-facebook2"></i></a></li>
+                <li><a href="javascript:;" onclick="redirect($(this))" val="#"><i class="icon-twitter2"></i></a></li>
+                <li><a href="javascript:;" onclick="redirect($(this))" val="#"><i class="icon-instagram"></i></a></li>
+                <li><a href="javascript:;" onclick="redirect($(this))" val="#"><i class="icon-linkedin2"></i></a></li>
             </ul>
         </div>
 
@@ -90,8 +92,8 @@
          style="background-image: url('/uploadImg/${blogType.blogTypeImg}')">
         <%--<img id="blogTypeImg${blogType.id}" class="img_blogTypeBackground" style="background-image: url('/uploadImg/${blogType.blogTypeImg}')">--%>
         <div class="fh5co-narrow-content">
-            <h2><a href="/blogType" class="fh5co-heading animate-box"
-                   data-animate-effect="fadeInLeft"><i class="icon-arrow-left3"></i>Back BlogType</a></h2>
+            <h2><a href="javascript:;" onclick="redirect($(this))" val="/blogType" class="fh5co-heading animate-box"
+                   data-animate-effect="fadeInLeft"><i class="icon-arrow-left3"></i><script>document.write(I18N_BLOG_SHOW_PAGE_DETAIL.BACK_BLOG_TYPE);</script></a></h2>
             <div class="row row-bottom-padded-md">
                 <h1>${blogType.blogTypeName}</h1>
                 <hr class="hr_blog"/>
@@ -99,7 +101,7 @@
                     <div class="col-md-12 col-sm-12 col-padding animate-box" data-animate-effect="fadeInLeft">
                         <div class="blog-entry">
                             <div class="desc">
-                                <h2><a href="/blog?blogId=${list.id}">${list.blogTitle}</a></h2>
+                                <h2><a href="javascript:;" onclick="redirect($(this))" val="/blog?blogId=${list.id}">${list.blogTitle}</a></h2>
                                 <c:forEach items="${blogTypeList}" var="blogType">
                                     <c:if test="${list.blogType==blogType.id}">
                                         <p class="p_blogTypeName">${blogType.blogTypeName}</p>
@@ -112,24 +114,31 @@
                 </c:forEach>
                 <div class="div_pageBar">
                     <ul class="pagination">
-                        <%--<c:if test="${pageInfo.pageNum>1}">
-                            <li class="prev-next"><a href="#" aria-label="Previous"><span
+                        <c:if test="${pageInfo.pageNum>1}">
+                            <li class="prev-next"><a
+                                    href="/blogTypeDetail?blogTypeId=${blogType.id}&&pageNum=${pageInfo.pageNum-1}"
+                                    aria-label="Previous"><span
                                     aria-hidden="true">«</span></a></li>
                         </c:if>
-                        <c:forEach items="${pageInfo.navigatepageNums}" var="navigatepageNums" varStatus="st">
-
-                            <c:if test="${pageInfo.pageNum == navigatepageNums[st.index]}">
-                                <li class="query-content-page-cur"><a href="#">${navigatepageNums[st.index]}</a></li>
+                        <c:forEach items="${pageInfo.navigatepageNums}" var="navigatepageNums">
+                            <c:if test="${pageInfo.pageNum == navigatepageNums}">
+                                <li class="active"><a
+                                        href="/blogTypeDetail?blogTypeId=${blogType.id}&&pageNum=${navigatepageNums}">${navigatepageNums}</a>
+                                </li>
                             </c:if>
-                            <c:if test="${pageInfo.pageNum == navigatepageNums[st.index]}">
-                                <li><a href="#">${navigatepageNums[st.index]}</a></li>
+                            <c:if test="${pageInfo.pageNum != navigatepageNums}">
+                                <li>
+                                    <a href="javascript:;" onclick="redirect($(this))" val="/blogTypeDetail?blogTypeId=${blogType.id}&&pageNum=${navigatepageNums}">${navigatepageNums}</a>
+                                </li>
                             </c:if>
 
                         </c:forEach>
                         <c:if test="${pageInfo.pageNum < pageInfo.pages}">
-                            <li class="bus-border-right prev-next"><a href="#" aria-label="Next"><span
+                            <li class="bus-border-right prev-next"><a
+                                    href="/blogTypeDetail?blogTypeId=${blogType.id}&&pageNum=${pageInfo.pageNum+1}"
+                                    aria-label="Next"><span
                                     aria-hidden="true">»</span></a></li>
-                        </c:if>--%>
+                        </c:if>
                     </ul>
                 </div>
             </div>

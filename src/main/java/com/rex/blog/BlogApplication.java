@@ -29,8 +29,8 @@ public class BlogApplication extends SpringBootServletInitializer {
     @Bean
     MultipartConfigElement multipartConfigElement() { // 设置临时路径
         // 上传地址
-        String path = "C:/Users/rex.li/IdeaProjects/blog/src/main/webapp/uploadImg/";
-//        String path = "F:/java/blog/src/main/webapp/uploadImg/";
+//        String path = "C:/Users/rex.li/IdeaProjects/blog/src/main/webapp/uploadImg/";
+        String path = "F:/java/blog/src/main/webapp/uploadImg/";
         MultipartConfigFactory factory = new MultipartConfigFactory();
         factory.setLocation(path);
         return factory.createMultipartConfig();

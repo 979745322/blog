@@ -33,6 +33,19 @@ public class BlogPageController {
      * @return 返回首页
      */
     @RequestMapping({"", "/", "/index"})
+    public ModelAndView welcome() {
+        final ModelAndView mav = new ModelAndView();
+        mav.setViewName("blogshowpage/welcome");
+
+        return mav;
+    }
+
+    /**
+     * 真正首页
+     *
+     * @return 返回首页
+     */
+    @RequestMapping("/welcomeBlogPage")
     public ModelAndView index() {
         final ModelAndView mav = new ModelAndView();
         mav.addObject("blogTypeList", blogTypeService.selectRecentBlogType());

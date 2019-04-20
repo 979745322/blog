@@ -54,110 +54,113 @@
     <script src="${pageContext.request.contextPath}/blogshowpage/js/respond.min.js"></script>
     <![endif]-->
 
+    <!-- 国际化文档 JS -->
+    <script src="${pageContext.request.contextPath}/blogshowpage/js/zh-CN.js"></script>
 </head>
 <body>
-<div id="fh5co-page">
-    <a href="#" class="js-fh5co-nav-toggle fh5co-nav-toggle"><i></i></a>
-    <aside id="fh5co-aside" role="complementary" class="border js-fullheight">
+    <div id="fh5co-page">
+        <a href="javascript:;" onclick="redirect($(this))" val="#" class="js-fh5co-nav-toggle fh5co-nav-toggle"><i></i></a>
+        <aside id="fh5co-aside" role="complementary" class="border js-fullheight">
 
-        <h1 id="fh5co-logo"><a href="/index">Blog</a></h1>
-        <nav id="fh5co-main-menu" role="navigation">
-            <ul>
-                <li class="fh5co-active"><a href="/index">Home</a></li>
-                <li><a href="/blogType">BlogType</a></li>
-                <li><a href="/bloglist?pageNum=1">Blog</a></li>
-                <li><a href="portfolio.html">Portfolio</a></li>
-                <li><a href="about.html">About</a></li>
-                <li><a href="contact.html">Contact</a></li>
-            </ul>
-        </nav>
+            <h1 id="fh5co-logo"><a href="javascript:;" onclick="redirect($(this))" val="/index"><script>document.write(I18N_BLOG_SHOW_PAGE_MENUE.BLOG);</script></a></h1>
+            <nav id="fh5co-main-menu" role="navigation">
+                <ul>
+                    <li class="fh5co-active"><a href="javascript:;" onclick="redirect($(this))" val="/index"><script>document.write(I18N_BLOG_SHOW_PAGE_MENUE.BLOG_HOME);</script></a></li>
+                    <li><a href="javascript:;" onclick="redirect($(this))" val="/blogType"><script>document.write(I18N_BLOG_SHOW_PAGE_MENUE.BLOG_BLOG_TYPE);</script></a></li>
+                    <li><a href="javascript:;" onclick="redirect($(this))" val="/bloglist?pageNum=1"><script>document.write(I18N_BLOG_SHOW_PAGE_MENUE.BLOG_RECENT_BLOGS);</script></a></li>
+                    <%--<li><a href="javascript:;" onclick="redirect($(this))" val="portfolio.html">Portfolio</a></li>
+                    <li><a href="javascript:;" onclick="redirect($(this))" val="about.html">About</a></li>
+                    <li><a href="javascript:;" onclick="redirect($(this))" val="contact.html">Contact</a></li>--%>
+                </ul>
+            </nav>
 
-        <div class="fh5co-footer">
-            <p>Copyright &copy; 2019.Company name All rights reserved.</p>
-            <ul>
-                <li><a href="#"><i class="icon-facebook2"></i></a></li>
-                <li><a href="#"><i class="icon-twitter2"></i></a></li>
-                <li><a href="#"><i class="icon-instagram"></i></a></li>
-                <li><a href="#"><i class="icon-linkedin2"></i></a></li>
-            </ul>
-        </div>
-
-    </aside>
-
-    <div id="fh5co-main">
-        <aside id="fh5co-hero" class="js-fullheight">
-            <div class="flexslider js-fullheight">
-                <ul class="slides">
-                    <li style="background-image: url(/blogshowpage/images/img_bg_1.jpg);">
-                        <div class="overlay"></div>
-                        <div class="container-fluid">
-                            <div class="row">
-                                <div class="col-md-8 col-md-offset-2 text-center js-fullheight slider-text">
-                                    <div class="slider-text-inner">
-                                        <h1>欢迎来到我的个人博客</h1>
-                                        <!--<p><a class="btn btn-primary btn-demo popup-vimeo" href=""> <i class="icon-monitor"></i> Live Preview</a> <a class="btn btn-primary btn-learn">Learn More<i class="icon-arrow-right3"></i></a></p>-->
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </li>
-                    <li style="background-image: url(/blogshowpage/images/img_bg_2.jpg);">
-                        <div class="overlay"></div>
-                        <div class="container-fluid">
-                            <div class="row">
-                                <div class="col-md-8 col-md-offset-2 text-center js-fullheight slider-text">
-                                    <div class="slider-text-inner">
-                                        <h1>Welcome to my personal blog</h1>
-                                        <!--<p><a class="btn btn-primary btn-demo popup-vimeo" href="#"> <i class="icon-monitor"></i> Live Preview</a> <a class="btn btn-primary btn-learn">Learn More<i class="icon-arrow-right3"></i></a></p>-->
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </li>
-                    <li style="background-image: url(/blogshowpage/images/img_bg_3.jpg);">
-                        <div class="overlay"></div>
-                        <div class="container-fluid">
-                            <div class="row">
-                                <div class="col-md-8 col-md-offset-2 text-center js-fullheight slider-text">
-                                    <div class="slider-text-inner">
-                                        <h1>生活就是如此</h1>
-                                        <h1>Life is real</h1>
-                                        <!--<p><a class="btn btn-primary btn-demo popup-vimeo" href=""> <i class="icon-monitor"></i> Live Preview</a> <a class="btn btn-primary btn-learn">Learn More<i class="icon-arrow-right3"></i></a></p>-->
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </li>
+            <div class="fh5co-footer">
+                <p><script>document.write(I18N_BLOG_SHOW_PAGE_MENUE.BLOG_PAGE_FOOT);</script></p>
+                <ul>
+                    <li><a href="javascript:;" onclick="redirect($(this))" val="#"><i class="icon-facebook2"></i></a></li>
+                    <li><a href="javascript:;" onclick="redirect($(this))" val="#"><i class="icon-twitter2"></i></a></li>
+                    <li><a href="javascript:;" onclick="redirect($(this))" val="#"><i class="icon-instagram"></i></a></li>
+                    <li><a href="javascript:;" onclick="redirect($(this))" val="#"><i class="icon-linkedin2"></i></a></li>
                 </ul>
             </div>
+
         </aside>
 
-        <div class="fh5co-narrow-content">
-            <h2 class="fh5co-heading animate-box" data-animate-effect="fadeInLeft">Recent Blog</h2>
-            <div id="div_blogTypeShow" class="row row-bottom-padded-md">
-                <c:forEach begin="0" end="3" step="1" items="${blogTypeList}" var="blogType">
-                    <div class="col-md-3 col-sm-6 col-padding animate-box" data-animate-effect="fadeInLeft">
-                        <div class="blog-entry">
-                            <a href="/blogTypeDetail?blogTypeId=${blogType.id}&&pageNum=1" class="blog-img"><img src="/uploadImg/${blogType.blogTypeImg}"
-                                                              id="blogTypeImg${blogType.id}" class="img-responsive"></a>
-                            <div class="desc">
-                                <h3><a href="/blogTypeDetail?blogTypeId=${blogType.id}&&pageNum=1">${blogType.blogTypeName}</a></h3>
-                                <c:if test="${fn:length(blogType.blogTypeDescription)>=46 }">
-                                    <p class="p_blogTypeDescription">${fn:substring(blogType.blogTypeDescription,0,46)}...</p>
-                                </c:if>
-                                <c:if test="${fn:length(blogType.blogTypeDescription)<46 }">
-                                    <p class="p_blogTypeDescription">${blogType.blogTypeDescription}</p>
-                                </c:if>
-                                <a href="/blogTypeDetail?blogTypeId=${blogType.id}&&pageNum=1" class="lead">Read More <i class="icon-arrow-right3"></i></a>
+        <div id="fh5co-main">
+            <aside id="fh5co-hero" class="js-fullheight">
+                <div class="flexslider js-fullheight">
+                    <ul class="slides">
+                        <li style="background-image: url(/blogshowpage/images/img_bg_1.jpg);">
+                            <div class="overlay"></div>
+                            <div class="container-fluid">
+                                <div class="row">
+                                    <div class="col-md-8 col-md-offset-2 text-center js-fullheight slider-text">
+                                        <div class="slider-text-inner">
+                                            <h1><script>document.write(I18N_BLOG_SHOW_PAGE_DETAIL.IMG_1);</script></h1>
+                                            <!--<p><a class="btn btn-primary btn-demo popup-vimeo" href=""> <i class="icon-monitor"></i> Live Preview</a> <a class="btn btn-primary btn-learn">Learn More<i class="icon-arrow-right3"></i></a></p>-->
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </li>
+                        <li style="background-image: url(/blogshowpage/images/img_bg_2.jpg);">
+                            <div class="overlay"></div>
+                            <div class="container-fluid">
+                                <div class="row">
+                                    <div class="col-md-8 col-md-offset-2 text-center js-fullheight slider-text">
+                                        <div class="slider-text-inner">
+                                            <h1><script>document.write(I18N_BLOG_SHOW_PAGE_DETAIL.IMG_2);</script></h1>
+                                            <!--<p><a class="btn btn-primary btn-demo popup-vimeo" href="#"> <i class="icon-monitor"></i> Live Preview</a> <a class="btn btn-primary btn-learn">Learn More<i class="icon-arrow-right3"></i></a></p>-->
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </li>
+                        <li style="background-image: url(/blogshowpage/images/img_bg_3.jpg);">
+                            <div class="overlay"></div>
+                            <div class="container-fluid">
+                                <div class="row">
+                                    <div class="col-md-8 col-md-offset-2 text-center js-fullheight slider-text">
+                                        <div class="slider-text-inner">
+                                            <h1><script>document.write(I18N_BLOG_SHOW_PAGE_DETAIL.IMG_3);</script></h1>
+                                            <!--<p><a class="btn btn-primary btn-demo popup-vimeo" href=""> <i class="icon-monitor"></i> Live Preview</a> <a class="btn btn-primary btn-learn">Learn More<i class="icon-arrow-right3"></i></a></p>-->
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+            </aside>
+
+            <div class="fh5co-narrow-content">
+                <h2 class="fh5co-heading animate-box" data-animate-effect="fadeInLeft"><script>document.write(I18N_BLOG_SHOW_PAGE_DETAIL.RECENT_BLOG);</script></h2>
+                <div id="div_blogTypeShow" class="row row-bottom-padded-md">
+                    <c:forEach begin="0" end="3" step="1" items="${blogTypeList}" var="blogType">
+                        <div class="col-md-3 col-sm-6 col-padding animate-box" data-animate-effect="fadeInLeft">
+                            <div class="blog-entry">
+                                <a href="javascript:;" onclick="redirect($(this))" val="/blogTypeDetail?blogTypeId=${blogType.id}&&pageNum=1" class="blog-img"><img src="/uploadImg/${blogType.blogTypeImg}"
+                                                                                                                     id="blogTypeImg${blogType.id}" class="img-responsive"></a>
+                                <div class="desc">
+                                    <h3><a href="javascript:;" onclick="redirect($(this))" val="/blogTypeDetail?blogTypeId=${blogType.id}&&pageNum=1">${blogType.blogTypeName}</a></h3>
+                                    <c:if test="${fn:length(blogType.blogTypeDescription)>=46 }">
+                                        <p class="p_blogTypeDescription">${fn:substring(blogType.blogTypeDescription,0,46)}...</p>
+                                    </c:if>
+                                    <c:if test="${fn:length(blogType.blogTypeDescription)<46 }">
+                                        <p class="p_blogTypeDescription">${blogType.blogTypeDescription}</p>
+                                    </c:if>
+                                    <a href="javascript:;" onclick="redirect($(this))" val="/blogTypeDetail?blogTypeId=${blogType.id}&&pageNum=1" class="lead"><script>document.write(I18N_BLOG_SHOW_PAGE_DETAIL.READ_MORE);</script> <i class="icon-arrow-right3"></i></a>
+                                </div>
                             </div>
                         </div>
-                    </div>
-                </c:forEach>
+                    </c:forEach>
+                </div>
             </div>
-        </div>
 
+        </div>
     </div>
-</div>
+
+
 
 <!-- jQuery -->
 <script src="${pageContext.request.contextPath}/blogshowpage/js/jquery.min.js"></script>
@@ -181,6 +184,9 @@
 
 <!-- 自定义 JS -->
 <script src="${pageContext.request.contextPath}/blogshowpage/js/blogpage.js"></script>
+
+<!-- 国际化文档 JS -->
+<script src="${pageContext.request.contextPath}/blogshowpage/js/zh-CN.js"></script>
 
 </body>
 </html>
