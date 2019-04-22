@@ -8,6 +8,6 @@ public class WebURIMappingConstant {
 //    private static final String SECURITY_ROOT = "/secured/";
 
     public static final String URI_BLOGMANAGE = SECURITY_ROOT + "blogmanage/";
-//    public static final String URI_BLOGPAGE = SECURITY_ROOT + "blogpage/";
+    public static final String URI_BLOGPAGE = SECURITY_ROOT + "blogpage/";
 
 }

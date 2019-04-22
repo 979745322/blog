@@ -3,11 +3,16 @@ package com.rex.blog.web;
 import com.google.common.collect.Maps;
 import com.rex.blog.entity.Blog;
 import com.rex.blog.entity.BlogType;
+import com.rex.blog.entity.User;
 import com.rex.blog.service.BlogQueryCondition;
 import com.rex.blog.service.BlogService;
 import com.rex.blog.service.BlogTypeService;
 import com.rex.blog.utils.SaveFile;
 import lombok.extern.slf4j.Slf4j;
+import org.apache.shiro.SecurityUtils;
+import org.apache.shiro.authc.AuthenticationException;
+import org.apache.shiro.authc.UsernamePasswordToken;
+import org.apache.shiro.subject.Subject;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.validation.BindingResult;
@@ -40,6 +45,47 @@ public class BlogManageController {
         this.blogService = blogService;
         this.blogTypeService = blogTypeService;
     }
+    /**=======================================登录======================================*/
+
+    /**
+     * 登录页面
+     *
+     * @return 返回编辑博客页
+     */
+    @ResponseBody
+    @RequestMapping("/login")
+    public ModelAndView login() {
+        final ModelAndView mav = new ModelAndView();
+        mav.setViewName("blogmanagement/login");
+        return mav;
+    }
+    /**
+     * 用户登录
+     *
+     * @return 登录成功返回博客管理页，登录失败返回登录页
+     */
+    @ResponseBody
+    @RequestMapping("/userLogin")
+    public Map<String, Object> userLogin(@RequestBody User user) {
+        log.info(user.toString());
+        final Map<String, Object> map = Maps.newHashMap();
+        // 利用shiro验证登录
+        final Subject subject = SecurityUtils.getSubject();
+        final UsernamePasswordToken token = new UsernamePasswordToken(user.getUserName(), user.getPassword());
+        try {
+            //当前用户登录验证
+            subject.login(token);
+            map.put("state","success");
+            log.info("身份验证成功！");
+        } catch (AuthenticationException e) {
+            log.error("error:{}", e);
+            map.put("state","用户名或密码错误，请重新输入！");
+            log.info("身份认证失败！");
+        }
+
+        return map;
+    }
+
     /**=======================================博客======================================*/
     /**
      * 分页查询
@@ -243,7 +289,7 @@ public class BlogManageController {
      *
      * @return 返回首页
      */
-    @RequestMapping("")
+    @RequestMapping({"","/","index"})
     public String index() {
         return "blogmanagement/index";
     }

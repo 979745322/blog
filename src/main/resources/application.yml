@@ -12,7 +12,12 @@ spring:
     multipart:
       max-file-size: 30MB
       max-request-size: 30MB
+
 mybatis:
   mapper-locations: classpath:mapper/*.xml
   config-location: classpath:mybatis-config.xml
   type-aliases-package: com.rex.blog.entity
+
+shiro:
+  config-location: classpath:/ehcache.xml
+

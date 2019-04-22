@@ -10,11 +10,14 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
+import static com.rex.blog.web.WebURIMappingConstant.URI_BLOGPAGE;
+
 
 /**
  * 博客页面控制层
  */
 @Slf4j
+@RequestMapping(URI_BLOGPAGE)
 @Controller
 public class BlogPageController {
 

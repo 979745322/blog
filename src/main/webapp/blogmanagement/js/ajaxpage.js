@@ -12,7 +12,12 @@ function ajaxdata(action, datastr) {
             adata = data;
         },
         error: function (data) {
-            alert("ajax error");
+            if (data.status === 401) {
+                console.log("未登录");
+                window.parent.location.href = "/blogmanage/login";
+            } else {
+                alert("ajax error");
+            }
         }
     });
     return adata;

@@ -61,18 +61,18 @@
 </head>
 <body>
 <div id="fh5co-page">
-    <a href="javascript:;" onclick="redirect($(this))" val="#" class="js-fh5co-nav-toggle fh5co-nav-toggle"><i></i></a>
+    <a href="javascript:;" onclick="redirect($(this))" val="/blogpage#" class="js-fh5co-nav-toggle fh5co-nav-toggle"><i></i></a>
     <aside id="fh5co-aside" role="complementary" class="border js-fullheight">
 
-        <h1 id="fh5co-logo"><a href="javascript:;" onclick="redirect($(this))" val="/index"><script>document.write(I18N_BLOG_SHOW_PAGE_MENUE.BLOG);</script></a></h1>
+        <h1 id="fh5co-logo"><a href="javascript:;" onclick="redirect($(this))" val="/blogpage/welcomeBlogPage"><script>document.write(I18N_BLOG_SHOW_PAGE_MENUE.BLOG);</script></a></h1>
         <nav id="fh5co-main-menu" role="navigation">
             <ul>
-                <li><a href="javascript:;" onclick="redirect($(this))" val="/index"><script>document.write(I18N_BLOG_SHOW_PAGE_MENUE.BLOG_HOME);</script></a></li>
-                <li><a href="javascript:;" onclick="redirect($(this))" val="/blogType"><script>document.write(I18N_BLOG_SHOW_PAGE_MENUE.BLOG_BLOG_TYPE);</script></a></li>
-                <li><a href="javascript:;" onclick="redirect($(this))" val="/bloglist?pageNum=1"><script>document.write(I18N_BLOG_SHOW_PAGE_MENUE.BLOG_RECENT_BLOGS);</script></a></li>
-                <%--<li><a href="javascript:;" onclick="redirect($(this))" val="portfolio.html">Portfolio</a></li>
-                <li><a href="javascript:;" onclick="redirect($(this))" val="about.html">About</a></li>
-                <li><a href="javascript:;" onclick="redirect($(this))" val="contact.html">Contact</a></li>--%>
+                <li><a href="javascript:;" onclick="redirect($(this))" val="/blogpage/welcomeBlogPage"><script>document.write(I18N_BLOG_SHOW_PAGE_MENUE.BLOG_HOME);</script></a></li>
+                <li><a href="javascript:;" onclick="redirect($(this))" val="/blogpage/blogType"><script>document.write(I18N_BLOG_SHOW_PAGE_MENUE.BLOG_BLOG_TYPE);</script></a></li>
+                <li><a href="javascript:;" onclick="redirect($(this))" val="/blogpage/bloglist?pageNum=1"><script>document.write(I18N_BLOG_SHOW_PAGE_MENUE.BLOG_RECENT_BLOGS);</script></a></li>
+                <%--<li><a href="javascript:;" onclick="redirect($(this))" val="/blogpageportfolio.html">Portfolio</a></li>
+                <li><a href="javascript:;" onclick="redirect($(this))" val="/blogpageabout.html">About</a></li>
+                <li><a href="javascript:;" onclick="redirect($(this))" val="/blogpagecontact.html">Contact</a></li>--%>
             </ul>
         </nav>
 
@@ -92,7 +92,7 @@
          style="background-image: url('/uploadImg/${blogType.blogTypeImg}')">
         <%--<img id="blogTypeImg${blogType.id}" class="img_blogTypeBackground" style="background-image: url('/uploadImg/${blogType.blogTypeImg}')">--%>
         <div class="fh5co-narrow-content">
-            <h2><a href="javascript:;" onclick="redirect($(this))" val="/blogType" class="fh5co-heading animate-box"
+            <h2><a href="javascript:;" onclick="redirect($(this))" val="/blogpage/blogType" class="fh5co-heading animate-box"
                    data-animate-effect="fadeInLeft"><i class="icon-arrow-left3"></i><script>document.write(I18N_BLOG_SHOW_PAGE_DETAIL.BACK_BLOG_TYPE);</script></a></h2>
             <div class="row row-bottom-padded-md">
                 <h1>${blogType.blogTypeName}</h1>
@@ -101,7 +101,7 @@
                     <div class="col-md-12 col-sm-12 col-padding animate-box" data-animate-effect="fadeInLeft">
                         <div class="blog-entry">
                             <div class="desc">
-                                <h2><a href="javascript:;" onclick="redirect($(this))" val="/blog?blogId=${list.id}">${list.blogTitle}</a></h2>
+                                <h2><a href="javascript:;" onclick="redirect($(this))" val="/blogpage/blog?blogId=${list.id}">${list.blogTitle}</a></h2>
                                 <c:forEach items="${blogTypeList}" var="blogType">
                                     <c:if test="${list.blogType==blogType.id}">
                                         <p class="p_blogTypeName">${blogType.blogTypeName}</p>
@@ -128,7 +128,7 @@
                             </c:if>
                             <c:if test="${pageInfo.pageNum != navigatepageNums}">
                                 <li>
-                                    <a href="javascript:;" onclick="redirect($(this))" val="/blogTypeDetail?blogTypeId=${blogType.id}&&pageNum=${navigatepageNums}">${navigatepageNums}</a>
+                                    <a href="javascript:;" onclick="redirect($(this))" val="/blogpage/blogTypeDetail?blogTypeId=${blogType.id}&&pageNum=${navigatepageNums}">${navigatepageNums}</a>
                                 </li>
                             </c:if>
 
