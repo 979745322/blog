@@ -4,6 +4,7 @@ import com.google.common.collect.Maps;
 import com.rex.blog.entity.Blog;
 import com.rex.blog.entity.BlogType;
 import com.rex.blog.entity.User;
+import com.rex.blog.service.BlogPageImgService;
 import com.rex.blog.service.BlogQueryCondition;
 import com.rex.blog.service.BlogService;
 import com.rex.blog.service.BlogTypeService;
@@ -38,12 +39,14 @@ public class BlogManageController {
 
     private final BlogService blogService;
     private final BlogTypeService blogTypeService;
+    private final BlogPageImgService blogPageImgService;
     private final SaveFile saveFile = new SaveFile();
 
     @Autowired
-    public BlogManageController(BlogService blogService, BlogTypeService blogTypeService) {
+    public BlogManageController(BlogService blogService, BlogTypeService blogTypeService, BlogPageImgService blogPageImgService) {
         this.blogService = blogService;
         this.blogTypeService = blogTypeService;
+        this.blogPageImgService = blogPageImgService;
     }
     /**=======================================登录======================================*/
 
@@ -85,6 +88,19 @@ public class BlogManageController {
 
         return map;
     }
+    /**
+     * 退出登陆，跳转登录页面，
+     *
+     * @return 返回退出登录请求，重定向login.jsp页面
+     */
+    @RequestMapping("/logout")
+    public String restLogin() {
+        final Subject currentUser = SecurityUtils.getSubject();
+        final String result = "blogmanagement/login";
+        currentUser.logout();
+        return result;
+    }
+
 
     /**=======================================博客======================================*/
     /**
@@ -283,6 +299,21 @@ public class BlogManageController {
         return map;
     }
 
+    /**=======================================博客页面滚动图======================================*/
+
+    /**
+     * 博客页面管理
+     *
+     * @return 博客类别管理页
+     */
+    @RequestMapping("/blogShowPageManage")
+    public ModelAndView blogShowPageManage() {
+        final ModelAndView mav = new ModelAndView();
+        mav.setViewName("blogmanagement/blogshowpagemanage");
+        mav.addObject("list",blogPageImgService.queryBlogPageImg());
+        return mav;
+    }
+
     /**=======================================页面跳转======================================*/
     /**
      * 默认首页
@@ -333,4 +364,6 @@ public class BlogManageController {
     public String blogTypeManage() {
         return "blogmanagement/blogtypemanage";
     }
+
+
 }

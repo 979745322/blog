@@ -10,7 +10,7 @@ Target Server Type    : MYSQL
 Target Server Version : 50724
 File Encoding         : 65001
 
-Date: 2019-04-19 13:41:39
+Date: 2019-04-22 17:29:29
 */
 
 SET FOREIGN_KEY_CHECKS=0;
@@ -30,7 +30,18 @@ CREATE TABLE `tb_blog` (
   `UPDATE_TIME` datetime DEFAULT NULL COMMENT '修改时间',
   `DELETE_FLAG` char(1) DEFAULT NULL COMMENT '删除状态，‘1’未删除，‘0’删除',
   PRIMARY KEY (`ID`)
-) ENGINE=InnoDB AUTO_INCREMENT=17 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=22 DEFAULT CHARSET=utf8;
+
+-- ----------------------------
+-- Table structure for tb_blog_page_img
+-- ----------------------------
+DROP TABLE IF EXISTS `tb_blog_page_img`;
+CREATE TABLE `tb_blog_page_img` (
+  `ID` bigint(20) NOT NULL AUTO_INCREMENT COMMENT '页面滚动图ID',
+  `IMG_TITLE` varchar(255) DEFAULT NULL COMMENT '页面滚动图标题',
+  `IMG_URL` varchar(255) DEFAULT NULL COMMENT '页面滚动图片名称',
+  PRIMARY KEY (`ID`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Table structure for tb_blog_type

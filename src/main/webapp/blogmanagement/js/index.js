@@ -7,3 +7,7 @@ $(function(){
         return false;
     });
 });
+function redirect(options) {
+    var url = options.attr('val');
+    window.location.href = url;
+}

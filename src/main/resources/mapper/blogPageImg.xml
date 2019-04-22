@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.rex.blog.mapper.BlogMapper">
+    <resultMap id="blog" type="com.rex.blog.entity.BlogPageImg">
+        <result column="ID" property="id"/>
+        <result column="IMG_TITLE" property="imgTitle"/>
+        <result column="IMG_URL" property="imgUrl"/>
+    </resultMap>
+
+    <!-- 查询博客页面滚动图信息 -->
+    <select id="queryBlogPageImg" resultType="blog">
+        select
+        ID id,
+        IMG_TITLE imgTitle,
+        IMG_URL imgUrl
+        from
+        tb_blog_page_img tbpi
+        ORDER BY tbpi.id ASC
+    </select>
+
+    <!-- 修改博客 -->
+    <update id="updateBlog">
+        UPDATE tb_blog_page_img
+        SET IMG_TITLE = #{imgTitle},
+        IMG_URL = #{imgUrl},
+        WHERE ID = #{id}
+    </update>
+
+</mapper>

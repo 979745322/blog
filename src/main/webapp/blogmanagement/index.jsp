@@ -61,7 +61,12 @@
                         </li>
                     </ul>
                 </li>
-
+                <li>
+                    <a class="J_menuItem" href="${pageContext.request.contextPath}/blogmanage/blogShowPageManage">
+                        <i class="fa fa-home"></i>
+                        <span class="nav-label">博客页面管理</span>
+                    </a>
+                </li>
                 <li class="line"></li>
 
             </ul>
@@ -75,39 +80,9 @@
                 <div class="navbar-header"><a class="navbar-minimalize minimalize-styl-2 btn btn-info " href="#"><i
                         class="fa fa-bars"></i> </a>
                 </div>
-                <%--<ul class="nav navbar-top-links navbar-right">--%>
-                    <%--<li class="dropdown">--%>
-                        <%--<a class="dropdown-toggle count-info" data-toggle="dropdown" href="#">--%>
-                            <%--&lt;%&ndash;<i><s:property value="#session.user.getUsername()"/></i>&ndash;%&gt;--%>
-                        <%--</a>--%>
-                        <%--<ul class="dropdown-menu dropdown-messages">--%>
-                            <%--<li>--%>
-                                <%--<div class="">--%>
-                                    <%--<a class="J_menuItem" href="info.jsp">--%>
-                                        <%--查看个人信息--%>
-                                    <%--</a>--%>
-                                <%--</div>--%>
-                            <%--</li>--%>
-
-                            <%--<li>--%>
-                                <%--<div class="">--%>
-                                    <%--<a class="J_menuItem" href="updateinfo.jsp">--%>
-                                        <%--修改个人信息--%>
-                                    <%--</a>--%>
-                                <%--</div>--%>
-                            <%--</li>--%>
-
-                            <%--<li>--%>
-                                <%--<div class="text-center link-block">--%>
-                                    <%--<a class="J_menuItem" href="login.html">--%>
-                                        <%--<strong> 退出登录</strong>--%>
-                                    <%--</a>--%>
-                                <%--</div>--%>
-                            <%--</li>--%>
-                        <%--</ul>--%>
-                    <%--</li>--%>
-
-                <%--</ul>--%>
+                <ul class="nav navbar-top-links navbar-right">
+                    <li class="text-center link-block"><button class="btn btn-default"><a href="javascript:;" onclick="redirect($(this))" val="/blogmanage/logout">退出登录</a></button></li>
+                </ul>
             </nav>
         </div>
         <div class="row J_mainContent" id="content-main">

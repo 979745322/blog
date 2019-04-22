@@ -1,4 +1,5 @@
 <%@ page contentType="text/html; charset=utf-8" pageEncoding="utf-8" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -41,9 +42,9 @@
                                     <label class="col-sm-1 control-label label_blog_title">博客状态:</label>
                                     <div class="col-sm-2">
                                         <select class="form-control input_blog_title" id="blogState" name="blogState" value="${blog.blogState}">
-                                            <option value="1">草稿</option>
-                                            <option value="2">公开</option>
-                                            <option value="3">私密</option>
+                                            <option value="1" <c:if test="${blog.blogState=='1'}">selected</c:if> >草稿</option>
+                                            <option value="2" <c:if test="${blog.blogState=='2'}">selected</c:if> >公开</option>
+                                            <option value="3" <c:if test="${blog.blogState=='3'}">selected</c:if> >私密</option>
                                         </select>
                                     </div>
                                 </div>

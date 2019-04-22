@@ -116,14 +116,14 @@
                     <ul class="pagination">
                         <c:if test="${pageInfo.pageNum>1}">
                             <li class="prev-next"><a
-                                    href="/blogTypeDetail?blogTypeId=${blogType.id}&&pageNum=${pageInfo.pageNum-1}"
+                                    href="javascript:;" onclick="redirect($(this))" val="/blogpage/blogTypeDetail?blogTypeId=${blogType.id}&&pageNum=${pageInfo.pageNum-1}"
                                     aria-label="Previous"><span
                                     aria-hidden="true">«</span></a></li>
                         </c:if>
                         <c:forEach items="${pageInfo.navigatepageNums}" var="navigatepageNums">
                             <c:if test="${pageInfo.pageNum == navigatepageNums}">
                                 <li class="active"><a
-                                        href="/blogTypeDetail?blogTypeId=${blogType.id}&&pageNum=${navigatepageNums}">${navigatepageNums}</a>
+                                        href="javascript:;" onclick="redirect($(this))" val="/blogpage/blogTypeDetail?blogTypeId=${blogType.id}&&pageNum=${navigatepageNums}">${navigatepageNums}</a>
                                 </li>
                             </c:if>
                             <c:if test="${pageInfo.pageNum != navigatepageNums}">
@@ -135,7 +135,7 @@
                         </c:forEach>
                         <c:if test="${pageInfo.pageNum < pageInfo.pages}">
                             <li class="bus-border-right prev-next"><a
-                                    href="/blogTypeDetail?blogTypeId=${blogType.id}&&pageNum=${pageInfo.pageNum+1}"
+                                    href="javascript:;" onclick="redirect($(this))" val="/blogpage/blogTypeDetail?blogTypeId=${blogType.id}&&pageNum=${pageInfo.pageNum+1}"
                                     aria-label="Next"><span
                                     aria-hidden="true">»</span></a></li>
                         </c:if>
