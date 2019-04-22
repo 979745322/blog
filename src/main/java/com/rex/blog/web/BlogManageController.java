@@ -2,6 +2,7 @@ package com.rex.blog.web;
 
 import com.google.common.collect.Maps;
 import com.rex.blog.entity.Blog;
+import com.rex.blog.entity.BlogPageImg;
 import com.rex.blog.entity.BlogType;
 import com.rex.blog.entity.User;
 import com.rex.blog.service.BlogPageImgService;
@@ -62,6 +63,7 @@ public class BlogManageController {
         mav.setViewName("blogmanagement/login");
         return mav;
     }
+
     /**
      * 用户登录
      *
@@ -78,16 +80,17 @@ public class BlogManageController {
         try {
             //当前用户登录验证
             subject.login(token);
-            map.put("state","success");
+            map.put("state", "success");
             log.info("身份验证成功！");
         } catch (AuthenticationException e) {
             log.error("error:{}", e);
-            map.put("state","用户名或密码错误，请重新输入！");
+            map.put("state", "用户名或密码错误，请重新输入！");
             log.info("身份认证失败！");
         }
 
         return map;
     }
+
     /**
      * 退出登陆，跳转登录页面，
      *
@@ -215,7 +218,7 @@ public class BlogManageController {
      */
     @ResponseBody
     @RequestMapping("/addBlogType")
-    public Map<String, Object> addBlogType(@Valid @RequestBody BlogType blogType,BindingResult bindingResult) {
+    public Map<String, Object> addBlogType(@Valid @RequestBody BlogType blogType, BindingResult bindingResult) {
         log.info("addBlogType入参:{}", blogType);
         final Map<String, Object> map = Maps.newHashMap();
         if (bindingResult.hasErrors()) {
@@ -233,6 +236,7 @@ public class BlogManageController {
 
     /**
      * 上传博客类型封面
+     *
      * @param file 博客类型封面图片
      * @return 上传状态
      */
@@ -240,10 +244,10 @@ public class BlogManageController {
     @RequestMapping("/uploadBlogTypeImg")
     public Map<String, Object> uploadBlogTypeImg(@RequestParam MultipartFile file) {
         final Map<String, Object> map = Maps.newHashMap();
-        try{
+        try {
             saveFile.saveFile(file);
-        }catch (Exception e){
-            log.info("e:{}",e);
+        } catch (Exception e) {
+            log.info("e:{}", e);
             map.put("state", "图片上传失败！");
             return map;
         }
@@ -310,8 +314,23 @@ public class BlogManageController {
     public ModelAndView blogShowPageManage() {
         final ModelAndView mav = new ModelAndView();
         mav.setViewName("blogmanagement/blogshowpagemanage");
-        mav.addObject("list",blogPageImgService.queryBlogPageImg());
+        mav.addObject("list", blogPageImgService.queryBlogPageImg());
         return mav;
+    }
+
+    /**
+     * 修改博客首页滚动图
+     *
+     * @return 返回修改状态
+     */
+    @ResponseBody
+    @RequestMapping("/updateBlogPageImg")
+    public Map<String, Object> updateBlogPageImg(@Valid @RequestBody BlogPageImg blogPageImg) {
+        log.info("updateBlogPageImg入参:{}", blogPageImg);
+        final Map<String, Object> map = Maps.newHashMap();
+        map.put("state", blogPageImgService.updateBlogPageImg(blogPageImg));
+
+        return map;
     }
 
     /**=======================================页面跳转======================================*/
@@ -320,7 +339,7 @@ public class BlogManageController {
      *
      * @return 返回首页
      */
-    @RequestMapping({"","/","index"})
+    @RequestMapping({"", "/", "index"})
     public String index() {
         return "blogmanagement/index";
     }

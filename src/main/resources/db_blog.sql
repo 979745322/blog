@@ -1,16 +1,16 @@
 /*
 Navicat MySQL Data Transfer
 
-Source Server         : MySQL
-Source Server Version : 50724
+Source Server         : MySql
+Source Server Version : 50533
 Source Host           : localhost:3306
 Source Database       : db_blog
 
 Target Server Type    : MYSQL
-Target Server Version : 50724
+Target Server Version : 50533
 File Encoding         : 65001
 
-Date: 2019-04-22 17:29:29
+Date: 2019-04-22 22:25:25
 */
 
 SET FOREIGN_KEY_CHECKS=0;
@@ -33,6 +33,10 @@ CREATE TABLE `tb_blog` (
 ) ENGINE=InnoDB AUTO_INCREMENT=22 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
+-- Records of tb_blog
+-- ----------------------------
+
+-- ----------------------------
 -- Table structure for tb_blog_page_img
 -- ----------------------------
 DROP TABLE IF EXISTS `tb_blog_page_img`;
@@ -41,7 +45,14 @@ CREATE TABLE `tb_blog_page_img` (
   `IMG_TITLE` varchar(255) DEFAULT NULL COMMENT '页面滚动图标题',
   `IMG_URL` varchar(255) DEFAULT NULL COMMENT '页面滚动图片名称',
   PRIMARY KEY (`ID`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8;
+
+-- ----------------------------
+-- Records of tb_blog_page_img
+-- ----------------------------
+INSERT INTO `tb_blog_page_img` VALUES ('1', '欢迎来到我的个人博客', '9ac0bf6cf7b888b4fc611ed767fd912b.jpg');
+INSERT INTO `tb_blog_page_img` VALUES ('2', 'Welcome to my personal blog', '58b8d8c7c2500.jpg');
+INSERT INTO `tb_blog_page_img` VALUES ('3', '生活就是如此<br>Life is real', '28531549_1384159005321.jpg');
 
 -- ----------------------------
 -- Table structure for tb_blog_type
@@ -53,4 +64,9 @@ CREATE TABLE `tb_blog_type` (
   `BLOGTYPE_IMG` varchar(255) DEFAULT NULL COMMENT '博客类型图片路径',
   `BLOGTYPE_DESCRIPTION` varchar(255) DEFAULT NULL COMMENT '博客类型描述',
   PRIMARY KEY (`ID`)
-) ENGINE=InnoDB AUTO_INCREMENT=12 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=13 DEFAULT CHARSET=utf8;
+
+-- ----------------------------
+-- Records of tb_blog_type
+-- ----------------------------
+INSERT INTO `tb_blog_type` VALUES ('12', '生活娱乐', '30.jpg', 'aaa');

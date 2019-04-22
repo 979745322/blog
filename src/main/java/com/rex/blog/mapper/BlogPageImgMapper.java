@@ -5,7 +5,9 @@ import org.apache.ibatis.annotations.Mapper;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;
-
+/**
+ * 博客页面滚动图Dao层
+ */
 @Mapper
 @Repository
 public interface BlogPageImgMapper {

@@ -4,7 +4,7 @@ import lombok.Getter;
 import lombok.Setter;
 
 /**
- * 博客页面滚动图实体
+ * 博客页面滚动图实体层
  */
 @Getter
 @Setter
@@ -17,4 +17,13 @@ public class BlogPageImg {
 
     // 博客页面滚动图文件名
     private String imgUrl;
+
+    @Override
+    public String toString() {
+        return "BlogPageImg{" +
+                "id=" + id +
+                ", imgTitle='" + imgTitle + '\'' +
+                ", imgUrl='" + imgUrl + '\'' +
+                '}';
+    }
 }

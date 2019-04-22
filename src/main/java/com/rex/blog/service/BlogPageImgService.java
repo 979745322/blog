@@ -3,7 +3,9 @@ package com.rex.blog.service;
 import com.rex.blog.entity.BlogPageImg;
 
 import java.util.List;
-
+/**
+ * 博客页面滚动图接口
+ */
 public interface BlogPageImgService {
     /**
      * 查询页面滚动图信息

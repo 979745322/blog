@@ -1,5 +1,6 @@
 package com.rex.blog.web;
 
+import com.rex.blog.service.BlogPageImgService;
 import com.rex.blog.service.BlogQueryCondition;
 import com.rex.blog.service.BlogService;
 import com.rex.blog.service.BlogTypeService;
@@ -23,11 +24,13 @@ public class BlogPageController {
 
     private final BlogService blogService;
     private final BlogTypeService blogTypeService;
+    private final BlogPageImgService blogPageImgService;
 
     @Autowired
-    public BlogPageController(BlogService blogService, BlogTypeService blogTypeService) {
+    public BlogPageController(BlogService blogService, BlogTypeService blogTypeService, BlogPageImgService blogPageImgService) {
         this.blogService = blogService;
         this.blogTypeService = blogTypeService;
+        this.blogPageImgService = blogPageImgService;
     }
 
     /**
@@ -52,6 +55,7 @@ public class BlogPageController {
     public ModelAndView index() {
         final ModelAndView mav = new ModelAndView();
         mav.addObject("blogTypeList", blogTypeService.selectRecentBlogType());
+        mav.addObject("blogPageImgList", blogPageImgService.queryBlogPageImg());
         mav.setViewName("blogshowpage/index");
 
         return mav;

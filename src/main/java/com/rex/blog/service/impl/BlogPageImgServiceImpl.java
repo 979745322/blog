@@ -8,7 +8,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
-
+/**
+ * 博客页面滚动图接口实现层
+ */
 @Service
 @Slf4j
 public class BlogPageImgServiceImpl implements BlogPageImgService {

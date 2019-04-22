@@ -90,20 +90,21 @@
             <aside id="fh5co-hero" class="js-fullheight">
                 <div class="flexslider js-fullheight">
                     <ul class="slides">
-                        <li style="background-image: url(/blogshowpage/images/img_bg_1.jpg);">
+                        <c:forEach items="${blogPageImgList}" var="blogPageImg">
+                        <li style="background-image: url(/uploadImg/${blogPageImg.imgUrl});">
                             <div class="overlay"></div>
                             <div class="container-fluid">
                                 <div class="row">
                                     <div class="col-md-8 col-md-offset-2 text-center js-fullheight slider-text">
                                         <div class="slider-text-inner">
-                                            <h1><script>document.write(I18N_BLOG_SHOW_PAGE_DETAIL.IMG_1);</script></h1>
-                                            <!--<p><a class="btn btn-primary btn-demo popup-vimeo" href=""> <i class="icon-monitor"></i> Live Preview</a> <a class="btn btn-primary btn-learn">Learn More<i class="icon-arrow-right3"></i></a></p>-->
+                                            <h1>${blogPageImg.imgTitle}</h1>
                                         </div>
                                     </div>
                                 </div>
                             </div>
                         </li>
-                        <li style="background-image: url(/blogshowpage/images/img_bg_2.jpg);">
+                        </c:forEach>
+                        <%--<li style="background-image: url(/blogshowpage/images/img_bg_2.jpg);">
                             <div class="overlay"></div>
                             <div class="container-fluid">
                                 <div class="row">
@@ -128,7 +129,7 @@
                                     </div>
                                 </div>
                             </div>
-                        </li>
+                        </li>--%>
                     </ul>
                 </div>
             </aside>
