@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.rex.blog.mapper.BlogMessageMapper">
+    <resultMap id="blogMessage" type="com.rex.blog.entity.BlogMessage">
+        <result column="ID" property="id"/>
+        <result column="MESSAGE_NAME" property="name"/>
+        <result column="MESSAGE_CONTENT" property="content"/>
+        <result column="MESSAGE_PHONE" property="phone"/>
+        <result column="MESSAGE_EMAIL" property="email"/>
+        <result column="REPLY_ID" property="replyId"/>
+        <result column="CREATE_TIME" property="createTime"/>
+    </resultMap>
+
+    <select id="queryMessage" resultType="blogMessage">
+        select
+        ID id,
+        MESSAGE_NAME name,
+        MESSAGE_CONTENT content,
+        MESSAGE_PHONE phone,
+        MESSAGE_EMAIL email,
+        REPLY_ID replyId,
+        CREATE_TIME createTime
+        from
+        tb_message tm
+        where tm.DELETE_FLAG = '1'
+        <if test="name!=null and name!=''">
+            and tm.MESSAGE_NAME like concat('%',#{name},'%')
+        </if>
+        <if test="content!=null and content!='' and blogType!=0">
+            and tm.MESSAGE_CONTENT = #{content}
+        </if>
+        <if test="startTime!=null and startTime!=''">
+            and tm.CREATE_TIME &gt; #{startTime}
+        </if>
+        <if test="endTime!=null and endTime!=''">
+            and tm.CREATE_TIME &lt; #{endTime}
+        </if>
+        ORDER BY tm.CREATE_TIME DESC
+    </select>
+
+    <!-- 新增留言 -->
+    <insert id="addMessage">
+        insert into tb_message(
+        MESSAGE_NAME,
+        MESSAGE_CONTENT,
+        MESSAGE_PHONE,
+        MESSAGE_EMAIL,
+        REPLY_ID,
+        CREATE_TIME,
+        DELETE_FLAG
+        )values (
+        #{name},
+        #{content},
+        #{phone},
+        #{email},
+        #{replyId},
+        now(),
+        '1'
+        )
+    </insert>
+
+</mapper>

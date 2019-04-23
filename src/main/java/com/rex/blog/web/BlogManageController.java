@@ -5,10 +5,7 @@ import com.rex.blog.entity.Blog;
 import com.rex.blog.entity.BlogPageImg;
 import com.rex.blog.entity.BlogType;
 import com.rex.blog.entity.User;
-import com.rex.blog.service.BlogPageImgService;
-import com.rex.blog.service.BlogQueryCondition;
-import com.rex.blog.service.BlogService;
-import com.rex.blog.service.BlogTypeService;
+import com.rex.blog.service.*;
 import com.rex.blog.utils.SaveFile;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.shiro.SecurityUtils;
@@ -41,13 +38,15 @@ public class BlogManageController {
     private final BlogService blogService;
     private final BlogTypeService blogTypeService;
     private final BlogPageImgService blogPageImgService;
+    private final BlogMessageService blogMessageService;
     private final SaveFile saveFile = new SaveFile();
 
     @Autowired
-    public BlogManageController(BlogService blogService, BlogTypeService blogTypeService, BlogPageImgService blogPageImgService) {
+    public BlogManageController(BlogService blogService, BlogTypeService blogTypeService, BlogPageImgService blogPageImgService, BlogMessageService blogMessageService) {
         this.blogService = blogService;
         this.blogTypeService = blogTypeService;
         this.blogPageImgService = blogPageImgService;
+        this.blogMessageService = blogMessageService;
     }
     /**=======================================登录======================================*/
 
@@ -333,13 +332,42 @@ public class BlogManageController {
         return map;
     }
 
+    /**=======================================留言管理======================================*/
+
+    /**
+     * 留言管理页面
+     *
+     * @return 返回留言管理页面
+     */
+    @RequestMapping("/blogMessage")
+    public String blogMessage() {
+        return "blogmanagement/blogmessage";
+    }
+
+    /**
+     * 留言分页查询
+     *
+     * @param condition 分页参数
+     * @return 返回查询结果
+     */
+    @ResponseBody
+    @RequestMapping("/blogMessagePage")
+    public Map<String, Object> blogMessageQueryPage(@RequestBody BlogMessageQueryCondition condition) {
+        log.info("blogMessageQueryPage入参:{}", condition);
+        final Map<String, Object> map = Maps.newHashMap();
+        map.put("state", "success");
+        map.put("pageInfo", blogMessageService.queryMessage(condition));
+        return map;
+    }
+
+
     /**=======================================页面跳转======================================*/
     /**
      * 默认首页
      *
      * @return 返回首页
      */
-    @RequestMapping({"", "/", "index"})
+    @RequestMapping({"", "/", "/index"})
     public String index() {
         return "blogmanagement/index";
     }

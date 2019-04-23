@@ -67,6 +67,12 @@
                         <span class="nav-label">博客页面管理</span>
                     </a>
                 </li>
+                <li>
+                    <a class="J_menuItem" href="${pageContext.request.contextPath}/blogmanage/blogMessage">
+                        <i class="fa fa-home"></i>
+                        <span class="nav-label">留言管理</span>
+                    </a>
+                </li>
                 <li class="line"></li>
 
             </ul>

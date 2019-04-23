@@ -1,15 +1,20 @@
 package com.rex.blog.web;
 
-import com.rex.blog.service.BlogPageImgService;
-import com.rex.blog.service.BlogQueryCondition;
-import com.rex.blog.service.BlogService;
-import com.rex.blog.service.BlogTypeService;
+import com.google.common.collect.Maps;
+import com.rex.blog.entity.BlogMessage;
+import com.rex.blog.service.*;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.validation.BindingResult;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
+
+import javax.validation.Valid;
+import java.util.Map;
 
 import static com.rex.blog.web.WebURIMappingConstant.URI_BLOGPAGE;
 
@@ -25,12 +30,14 @@ public class BlogPageController {
     private final BlogService blogService;
     private final BlogTypeService blogTypeService;
     private final BlogPageImgService blogPageImgService;
+    private final BlogMessageService blogMessageService;
 
     @Autowired
-    public BlogPageController(BlogService blogService, BlogTypeService blogTypeService, BlogPageImgService blogPageImgService) {
+    public BlogPageController(BlogService blogService, BlogTypeService blogTypeService, BlogPageImgService blogPageImgService, BlogMessageService blogMessageService) {
         this.blogService = blogService;
         this.blogTypeService = blogTypeService;
         this.blogPageImgService = blogPageImgService;
+        this.blogMessageService = blogMessageService;
     }
 
     /**
@@ -125,4 +132,41 @@ public class BlogPageController {
 
         return mav;
     }
+
+    /**
+     * 留言板页面
+     *
+     * @return 返回留言板页面
+     */
+    @RequestMapping("/contact")
+    public ModelAndView contact() {
+        final ModelAndView mav = new ModelAndView();
+        mav.setViewName("blogshowpage/contact");
+
+        return mav;
+    }
+
+    /**
+     * 新增留言
+     *
+     * @return 返回新增状态
+     */
+    @ResponseBody
+    @RequestMapping("/addBlogMessage")
+    public Map<String,Object> addBlogMessage(@Valid @RequestBody BlogMessage blogMessage, BindingResult bindingResult) {
+        log.info("addBlogMessage入参:{}", blogMessage);
+        final Map<String, Object> map = Maps.newHashMap();
+        if (bindingResult.hasErrors()) {
+            bindingResult.getAllErrors().forEach(error -> log.info("errors:{}", error.getDefaultMessage()));
+            // 错误处理 （抛出异常交给全局处理或者在这里返回自定义的 JSON）
+            map.put("state", bindingResult.getAllErrors().get(0).getDefaultMessage());
+        } else {
+            map.put("state",blogMessageService.addMessage(blogMessage));
+            map.put("page","blogshowpage/contact");
+        }
+
+        return map;
+    }
+
+
 }

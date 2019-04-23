@@ -100,7 +100,24 @@
     float: right;
     margin-right: 15px;
 }
-
+.table_contact{
+    width: 100%;
+}
+.tr_contact_first{
+    font-weight: bold;
+    font-size: 20px;
+    color: black;
+}
+.tr_contact_other{
+    font-size: 15px;
+    color: black;
+}
+.td_hr_contact{
+    padding: 0;
+}
+.span_contact{
+    margin-left: 20px;
+}
 
 
 

@@ -9,7 +9,7 @@ function pageInfoBar(pageInfo, barDivId) {
     }
     for (var i = 0; i < pageInfo.navigatepageNums.length; i++) {
         if (pageInfo.pageNum == pageInfo.navigatepageNums[i]) {
-            context += "<li class='query-content-page-cur' onclick=querySubmit('"
+            context += "<li class='active' onclick=querySubmit('"
                 + pageInfo.navigatepageNums[i]
                 + "')><a href='#'>"
                 + pageInfo.navigatepageNums[i] + "</a></li>"

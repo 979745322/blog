@@ -36,7 +36,8 @@
 
     <div class="error-desc">
         抱歉，页面好像去火星了~<br>
-        您刷新一下试试呢！
+        您刷新一下试试呢！<br>
+        <a href="javascript:;" onclick="window.parent.location.href = '/blogpage/';"><button type="button" class="button_404_index btn btn-info">返回主页</button></a>
     </div>
 </div>
 

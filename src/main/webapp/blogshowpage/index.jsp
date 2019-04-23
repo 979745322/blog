@@ -69,8 +69,8 @@
                     <li><a href="javascript:;" onclick="redirect($(this))" val="/blogpage/blogType"><script>document.write(I18N_BLOG_SHOW_PAGE_MENUE.BLOG_BLOG_TYPE);</script></a></li>
                     <li><a href="javascript:;" onclick="redirect($(this))" val="/blogpage/bloglist?pageNum=1"><script>document.write(I18N_BLOG_SHOW_PAGE_MENUE.BLOG_RECENT_BLOGS);</script></a></li>
                     <%--<li><a href="javascript:;" onclick="redirect($(this))" val="/blogpageportfolio.html">Portfolio</a></li>
-                    <li><a href="javascript:;" onclick="redirect($(this))" val="/blogpageabout.html">About</a></li>
-                    <li><a href="javascript:;" onclick="redirect($(this))" val="/blogpagecontact.html">Contact</a></li>--%>
+                    <li><a href="javascript:;" onclick="redirect($(this))" val="/blogpageabout.html">About</a></li>--%>
+                    <li><a href="javascript:;" onclick="redirect($(this))" val="/blogpage/contact"><script>document.write(I18N_BLOG_SHOW_PAGE_MENUE.BLOG_CONTACT);</script></a></li>
                 </ul>
             </nav>
 
@@ -104,32 +104,6 @@
                             </div>
                         </li>
                         </c:forEach>
-                        <%--<li style="background-image: url(/blogshowpage/images/img_bg_2.jpg);">
-                            <div class="overlay"></div>
-                            <div class="container-fluid">
-                                <div class="row">
-                                    <div class="col-md-8 col-md-offset-2 text-center js-fullheight slider-text">
-                                        <div class="slider-text-inner">
-                                            <h1><script>document.write(I18N_BLOG_SHOW_PAGE_DETAIL.IMG_2);</script></h1>
-                                            <!--<p><a class="btn btn-primary btn-demo popup-vimeo" href="#"> <i class="icon-monitor"></i> Live Preview</a> <a class="btn btn-primary btn-learn">Learn More<i class="icon-arrow-right3"></i></a></p>-->
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </li>
-                        <li style="background-image: url(/blogshowpage/images/img_bg_3.jpg);">
-                            <div class="overlay"></div>
-                            <div class="container-fluid">
-                                <div class="row">
-                                    <div class="col-md-8 col-md-offset-2 text-center js-fullheight slider-text">
-                                        <div class="slider-text-inner">
-                                            <h1><script>document.write(I18N_BLOG_SHOW_PAGE_DETAIL.IMG_3);</script></h1>
-                                            <!--<p><a class="btn btn-primary btn-demo popup-vimeo" href=""> <i class="icon-monitor"></i> Live Preview</a> <a class="btn btn-primary btn-learn">Learn More<i class="icon-arrow-right3"></i></a></p>-->
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </li>--%>
                     </ul>
                 </div>
             </aside>
