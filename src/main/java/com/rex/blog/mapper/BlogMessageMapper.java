@@ -43,4 +43,10 @@ public interface BlogMessageMapper {
      * @param id 留言id
      */
     void deleteMessage(@Param("id") Long id);
+
+    /**
+     * 根据id查询留言
+     * @return 返回留言
+     */
+    BlogMessage findMessageById(@Param("id") Long id);
 }

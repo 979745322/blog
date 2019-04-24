@@ -7,6 +7,7 @@ import com.rex.blog.entity.BlogMessage;
 import com.rex.blog.mapper.BlogMessageMapper;
 import com.rex.blog.service.BlogMessageQueryCondition;
 import com.rex.blog.service.BlogMessageService;
+import com.rex.blog.utils.mail.IMailServiceImpl;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -19,12 +20,13 @@ import java.util.List;
 @Service
 @Slf4j
 public class BlogMessageServiceImpl implements BlogMessageService {
-
+    private final IMailServiceImpl mailService;
     final private BlogMessageMapper blogMessageMapper;
 
     @Autowired
-    public BlogMessageServiceImpl(BlogMessageMapper blogMessageMapper) {
+    public BlogMessageServiceImpl(BlogMessageMapper blogMessageMapper, IMailServiceImpl mailService) {
         this.blogMessageMapper = blogMessageMapper;
+        this.mailService = mailService;
     }
 
     @Override
@@ -66,6 +68,11 @@ public class BlogMessageServiceImpl implements BlogMessageService {
             log.info("e:{}",e);
             return "留言失败！";
         }
+        log.info("通知自己邮件发送结果：{}",sendEmailMe(blogMessage));
+        if (blogMessage.getReplyId()!=null&&!blogMessage.getReplyId().equals("")){
+            final String sendResult = sendEmail(blogMessageMapper.findMessageById(blogMessage.getReplyId()),blogMessage);
+            log.info("邮件发送结果：{}",sendResult);
+        }
         return "发表成功！";
     }
 
@@ -78,5 +85,46 @@ public class BlogMessageServiceImpl implements BlogMessageService {
             return "删除失败！";
         }
         return "删除成功！";
+    }
+
+    /**
+     * 发送邮件
+     * @param toBlogMessage 发送到留言人
+     * @param replyBlogMessage 回复留言人
+     * @return 返回发送状态
+     */
+    private String sendEmail(BlogMessage toBlogMessage, BlogMessage replyBlogMessage){
+        String result = "邮件发送成功!!";
+        final String to = toBlogMessage.getEmail();
+        final String subject = "留言回复";
+        final String content = "您在个人博客的留言:\""+toBlogMessage.getContent()+"\"有新的回复:\""+replyBlogMessage.getContent()+"\"";
+        try {
+            mailService.sendSimpleMail(to,subject,content);
+        }catch (Exception ex){
+            ex.printStackTrace();
+            result = "邮件发送失败!!";
+            return result;
+        }
+        return result;
+    }
+    /**
+     * 发送邮件给自己
+     * @param replyBlogMessage 回复留言人
+     * @return 返回发送状态
+     */
+    private String sendEmailMe(BlogMessage replyBlogMessage){
+        String result = "通知自己邮件发送成功!!";
+        final String to = "979745322@qq.com";
+        final String subject = "留言回复";
+        final String content = "您的个人博客有新的留言:\""+replyBlogMessage.getContent()+"\"";
+        try {
+//            mailService.sendSimpleMail("979745322@qq.com","SpringBoot Email","这是一封普通的SpringBoot测试邮件");
+            mailService.sendSimpleMail(to,subject,content);
+        }catch (Exception ex){
+            ex.printStackTrace();
+            result = "通知自己邮件发送失败!!";
+            return result;
+        }
+        return result;
     }
 }

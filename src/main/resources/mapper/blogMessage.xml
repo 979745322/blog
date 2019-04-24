@@ -106,4 +106,21 @@
         set DELETE_FLAG = '0'
         where ID = #{id} or REPLY_ID = #{id}
     </update>
+
+    <!--查询留言板回复留言-->
+    <select id="findMessageById" resultType="blogMessage">
+        select
+        ID id,
+        MESSAGE_NAME name,
+        MESSAGE_CONTENT content,
+        MESSAGE_PHONE phone,
+        MESSAGE_EMAIL email,
+        REPLY_ID replyId,
+        CREATE_TIME createTime
+        from
+        tb_message tm
+        where tm.DELETE_FLAG = '1'
+            and tm.ID = #{id}
+    </select>
+
 </mapper>
