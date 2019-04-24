@@ -18,7 +18,8 @@ function querySubmit(pageNum) {
         name: $('#input_messageName').val(),
         content: $('#input_messageContent').val(),
         startTime: $('#input_StartTime').val(),
-        endTime: $('#input_EndTime').val()
+        endTime: $('#input_EndTime').val(),
+        replyId: $('#input_replyId').val()
     };
     var pageInfo = ajaxdata("/blogmanage/blogMessagePage", pageData).pageInfo;
     $("#div_blogTable").html(blogTable(pageInfo));
@@ -35,10 +36,12 @@ function blogTable(pageInfo) {
     table.push("<table class=\"table table-striped\">");
     var tableFirstTr = "<tr class=\"table_tr_title\">\n" +
         "                    <td>序号</td>\n" +
+        "                    <td>ID</td>\n" +
         "                    <td>留言昵称</td>\n" +
         "                    <td>留言内容</td>\n" +
         "                    <td>留言邮箱</td>\n" +
         "                    <td>创建时间</td>\n" +
+        "                    <td>回复ID</td>\n" +
         "                    <td>操作</td>\n" +
         "                </tr>";
     table.push(tableFirstTr);
@@ -48,35 +51,21 @@ function blogTable(pageInfo) {
         tableTr.push("<tr>");
         // 序号
         tableTr.push("<td>" + num + "</td>");
-        // 标题
-        var blogTitle = list[i].blogTitle.length > 20 ? list[i].blogTitle.substring(0, 21) + "..." : list[i].blogTitle;
-        tableTr.push("<td>" + blogTitle + "</td>");
-        // 类型
-        $.each(blogTypeList, function (n, value) {
-            if (value.id == list[i].blogType) {
-                tableTr.push("<td>" + value.blogTypeName + "</td>");
-                return false;
-            }
-        });
-        // 状态
-        switch (list[i].blogState) {
-            case "1" :
-                tableTr.push("<td>草稿</td>");
-                break;
-            case "2" :
-                tableTr.push("<td>公开</td>");
-                break;
-            case "3" :
-                tableTr.push("<td>私密</td>");
-                break;
-        }
+        // ID
+        tableTr.push("<td>" + list[i].id + "</td>");
+        // 留言昵称
+        tableTr.push("<td>" + list[i].name + "</td>");
+        // 留言内容
+        tableTr.push("<td>" + list[i].content + "</td>");
+        // 留言邮箱
+        tableTr.push("<td>" + list[i].email + "</td>");
         // 创建时间
         tableTr.push("<td>" + list[i].createTime + "</td>");
+        // 回复ID
+        tableTr.push("<td>" + list[i].replyId + "</td>");
         // 操作
         tableTr.push("<td>" +
-            "<button data-toggle=\"modal\" data-target=\"#myModal\" onclick=\"detailBlog(" + list[i].id + ")\" class=\"btn btn-default\">查看</button>&nbsp;&nbsp;" +
-            "<button onclick=\"updateBlog(" + list[i].id + ")\" class=\"btn btn-info\">编辑</button>&nbsp;&nbsp;" +
-            "<button onclick=\"deleteBlog(" + list[i].id + "," + pageInfo.pageNum + ")\" class=\"btn btn-danger\">删除</button></td>");
+            "<button onclick=\"deleteMessage(" + list[i].id + "," + pageInfo.pageNum + ")\" class=\"btn btn-danger\">删除</button></td>");
 
         tableTr.push("</tr>");
         table.push(tableTr.join(""));
@@ -85,32 +74,15 @@ function blogTable(pageInfo) {
     return table.join("");
 }
 
-/**
- * 查看博客
- * @param id 博客id
- * @param pageNum 当前页
- */
-function detailBlog(id) {
-    $("#div_modal_body").html(ajaxdata("/blogmanage/selectBlog", id).blog.blogContent);
-}
 
 /**
- * 编辑博客
- * @param id 博客id
+ * 删除留言
+ * @param id 留言id
  * @param pageNum 当前页
  */
-function updateBlog(id) {
-    window.location = "/blogmanage/updateBlog?id=" + id;
-}
-
-/**
- * 删除博客
- * @param id 博客id
- * @param pageNum 当前页
- */
-function deleteBlog(id, pageNum) {
-    if (confirm("确认删除该博客？")) {
-        alert(ajaxdata("/blogmanage/deleteBlog", id).state);
+function deleteMessage(id, pageNum) {
+    if (confirm("确认删除该留言？")) {
+        alert(ajaxdata("/blogmanage/deleteBlogMessage", id).state);
         querySubmit(pageNum);
     }
 }

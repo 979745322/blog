@@ -27,8 +27,14 @@
         <if test="name!=null and name!=''">
             and tm.MESSAGE_NAME like concat('%',#{name},'%')
         </if>
-        <if test="content!=null and content!='' and blogType!=0">
-            and tm.MESSAGE_CONTENT = #{content}
+        <if test="content!=null and content!=''">
+            and tm.MESSAGE_CONTENT like concat('%',#{content},'%')
+        </if>
+        <if test="replyId!=null and replyId!='' and replyId!='0'.toString()">
+            and tm.REPLY_ID = #{replyId}
+        </if>
+        <if test="replyId=='0'.toString()">
+            and tm.REPLY_ID is null
         </if>
         <if test="startTime!=null and startTime!=''">
             and tm.CREATE_TIME &gt; #{startTime}
@@ -37,6 +43,40 @@
             and tm.CREATE_TIME &lt; #{endTime}
         </if>
         ORDER BY tm.CREATE_TIME DESC
+    </select>
+
+    <!--查询留言板留言-->
+    <select id="queryPageMessage" resultType="blogMessage">
+        select
+        ID id,
+        MESSAGE_NAME name,
+        MESSAGE_CONTENT content,
+        MESSAGE_PHONE phone,
+        MESSAGE_EMAIL email,
+        REPLY_ID replyId,
+        CREATE_TIME createTime
+        from
+        tb_message tm
+        where tm.DELETE_FLAG = '1'
+            and tm.REPLY_ID is null
+        ORDER BY tm.CREATE_TIME DESC
+    </select>
+
+    <!--查询留言板回复留言-->
+    <select id="queryPageMessageDetail" resultType="blogMessage">
+        select
+        ID id,
+        MESSAGE_NAME name,
+        MESSAGE_CONTENT content,
+        MESSAGE_PHONE phone,
+        MESSAGE_EMAIL email,
+        REPLY_ID replyId,
+        CREATE_TIME createTime
+        from
+        tb_message tm
+        where tm.DELETE_FLAG = '1'
+            and tm.REPLY_ID = #{replyId}
+        ORDER BY tm.CREATE_TIME ASC
     </select>
 
     <!-- 新增留言 -->
@@ -60,4 +100,10 @@
         )
     </insert>
 
+    <!--删除留言-->
+    <update id="deleteMessage">
+        update tb_message
+        set DELETE_FLAG = '0'
+        where ID = #{id} or REPLY_ID = #{id}
+    </update>
 </mapper>

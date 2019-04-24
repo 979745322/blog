@@ -31,7 +31,7 @@
                                     <div class="form-group div_blogSearch">
                                         留言昵称：<input id="input_messageName" type="text"
                                                     class="form-control input_blog_title"
-                                                    placeholder="请输入博客标题">
+                                                    placeholder="请输入留言昵称">
                                     </div>
                                     <div class="form-group div_blogSearch">
                                         创建时间(起)：<input id="input_StartTime" type="datetime-local"
@@ -46,7 +46,12 @@
                                     <div class="form-group div_blogSearch">
                                         留言内容：<input id="input_messageContent" type="text"
                                                     class="form-control input_blog_title"
-                                                    placeholder="请输入博客标题">
+                                                    placeholder="请输入留言内容">
+                                    </div>
+                                    <div class="form-group div_blogSearch">
+                                        回复ID：<input id="input_replyId" type="text"
+                                                    class="form-control input_blog_title"
+                                                    placeholder="请输入回复ID">
                                     </div>
 
                                     <div class="form-group div_blogSearch">

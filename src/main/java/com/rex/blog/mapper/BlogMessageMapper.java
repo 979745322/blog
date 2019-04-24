@@ -21,6 +21,18 @@ public interface BlogMessageMapper {
     List<BlogMessage> queryMessage(BlogMessageQueryCondition condition);
 
     /**
+     * 查询留言板留言
+     * @return 返回留言集合
+     */
+    List<BlogMessage> queryPageMessage();
+
+    /**
+     * 查询留言板回复留言
+     * @return 返回留言集合
+     */
+    List<BlogMessage> queryPageMessageDetail(@Param("replyId") Long replyId);
+
+    /**
      * 新增留言
      * @param blogMessage 留言实体
      */

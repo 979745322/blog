@@ -2,7 +2,7 @@
  * Created by DELL on 2019/4/20.
  */
 //===================================中文==============================================
-/*// 页面菜单
+// 页面菜单
 var I18N_BLOG_SHOW_PAGE_MENUE = {
     BLOG:"BLOG",
     BLOG_HOME:"首页",
@@ -20,10 +20,10 @@ var I18N_BLOG_SHOW_PAGE_DETAIL = {
     PLACEHOLDER_USERNAME:"留言昵称",
     PLACEHOLDER_EMAIL:"邮箱，仅用于提醒回复，不会公开",
     BUTTON_SEND_MESSAGE:"发表留言"
-};*/
+};
 
 //===================================英文==============================================
-// 页面菜单
+/*// 页面菜单
 var I18N_BLOG_SHOW_PAGE_MENUE = {
     BLOG:"BLOG",
     BLOG_HOME:"Home",
@@ -42,6 +42,6 @@ var I18N_BLOG_SHOW_PAGE_DETAIL = {
     PLACEHOLDER_EMAIL:"email,For reply only,Don't open",
     BUTTON_SEND_MESSAGE:"send message"
 
-};
+};*/
 
 

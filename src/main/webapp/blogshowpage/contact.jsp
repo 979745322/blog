@@ -6,6 +6,7 @@
   To change this template use File | Settings | File Templates.
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 
 <!DOCTYPE html>
 <!--[if lt IE 7]> <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
@@ -78,7 +79,8 @@
                 </a></li>
                 <%--<li><a href="javascript:;" onclick="redirect($(this))" val="/blogpageportfolio.html">Portfolio</a></li>
                 <li><a href="javascript:;" onclick="redirect($(this))" val="/blogpageabout.html">About</a></li>--%>
-                <li class="fh5co-active"><a href="javascript:;" onclick="redirect($(this))" val="/blogpage/contact">
+                <li class="fh5co-active"><a href="javascript:;" onclick="redirect($(this))"
+                                            val="/blogpage/contact?pageNum=1">
                     <script>document.write(I18N_BLOG_SHOW_PAGE_MENUE.BLOG_CONTACT);</script>
                 </a></li>
             </ul>
@@ -102,7 +104,7 @@
         <div class="fh5co-narrow-content animate-box" data-animate-effect="fadeInLeft">
             <div class="row">
                 <div class="col-md-4">
-                    <h2>Message Board</h2>
+                    <h2><script>document.write(I18N_BLOG_SHOW_PAGE_MENUE.BLOG_CONTACT);</script></h2>
                 </div>
             </div>
             <div class="row">
@@ -111,206 +113,125 @@
                         <div class="col-md-8">
                             <div class="form-group">
                                 <textarea name="" id="messageContent" cols="30" rows="7" class="form-control"
-                                          placeholder="有什么想说的，把它写下来"></textarea>
+                                          placeholder="有什么想对我说的，把它写下来(必填)"></textarea>
                             </div>
                         </div>
                         <div class="col-md-4">
                             <div class="form-group">
-                                <input type="text" id="messageName" class="form-control" placeholder="留言昵称">
+                                <input type="text" id="messageName" class="form-control" placeholder="留言昵称(必填)">
                             </div>
                             <div class="form-group">
-                                <input type="email" id="messageEmail" class="form-control" placeholder="邮箱,仅用于提醒回复,不会公开">
+                                <input type="email" id="messageEmail" class="form-control"
+                                       placeholder="邮箱,仅用于提醒回复,不会公开(非必填)">
                             </div>
                             <div class="form-group">
-                                <input type="button" onclick="addBlogMessage()" class="btn btn-primary btn-md" value="发表留言">
+                                <input type="button" onclick="addBlogMessage()" class="btn btn-primary btn-md"
+                                       value="发表留言">
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
+
             <div class="row">
                 <div class="col-md-12">
                     <table class="table_contact">
-                        <div>
-                            <%--分割线--%>
-                            <tr>
-                                <td colspan="2" class="td_hr_contact col-md-12">
-                                    <hr class="hr_blog">
-                                </td>
-                            </tr>
-                            <%--留言--%>
-                            <tr class="tr_contact_first">
-                                <td class="col-md-1">张三：</td>
-                                <td class="col-md-11">留言内容</td>
-                            </tr>
-                            <tr>
-                                <td class="col-md-1"></td>
-                                <td class="col-md-11"><span>2019-9-10 12:30</span><span class="span_contact"><a
-                                        href="#">回复</a></span></td>
-                            </tr>
-                            <%--留言end--%>
-                            <%--回复--%>
-                            <tr>
-                                <td class="col-md-1"></td>
-                                <td class="td_hr_contact col-md-11">
-                                    <span class="col-md-11"><hr class="hr_blog"></span><span class="col-md-1"></span>
-                                </td>
-                            </tr>
-                            <tr class="tr_contact_other">
-                                <td class="col-md-1"></td>
-                                <td class="col-md-10"><span class="col-md-1">李四：</span><span
-                                        class="col-md-11 td_hr_contact">回复内容</span></td>
-                            </tr>
-                            <tr>
-                                <td class="col-md-1"></td>
-                                <td class="col-md-11"><span class="col-md-1"></span><span>2019-9-10 12:30</span><span
-                                        class="span_contact"><a href="#">回复</a></span></td>
-                            </tr>
+                        <c:forEach items="${messageList}" var="list">
+                            <div>
+                                <%--分割线--%>
+                                <tr>
+                                    <td colspan="2" class="td_hr_contact col-md-12">
+                                        <hr class="hr_blog">
+                                    </td>
+                                </tr>
+                                <c:forEach items="${list}" begin="0" end="0" var="blogMessage">
+                                    <%--留言--%>
+                                    <tr class="tr_contact_first">
+                                        <td class="col-md-1">${blogMessage.name}：</td>
+                                        <td class="col-md-11">${blogMessage.content}</td>
+                                    </tr>
+                                    <tr>
+                                        <td class="col-md-1"></td>
+                                        <td class="col-md-11"><span>${blogMessage.createTime}</span><span
+                                                class="span_contact">
+                                    <a href="#" data-toggle="popover" replyName="${blogMessage.name}"
+                                       replyId="${blogMessage.id}">回复</a>
+                                </span></td>
+                                    </tr>
+                                    <%--留言end--%>
+                                </c:forEach>
+                                <c:forEach items="${list}" begin="1" var="blogMessage">
+                                    <%--回复--%>
+                                    <tr>
+                                        <td class="col-md-1"></td>
+                                        <td class="td_hr_contact col-md-11">
+                                            <span class="col-md-11"><hr class="hr_blog"></span><span
+                                                class="col-md-1"></span>
+                                        </td>
+                                    </tr>
+                                    <tr class="tr_contact_other">
+                                        <td class="col-md-1"></td>
+                                        <td class="col-md-10"><span class="col-md-1">${blogMessage.name}：</span><span
+                                                class="col-md-11 td_hr_contact">${blogMessage.content}</span></td>
+                                    </tr>
+                                    <tr>
+                                        <td class="col-md-1"></td>
+                                        <td class="col-md-11"><span
+                                                class="col-md-1"></span><span>${blogMessage.createTime}</span><span
+                                                class="span_contact"><a href="#" data-toggle="popover"
+                                                                        replyName="${blogMessage.name}"
+                                                                        replyId="${list[0].id}">回复</a>
+                                </span></td>
+                                    </tr>
 
-                            <%--回复end--%>
-                            <%--回复--%>
-                            <tr>
-                                <td class="col-md-1"></td>
-                                <td class="td_hr_contact col-md-11">
-                                    <span class="col-md-11"><hr class="hr_blog"></span><span class="col-md-1"></span>
-                                </td>
-                            </tr>
-                            <tr class="tr_contact_other">
-                                <td class="col-md-1"></td>
-                                <td class="col-md-10"><span class="col-md-1">李四：</span><span
-                                        class="col-md-11 td_hr_contact">回复内容</span></td>
-                            </tr>
-                            <tr>
-                                <td class="col-md-1"></td>
-                                <td class="col-md-11"><span class="col-md-1"></span><span>2019-9-10 12:30</span><span
-                                        class="span_contact"><a href="#">回复</a></span></td>
-                            </tr>
-                            <%--回复end--%>
-                        </div>
-
-                        <div>
-                            <%--分割线--%>
-                            <tr>
-                                <td colspan="2" class="td_hr_contact col-md-12">
-                                    <hr class="hr_blog">
-                                </td>
-                            </tr>
-                            <%--留言--%>
-                            <tr class="tr_contact_first">
-                                <td class="col-md-1">张三：</td>
-                                <td class="col-md-11">留言内容</td>
-                            </tr>
-                            <tr>
-                                <td class="col-md-1"></td>
-                                <td class="col-md-11"><span>2019-9-10 12:30</span><span class="span_contact"><a
-                                        href="#">回复</a></span></td>
-                            </tr>
-                            <%--留言end--%>
-                            <%--回复--%>
-                            <tr>
-                                <td class="col-md-1"></td>
-                                <td class="td_hr_contact col-md-11">
-                                    <span class="col-md-11"><hr class="hr_blog"></span><span class="col-md-1"></span>
-                                </td>
-                            </tr>
-                            <tr class="tr_contact_other">
-                                <td class="col-md-1"></td>
-                                <td class="col-md-10"><span class="col-md-1">李四：</span><span
-                                        class="col-md-11 td_hr_contact">回复内容</span></td>
-                            </tr>
-                            <tr>
-                                <td class="col-md-1"></td>
-                                <td class="col-md-11"><span class="col-md-1"></span><span>2019-9-10 12:30</span><span
-                                        class="span_contact"><a href="#">回复</a></span></td>
-                            </tr>
-
-                            <%--回复end--%>
-                            <%--回复--%>
-                            <tr>
-                                <td class="col-md-1"></td>
-                                <td class="td_hr_contact col-md-11">
-                                    <span class="col-md-11"><hr class="hr_blog"></span><span class="col-md-1"></span>
-                                </td>
-                            </tr>
-                            <tr class="tr_contact_other">
-                                <td class="col-md-1"></td>
-                                <td class="col-md-10"><span class="col-md-1">李四：</span><span
-                                        class="col-md-11 td_hr_contact">回复内容</span></td>
-                            </tr>
-                            <tr>
-                                <td class="col-md-1"></td>
-                                <td class="col-md-11"><span class="col-md-1"></span><span>2019-9-10 12:30</span><span
-                                        class="span_contact"><a href="#">回复</a></span></td>
-                            </tr>
-                            <%--回复end--%>
-                        </div>
-
-                        <div>
-                            <%--分割线--%>
-                            <tr>
-                                <td colspan="2" class="td_hr_contact col-md-12">
-                                    <hr class="hr_blog">
-                                </td>
-                            </tr>
-                            <%--留言--%>
-                            <tr class="tr_contact_first">
-                                <td class="col-md-1">张三：</td>
-                                <td class="col-md-11">留言内容</td>
-                            </tr>
-                            <tr>
-                                <td class="col-md-1"></td>
-                                <td class="col-md-11"><span>2019-9-10 12:30</span><span class="span_contact"><a
-                                        href="#">回复</a></span></td>
-                            </tr>
-                            <%--留言end--%>
-                            <%--回复--%>
-                            <tr>
-                                <td class="col-md-1"></td>
-                                <td class="td_hr_contact col-md-11">
-                                    <span class="col-md-11"><hr class="hr_blog"></span><span class="col-md-1"></span>
-                                </td>
-                            </tr>
-                            <tr class="tr_contact_other">
-                                <td class="col-md-1"></td>
-                                <td class="col-md-10"><span class="col-md-1">李四：</span><span
-                                        class="col-md-11 td_hr_contact">回复内容</span></td>
-                            </tr>
-                            <tr>
-                                <td class="col-md-1"></td>
-                                <td class="col-md-11"><span class="col-md-1"></span><span>2019-9-10 12:30</span><span
-                                        class="span_contact"><a href="#">回复</a></span></td>
-                            </tr>
-
-                            <%--回复end--%>
-                            <%--回复--%>
-                            <tr>
-                                <td class="col-md-1"></td>
-                                <td class="td_hr_contact col-md-11">
-                                    <span class="col-md-11"><hr class="hr_blog"></span><span class="col-md-1"></span>
-                                </td>
-                            </tr>
-                            <tr class="tr_contact_other">
-                                <td class="col-md-1"></td>
-                                <td class="col-md-10"><span class="col-md-1">李四：</span><span
-                                        class="col-md-11 td_hr_contact">回复内容</span></td>
-                            </tr>
-                            <tr>
-                                <td class="col-md-1"></td>
-                                <td class="col-md-11"><span class="col-md-1"></span><span>2019-9-10 12:30</span><span
-                                        class="span_contact"><a href="#">回复</a></span></td>
-                            </tr>
-                            <%--回复end--%>
-                        </div>
-
+                                    <%--回复end--%>
+                                </c:forEach>
+                            </div>
+                        </c:forEach>
+                        <%--分割线--%>
+                        <tr>
+                            <td colspan="2" class="td_hr_contact col-md-12">
+                                <hr class="hr_blog">
+                            </td>
+                        </tr>
 
                     </table>
+                    <div class="div_pageBar">
+                        <ul class="pagination">
+                            <c:if test="${pageInfo.pageNum>1}">
+                                <li class="prev-next"><a
+                                        href="/blogpage/contact?pageNum=${pageInfo.pageNum-1}"
+                                        aria-label="Previous"><span
+                                        aria-hidden="true">«</span></a></li>
+                            </c:if>
+                            <c:forEach items="${pageInfo.navigatepageNums}" var="navigatepageNums">
+                                <c:if test="${pageInfo.pageNum == navigatepageNums}">
+                                    <li class="active"><a
+                                            href="/blogpage/contact?pageNum=${navigatepageNums}">${navigatepageNums}</a>
+                                    </li>
+                                </c:if>
+                                <c:if test="${pageInfo.pageNum != navigatepageNums}">
+                                    <li>
+                                        <a href="javascript:;" onclick="redirect($(this))"
+                                           val="/blogpage/contact?pageNum=${navigatepageNums}">${navigatepageNums}</a>
+                                    </li>
+                                </c:if>
+
+                            </c:forEach>
+                            <c:if test="${pageInfo.pageNum < pageInfo.pages}">
+                                <li class="bus-border-right prev-next"><a
+                                        href="/blogpage/contact?pageNum=${pageInfo.pageNum+1}"
+                                        aria-label="Next"><span
+                                        aria-hidden="true">»</span></a></li>
+                            </c:if>
+                        </ul>
+                    </div>
                 </div>
             </div>
         </div>
         <%--<div id="map"></div>--%>
     </div>
 </div>
-
 <!-- jQuery -->
 <script src="${pageContext.request.contextPath}/blogshowpage/js/jquery.min.js"></script>
 <!-- jQuery Easing -->
@@ -338,6 +259,7 @@
 
 <!-- 国际化文档 JS -->
 <script src="${pageContext.request.contextPath}/blogshowpage/js/zh-CN.js"></script>
+
 
 </body>
 </html>

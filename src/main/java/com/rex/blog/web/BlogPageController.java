@@ -139,9 +139,13 @@ public class BlogPageController {
      * @return 返回留言板页面
      */
     @RequestMapping("/contact")
-    public ModelAndView contact() {
+    public ModelAndView contact(@RequestParam int pageNum) {
+        final BlogMessageQueryCondition condition = new BlogMessageQueryCondition();
+        condition.setPageNum(pageNum);
         final ModelAndView mav = new ModelAndView();
         mav.setViewName("blogshowpage/contact");
+        mav.addObject("pageInfo",blogMessageService.queryPageMessage(condition));
+        mav.addObject("messageList",blogMessageService.queryPageAllMessage(condition));
 
         return mav;
     }

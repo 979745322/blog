@@ -16,6 +16,18 @@ public interface BlogMessageService {
     PageInfo queryMessage(BlogMessageQueryCondition condition);
 
     /**
+     * 查询留言板留言（不含回复）
+     * @return 返回留言集合
+     */
+    PageInfo queryPageMessage(BlogMessageQueryCondition condition);
+
+    /**
+     * 查询留言板留言（包含回复）
+     * @return 返回留言集合
+     */
+    List queryPageAllMessage(BlogMessageQueryCondition condition);
+
+    /**
      * 新增留言
      * @param blogMessage 留言实体
      * @return 返回新增状态
@@ -28,4 +40,6 @@ public interface BlogMessageService {
      * @return 返回删除状态
      */
     String deleteMessage(Long id);
+
+
 }

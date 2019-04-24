@@ -360,6 +360,22 @@ public class BlogManageController {
         return map;
     }
 
+    /**
+     * 根据ID删除留言
+     *
+     * @param id 博客id
+     * @return 返回删除状态
+     */
+    @ResponseBody
+    @RequestMapping("/deleteBlogMessage")
+    public Map<String, Object> deleteBlogMessage(@RequestBody String id) {
+        log.info("id:{}", id);
+        final Map<String, Object> map = Maps.newHashMap();
+        map.put("state", blogMessageService.deleteMessage(Long.valueOf(id)));
+
+        return map;
+    }
+
 
     /**=======================================页面跳转======================================*/
     /**

@@ -70,7 +70,7 @@
                     <li><a href="javascript:;" onclick="redirect($(this))" val="/blogpage/bloglist?pageNum=1"><script>document.write(I18N_BLOG_SHOW_PAGE_MENUE.BLOG_RECENT_BLOGS);</script></a></li>
                     <%--<li><a href="javascript:;" onclick="redirect($(this))" val="/blogpageportfolio.html">Portfolio</a></li>
                     <li><a href="javascript:;" onclick="redirect($(this))" val="/blogpageabout.html">About</a></li>--%>
-                    <li><a href="javascript:;" onclick="redirect($(this))" val="/blogpage/contact"><script>document.write(I18N_BLOG_SHOW_PAGE_MENUE.BLOG_CONTACT);</script></a></li>
+                    <li><a href="javascript:;" onclick="redirect($(this))" val="/blogpage/contact?pageNum=1"><script>document.write(I18N_BLOG_SHOW_PAGE_MENUE.BLOG_CONTACT);</script></a></li>
                 </ul>
             </nav>
 

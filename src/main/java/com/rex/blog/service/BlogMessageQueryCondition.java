@@ -44,6 +44,11 @@ public class BlogMessageQueryCondition {
      */
     String endTime;
 
+    /**
+     * 回复ID
+     */
+    String replyId;
+
     @Override
     public String toString() {
         return "BlogMessageQueryCondition{" +
@@ -54,6 +59,7 @@ public class BlogMessageQueryCondition {
                 ", content='" + content + '\'' +
                 ", startTime='" + startTime + '\'' +
                 ", endTime='" + endTime + '\'' +
+                ", replyId='" + replyId + '\'' +
                 '}';
     }
 }
