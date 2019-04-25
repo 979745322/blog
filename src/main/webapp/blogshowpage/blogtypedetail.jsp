@@ -79,10 +79,10 @@
         <div class="fh5co-footer">
             <p><script>document.write(I18N_BLOG_SHOW_PAGE_MENUE.BLOG_PAGE_FOOT);</script></p>
             <ul>
-                <li><a href="javascript:;" onclick="redirect($(this))" val="#"><i class="icon-facebook2"></i></a></li>
-                <li><a href="javascript:;" onclick="redirect($(this))" val="#"><i class="icon-twitter2"></i></a></li>
-                <li><a href="javascript:;" onclick="redirect($(this))" val="#"><i class="icon-instagram"></i></a></li>
-                <li><a href="javascript:;" onclick="redirect($(this))" val="#"><i class="icon-linkedin2"></i></a></li>
+                <li><a data-toggle="popoverhov" data-placement="top" data-content="15235284050" href="javascript:;" onclick="redirect($(this))" val="#"><img src="/blogshowpage/images/phone-fill.png"/></a></li>
+                <li><a data-toggle="popoverhov" data-placement="top" data-content="979745322@qq.com" href="javascript:;" onclick="redirect($(this))" val="#"><img src="/blogshowpage/images/email-fill.png"/></a></li>
+                <li><a data-toggle="popoverhov" data-placement="top" data-content="15235284050" href="javascript:;" onclick="redirect($(this))" val="#"><img src="/blogshowpage/images/wechat-fill.png"/></a></li>
+                <li><a data-toggle="popoverhov" data-placement="top" data-content="979745322" href="tencent://message/?uin=979745322&Site=qq&Menu=yes"><img src="/blogshowpage/images/qq-fill.png"/></a></li>
             </ul>
         </div>
 
@@ -169,6 +169,7 @@
 
 <!-- 自定义 JS -->
 <script src="${pageContext.request.contextPath}/blogshowpage/js/blogpage.js"></script>
+<script src="${pageContext.request.contextPath}/blogshowpage/js/blogpagepopover.js"></script>
 
 </body>
 </html>

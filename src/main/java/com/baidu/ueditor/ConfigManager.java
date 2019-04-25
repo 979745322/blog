@@ -148,64 +148,87 @@ public final class ConfigManager {
 		
 		this.parentPath = file.getParent();
 		
-		String configContent = this.readFile( this.getConfigPath() );
-		
+//		String configContent = this.readFile( this.getConfigPath() );
+		String configContent = this.getConfigContent();
 		try{
 			JSONObject jsonConfig = new JSONObject( configContent );
 			this.jsonConfig = jsonConfig;
 		} catch ( Exception e ) {
 			this.jsonConfig = null;
 		}
-		
+
 	}
-	
+
 	private String getConfigPath () {
 		return this.parentPath + File.separator + configFileName;
 	}
 
 	private String[] getArray ( String key ) {
-		
+
 		JSONArray jsonArray = this.jsonConfig.getJSONArray( key );
 		String[] result = new String[ jsonArray.length() ];
-		
+
 		for ( int i = 0, len = jsonArray.length(); i < len; i++ ) {
 			result[i] = jsonArray.getString( i );
 		}
-		
+
 		return result;
-		
+
 	}
-	
+
 	private String readFile ( String path ) throws IOException {
-		
+
 		StringBuilder builder = new StringBuilder();
-		
+
 		try {
-			
+
 			InputStreamReader reader = new InputStreamReader( new FileInputStream( path ), "UTF-8" );
 			BufferedReader bfReader = new BufferedReader( reader );
-			
+
 			String tmpContent = null;
-			
+
 			while ( ( tmpContent = bfReader.readLine() ) != null ) {
 				builder.append( tmpContent );
 			}
-			
+
 			bfReader.close();
-			
+
 		} catch ( UnsupportedEncodingException e ) {
 			// 忽略
 		}
-		
+
 		return this.filter( builder.toString() );
-		
+
 	}
-	
+
 	// 过滤输入字符串, 剔除多行注释以及替换掉反斜杠
 	private String filter ( String input ) {
-		
+
 		return input.replaceAll( "/\\*[\\s\\S]*?\\*/", "" );
-		
+
 	}
-	
+
+	private String getConfigContent(){
+		InputStream in = this.getClass().getResourceAsStream("/config.json");
+		String result = null;
+		try {
+			StringBuffer sb = new StringBuffer();
+			byte[] b = new byte[1024];
+			int length=0;
+			while(-1!=(length=in.read(b))){
+				sb.append(new String(b,0,length,"utf-8"));
+			}
+			result = sb.toString().replaceAll("/\\*(.|[\\r\\n])*?\\*/","");
+		} catch (IOException e) {
+			e.printStackTrace();
+		}finally {
+			try {
+				in.close();
+			} catch (IOException e) {
+				e.printStackTrace();
+			}
+		}
+		return result;
+	}
+
 }
