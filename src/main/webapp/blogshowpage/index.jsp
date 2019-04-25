@@ -91,7 +91,7 @@
                 <div class="flexslider js-fullheight">
                     <ul class="slides">
                         <c:forEach items="${blogPageImgList}" var="blogPageImg">
-                        <li style="background-image: url(/uploadImg/${blogPageImg.imgUrl});">
+                        <li style="background-image: url(/upload/${blogPageImg.imgUrl});">
                             <div class="overlay"></div>
                             <div class="container-fluid">
                                 <div class="row">
