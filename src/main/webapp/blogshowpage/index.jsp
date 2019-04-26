@@ -59,7 +59,7 @@
 </head>
 <body>
     <div id="fh5co-page">
-        <a href="javascript:;" onclick="redirect($(this))" val="/blogpage#" class="js-fh5co-nav-toggle fh5co-nav-toggle"><i></i></a>
+        <a href="#" class="js-fh5co-nav-toggle fh5co-nav-toggle"><i></i></a>
         <aside id="fh5co-aside" role="complementary" class="border js-fullheight">
 
             <h1 id="fh5co-logo"><a href="javascript:;" onclick="redirect($(this))" val="/blogpage/welcomeBlogPage"><script>document.write(I18N_BLOG_SHOW_PAGE_MENUE.BLOG);</script></a></h1>
