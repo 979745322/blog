@@ -3,6 +3,8 @@ $(document).ready(function () {
     $.each(blogTypeList,function(n,value) {
         $("#blogType").append("<option value="+value.id+">"+value.blogTypeName+"</option>")
     });
+    var blogType = $('#input_blogType').val();   //后台传过来的博客类型
+    $("#blogType").val(blogType).trigger("change");//把select的value是id值的那个对应的文本显示出来  trigger是jQuery封装好的方法
 });
 var ue = UE.getEditor('myEditor');
 ue.ready(function () {

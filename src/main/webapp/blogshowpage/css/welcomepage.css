@@ -1,6 +1,6 @@
 html{
     overflow:hidden;
 }
-#iframe_welcome{
-    margin: -8px 0 -8px -8px;
+.body_welcome{
+    margin: 0;
 }

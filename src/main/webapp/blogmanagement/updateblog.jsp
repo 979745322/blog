@@ -36,7 +36,8 @@
                                     </div>
                                     <label class="col-sm-1 control-label label_blog_title">博客类型:</label>
                                     <div class="col-sm-2">
-                                        <select class="form-control input_blog_title" id="blogType" name="blogType" value="${blog.blogType}">
+                                        <input type="hidden" id="input_blogType" value="${blog.blogType}">
+                                        <select class="form-control input_blog_title" id="blogType" name="blogType">
                                         </select>
                                     </div>
                                     <label class="col-sm-1 control-label label_blog_title">博客状态:</label>

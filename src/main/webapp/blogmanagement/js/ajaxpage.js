@@ -8,7 +8,6 @@ function ajaxdata(action, datastr) {
         type: "POST",
         dataType: "json",
         success: function (data) {
-            console.log(data);
             adata = data;
         },
         error: function (data) {

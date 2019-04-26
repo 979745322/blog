@@ -22,7 +22,7 @@
     <script src="${pageContext.request.contextPath}/blogshowpage/js/jquery.min.js"></script>
 
 </head>
-<body>
+<body class="body_welcome">
 <iframe id="iframe_welcome" width="100%" height="100%"
         src="${pageContext.request.contextPath}/blogpage/welcomeBlogPage" frameborder="0"
         data-id="${pageContext.request.contextPath}/blogpage/welcomeBlogPage" seamless></iframe>
