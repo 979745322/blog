@@ -94,7 +94,7 @@
                 <li><a data-toggle="popoverhov" data-placement="top" data-content="15235284050" href="javascript:;" onclick="redirect($(this))" val="#"><img src="/blogshowpage/images/phone-fill.png"/></a></li>
                 <li><a data-toggle="popoverhov" data-placement="top" data-content="979745322@qq.com" href="javascript:;" onclick="redirect($(this))" val="#"><img src="/blogshowpage/images/email-fill.png"/></a></li>
                 <li><a data-toggle="popoverhov" data-placement="top" data-content="15235284050" href="javascript:;" onclick="redirect($(this))" val="#"><img src="/blogshowpage/images/wechat-fill.png"/></a></li>
-                <li><a data-toggle="popoverhov" data-placement="top" data-content="979745322" href="tencent://message/?uin=979745322&Site=qq&Menu=yes"><img src="/blogshowpage/images/qq-fill.png"/></a></li>
+                <li><a data-toggle="" data-placement="top" data-content="979745322" onclick="redirect($(this))" val="tencent://message/?uin=979745322&Site=qq&Menu=yes"><img src="/blogshowpage/images/qq-fill.png"/></a></li>
             </ul>
         </div>
 

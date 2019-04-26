@@ -144,8 +144,8 @@ public class BlogPageController {
         condition.setPageNum(pageNum);
         final ModelAndView mav = new ModelAndView();
         mav.setViewName("blogshowpage/contact");
-        mav.addObject("pageInfo",blogMessageService.queryPageMessage(condition));
-        mav.addObject("messageList",blogMessageService.queryPageAllMessage(condition));
+        mav.addObject("pageInfo", blogMessageService.queryPageMessage(condition));
+        mav.addObject("messageList", blogMessageService.queryPageAllMessage(condition));
 
         return mav;
     }
@@ -157,7 +157,7 @@ public class BlogPageController {
      */
     @ResponseBody
     @RequestMapping("/addBlogMessage")
-    public Map<String,Object> addBlogMessage(@Valid @RequestBody BlogMessage blogMessage, BindingResult bindingResult) {
+    public Map<String, Object> addBlogMessage(@Valid @RequestBody BlogMessage blogMessage, BindingResult bindingResult) {
         log.info("addBlogMessage入参:{}", blogMessage);
         final Map<String, Object> map = Maps.newHashMap();
         if (bindingResult.hasErrors()) {
@@ -165,8 +165,8 @@ public class BlogPageController {
             // 错误处理 （抛出异常交给全局处理或者在这里返回自定义的 JSON）
             map.put("state", bindingResult.getAllErrors().get(0).getDefaultMessage());
         } else {
-            map.put("state",blogMessageService.addMessage(blogMessage));
-            map.put("page","blogshowpage/contact");
+            map.put("state", blogMessageService.addMessage(blogMessage));
+            map.put("page", "blogshowpage/contact");
         }
 
         return map;
