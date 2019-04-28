@@ -71,8 +71,8 @@ public class ShiroConfig {
         ShiroFilterFactoryBean shiroFilter = new ShiroFilterFactoryBean();
         shiroFilter.setSecurityManager(securityManager);
         // 登录配置
-        shiroFilter.setLoginUrl("/blogmanage/login");
-        shiroFilter.setSuccessUrl("/welcomeBlogPage");
+        shiroFilter.setLoginUrl("/blogpage/");
+//        shiroFilter.setSuccessUrl("/welcomeBlogPage");
         shiroFilter.setUnauthorizedUrl("/404");
         // 自定义过滤器
         Map<String, Filter> filtersMap = new LinkedHashMap<String, Filter>();
