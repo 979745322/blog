@@ -12,6 +12,7 @@ import org.apache.shiro.session.mgt.eis.SessionDAO;
 import org.apache.shiro.subject.PrincipalCollection;
 import org.apache.shiro.subject.support.DefaultSubjectContext;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.annotation.Lazy;
 
 import java.util.Collection;
 import java.util.List;
@@ -22,12 +23,12 @@ import java.util.List;
 @Slf4j
 public class ShiroRealm extends AuthorizingRealm {
 
-    private final UserService userService;
-    private final SessionDAO sessionDAO;
+    @Autowired
+    private UserService userService;
+    final private SessionDAO sessionDAO;
 
     @Autowired
-    public ShiroRealm(UserService userService, SessionDAO sessionDAO) {
-        this.userService = userService;
+    public ShiroRealm(SessionDAO sessionDAO) {
         this.sessionDAO = sessionDAO;
     }
 

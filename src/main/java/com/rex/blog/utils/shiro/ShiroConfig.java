@@ -16,6 +16,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.DependsOn;
+import org.springframework.context.annotation.Lazy;
 
 import javax.servlet.Filter;
 import java.util.LinkedHashMap;
@@ -30,13 +31,13 @@ import java.util.Map;
 @Configuration
 public class ShiroConfig {
 
-
+    /*@Lazy
+    @Autowired
     final private UserService userService;
 
-    @Autowired
     public ShiroConfig(UserService userService) {
         this.userService = userService;
-    }
+    }*/
 
     @Bean(name = "sessionDAO")
     public MemorySessionDAO getMemorySessionDAO() {
@@ -105,7 +106,7 @@ public class ShiroConfig {
     @Bean(name = "shiroRealm")
     @DependsOn("lifecycleBeanPostProcessor")
     public ShiroRealm shiroRealm() {
-        ShiroRealm userRealm = new ShiroRealm(userService, getMemorySessionDAO());
+        ShiroRealm userRealm = new ShiroRealm(getMemorySessionDAO());
 //        userRealm.setCredentialsMatcher(credentialsMatcher());
         return userRealm;
     }
