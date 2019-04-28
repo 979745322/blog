@@ -1,19 +1,95 @@
 /*
 Navicat MySQL Data Transfer
 
-Source Server         : MySQL
-Source Server Version : 50724
-Source Host           : localhost:3306
+Source Server         : GG
+Source Server Version : 50644
+Source Host           : 39.106.76.35:3306
 Source Database       : db_blog
 
 Target Server Type    : MYSQL
-Target Server Version : 50724
+Target Server Version : 50644
 File Encoding         : 65001
 
-Date: 2019-04-23 15:49:11
+Date: 2019-04-28 20:42:03
 */
 
 SET FOREIGN_KEY_CHECKS=0;
+
+-- ----------------------------
+-- Table structure for tb_access
+-- ----------------------------
+DROP TABLE IF EXISTS `tb_access`;
+CREATE TABLE `tb_access` (
+  `ID` bigint(20) NOT NULL AUTO_INCREMENT COMMENT '访问ID',
+  `ACCESS_TIME` datetime DEFAULT NULL COMMENT '访问时间',
+  `ACCESS_IP` varchar(255) DEFAULT NULL COMMENT '来访者IP',
+  PRIMARY KEY (`ID`)
+) ENGINE=InnoDB AUTO_INCREMENT=62 DEFAULT CHARSET=utf8;
+
+-- ----------------------------
+-- Records of tb_access
+-- ----------------------------
+INSERT INTO `tb_access` VALUES ('1', '2019-04-26 09:45:46', null);
+INSERT INTO `tb_access` VALUES ('2', '2019-04-26 09:55:50', null);
+INSERT INTO `tb_access` VALUES ('3', '2019-04-26 10:02:59', null);
+INSERT INTO `tb_access` VALUES ('4', '2019-04-26 10:51:12', '127.0.0.1');
+INSERT INTO `tb_access` VALUES ('5', '2019-04-26 10:54:22', '10.10.3.18');
+INSERT INTO `tb_access` VALUES ('6', '2019-04-26 11:20:13', '127.0.0.1');
+INSERT INTO `tb_access` VALUES ('7', '2019-04-26 11:31:03', '127.0.0.1');
+INSERT INTO `tb_access` VALUES ('8', '2019-04-26 13:21:24', '153.37.89.22');
+INSERT INTO `tb_access` VALUES ('9', '2019-04-26 13:35:02', '153.37.89.22');
+INSERT INTO `tb_access` VALUES ('10', '2019-04-26 13:46:40', '122.192.14.227');
+INSERT INTO `tb_access` VALUES ('11', '2019-04-26 13:47:41', '101.227.139.161');
+INSERT INTO `tb_access` VALUES ('12', '2019-04-26 13:56:11', '101.89.239.120');
+INSERT INTO `tb_access` VALUES ('13', '2019-04-26 14:02:48', '127.0.0.1');
+INSERT INTO `tb_access` VALUES ('14', '2019-04-26 14:15:46', '127.0.0.1');
+INSERT INTO `tb_access` VALUES ('15', '2019-04-26 14:45:23', '122.192.14.227');
+INSERT INTO `tb_access` VALUES ('16', '2019-04-26 14:45:51', '153.37.89.22');
+INSERT INTO `tb_access` VALUES ('17', '2019-04-26 14:46:21', '61.151.178.163');
+INSERT INTO `tb_access` VALUES ('18', '2019-04-26 14:58:06', '127.0.0.1');
+INSERT INTO `tb_access` VALUES ('19', '2019-04-26 15:03:31', '153.37.89.22');
+INSERT INTO `tb_access` VALUES ('20', '2019-04-26 15:04:00', '122.192.14.227');
+INSERT INTO `tb_access` VALUES ('21', '2019-04-26 15:04:38', '122.192.14.227');
+INSERT INTO `tb_access` VALUES ('22', '2019-04-26 15:05:00', '61.129.6.227');
+INSERT INTO `tb_access` VALUES ('23', '2019-04-26 16:18:48', '127.0.0.1');
+INSERT INTO `tb_access` VALUES ('24', '2019-04-26 17:06:03', '61.129.8.179');
+INSERT INTO `tb_access` VALUES ('25', '2019-04-26 17:15:59', '127.0.0.1');
+INSERT INTO `tb_access` VALUES ('26', '2019-04-26 17:22:04', '122.192.14.227');
+INSERT INTO `tb_access` VALUES ('27', '2019-04-26 17:23:01', '101.91.60.105');
+INSERT INTO `tb_access` VALUES ('28', '2019-04-26 17:25:41', '127.0.0.1');
+INSERT INTO `tb_access` VALUES ('29', '2019-04-26 17:25:41', '127.0.0.1');
+INSERT INTO `tb_access` VALUES ('30', '2019-04-27 10:49:09', '180.106.215.200');
+INSERT INTO `tb_access` VALUES ('31', '2019-04-27 11:43:20', '79.107.97.0');
+INSERT INTO `tb_access` VALUES ('32', '2019-04-27 12:09:45', '31.169.24.158');
+INSERT INTO `tb_access` VALUES ('33', '2019-04-27 12:09:46', '216.201.240.245');
+INSERT INTO `tb_access` VALUES ('34', '2019-04-27 12:56:27', '187.32.39.210');
+INSERT INTO `tb_access` VALUES ('35', '2019-04-27 14:00:57', '189.186.87.119');
+INSERT INTO `tb_access` VALUES ('36', '2019-04-27 14:53:47', '185.173.35.21');
+INSERT INTO `tb_access` VALUES ('37', '2019-04-27 16:34:04', '185.254.122.34');
+INSERT INTO `tb_access` VALUES ('38', '2019-04-27 17:08:07', '101.132.177.14');
+INSERT INTO `tb_access` VALUES ('39', '2019-04-27 18:00:40', '177.105.235.76');
+INSERT INTO `tb_access` VALUES ('40', '2019-04-27 18:24:28', '125.163.143.26');
+INSERT INTO `tb_access` VALUES ('41', '2019-04-27 19:41:03', '103.227.145.114');
+INSERT INTO `tb_access` VALUES ('42', '2019-04-27 19:51:24', '190.114.237.250');
+INSERT INTO `tb_access` VALUES ('43', '2019-04-27 20:28:13', '106.42.116.38');
+INSERT INTO `tb_access` VALUES ('44', '2019-04-27 23:08:17', '122.228.19.79');
+INSERT INTO `tb_access` VALUES ('45', '2019-04-28 01:05:05', '82.132.118.90, 161.53.180.21');
+INSERT INTO `tb_access` VALUES ('46', '2019-04-28 02:31:42', '177.11.136.23');
+INSERT INTO `tb_access` VALUES ('47', '2019-04-28 03:11:54', '188.43.227.101');
+INSERT INTO `tb_access` VALUES ('48', '2019-04-28 03:19:43', '177.85.88.188');
+INSERT INTO `tb_access` VALUES ('49', '2019-04-28 04:53:05', '60.191.38.78');
+INSERT INTO `tb_access` VALUES ('50', '2019-04-28 05:19:12', '47.101.195.242');
+INSERT INTO `tb_access` VALUES ('51', '2019-04-28 05:52:24', '39.107.154.16');
+INSERT INTO `tb_access` VALUES ('52', '2019-04-28 07:08:43', '47.52.210.105');
+INSERT INTO `tb_access` VALUES ('53', '2019-04-28 07:15:18', '170.79.202.112');
+INSERT INTO `tb_access` VALUES ('54', '2019-04-28 07:37:12', '36.81.246.182');
+INSERT INTO `tb_access` VALUES ('55', '2019-04-28 07:57:38', '47.92.141.208');
+INSERT INTO `tb_access` VALUES ('56', '2019-04-28 08:17:46', '39.106.76.35:80, 111.173.191.222');
+INSERT INTO `tb_access` VALUES ('57', '2019-04-28 08:24:28', '85.112.70.2, 5.57.6.32');
+INSERT INTO `tb_access` VALUES ('58', '2019-04-28 08:25:25', '127.0.0.1');
+INSERT INTO `tb_access` VALUES ('59', '2019-04-28 08:28:44', '42.236.10.125');
+INSERT INTO `tb_access` VALUES ('60', '2019-04-28 08:29:11', '180.163.220.5');
+INSERT INTO `tb_access` VALUES ('61', '2019-04-28 08:34:47', '153.37.89.22');
 
 -- ----------------------------
 -- Table structure for tb_blog
@@ -30,29 +106,11 @@ CREATE TABLE `tb_blog` (
   `UPDATE_TIME` datetime DEFAULT NULL COMMENT '修改时间',
   `DELETE_FLAG` char(1) DEFAULT NULL COMMENT '删除状态，‘1’未删除，‘0’删除',
   PRIMARY KEY (`ID`)
-) ENGINE=InnoDB AUTO_INCREMENT=22 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of tb_blog
 -- ----------------------------
-INSERT INTO `tb_blog` VALUES ('4', '1', '打', '<p>asd啊爱上</p>', null, '2', '2019-04-15 13:00:10', null, '1');
-INSERT INTO `tb_blog` VALUES ('5', '1', '打打打打打打打打打打打打打打打打打打打打打打打打打打打打打打打打', '<p>asd啊爱上 打啊啊打算</p>', null, '2', '2019-04-16 13:00:17', '2019-04-19 13:42:39', '1');
-INSERT INTO `tb_blog` VALUES ('6', '1', '硕大的啊', '<p>打大蛇</p>', null, '2', '2019-04-15 15:01:30', null, '0');
-INSERT INTO `tb_blog` VALUES ('7', '1', '硕大的啊', '<p>打大蛇</p>', null, '2', '2019-04-15 15:01:34', null, '1');
-INSERT INTO `tb_blog` VALUES ('8', '1', '硕大的啊', '<p>打大蛇</p>', null, '2', '2019-04-15 15:01:37', null, '1');
-INSERT INTO `tb_blog` VALUES ('9', '5', '美好的一天', '<h1 style=\"font-size: 32px; font-weight: bold; border-bottom: 2px solid rgb(204, 204, 204); padding: 0px 4px 0px 0px; text-align: center; margin: 0px 0px 20px;\"><span style=\"color: rgb(0, 0, 0);\"></span>美好的一天<br/></h1><p>&nbsp;&nbsp;&nbsp;&nbsp;哈哈哈</p><p><span style=\"color: rgb(0, 0, 0);\">正常的黑色</span><span style=\"color: rgb(0, 0, 0);\">，黑色，<span style=\"color: rgb(0, 0, 0);\">黑色，不正常，红色<span style=\"color: rgb(192, 80, 77);\">，红色，</span></span></span></p><p style=\"text-align:center\"><img src=\"/ueditor/jsp/upload/image/20190419/1555639003149002582.jpg\" title=\"1555639003149002582.jpg\" alt=\"a.jpg\"/></p><p><br/></p>', null, '2', '2019-04-17 15:01:41', '2019-04-19 11:23:16', '1');
-INSERT INTO `tb_blog` VALUES ('10', '1', '打的', '<h1 style=\"font-size: 32px; font-weight: bold; border-bottom: 2px solid rgb(204, 204, 204); padding: 0px 4px 0px 0px; text-align: center; margin: 0px 0px 20px;\">哈哈哈<br/></h1><h1>哎哎哎：<br/></h1><p>&nbsp;&nbsp;&nbsp;&nbsp;哈哈，<br/></p><h2><span style=\"font-family: 隶书, SimLi;\">大蛇</span><br/></h2><p><span style=\"font-family: 隶书, SimLi;\">大萨达<span style=\"font-family: 宋体, SimSun;\"></span><br/></span></p><p><span style=\"font-family: 隶书, SimLi;\"><span style=\"font-family: 宋体, SimSun;\">大蛇昂昂</span></span></p>', null, '2', '2019-04-15 16:35:08', null, '1');
-INSERT INTO `tb_blog` VALUES ('11', '1', '大蛇a', '<h1 style=\"font-size: 32px; font-weight: bold; border-bottom: 2px solid rgb(204, 204, 204); padding: 0px 4px 0px 0px; text-align: center; margin: 0px 0px 20px;\">&nbsp;asd打</h1><p>大蛇<span style=\"font-family: 楷体, 楷体_GB2312, SimKai;\">打发</span><br/></p><p><span style=\"font-family: 楷体, 楷体_GB2312, SimKai;\">规范非法</span></p><p><span style=\"font-family: 楷体, 楷体_GB2312, SimKai;\"><img src=\"/ueditor/jsp/upload/image/20190415/1555317350620074900.jpg\" title=\"1555317350620074900.jpg\" alt=\"welcome.jpg\"/>哈</span></p><p><span style=\"font-family: 楷体, 楷体_GB2312, SimKai;\">哈哈哈</span></p>', null, '2', '2019-04-15 16:35:58', null, '1');
-INSERT INTO `tb_blog` VALUES ('12', '1', '大蛇', '<p><img src=\"/ueditor/jsp/upload/image/20190415/1555318070384053834.png\" title=\"1555318070384053834.png\" alt=\"welcome - Copy.png\"/>哈哈哈啊哈哈哈哈啊啊哈哈哈哈啊哈哈哈</p>', null, '2', '2019-04-15 16:48:11', null, '1');
-INSERT INTO `tb_blog` VALUES ('13', '1', '我的小熊猫', '<h1 style=\"font-size: 32px; font-weight: bold; border-bottom: 2px solid rgb(204, 204, 204); padding: 0px 4px 0px 0px; text-align: center; margin: 0px 0px 20px;\">我的小熊猫<br/></h1><p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;哈哈，我的小熊猫</p><p><img src=\"/ueditor/jsp/upload/image/20190416/1555374206548080237.jpg\" title=\"1555374206548080237.jpg\" width=\"331\" height=\"307\"/><img src=\"/ueditor/jsp/upload/image/20190416/1555374206549090262.jpg\" title=\"1555374206549090262.jpg\" width=\"206\" height=\"325\"/>&nbsp; &nbsp; <br/></p>', null, '2', '2019-04-16 08:24:41', '2019-04-16 08:41:14', '1');
-INSERT INTO `tb_blog` VALUES ('14', '1', '大蛇', '<p>大蛇</p>', null, '2', '2019-04-16 08:37:24', null, '1');
-INSERT INTO `tb_blog` VALUES ('15', '1', '大蛇', '', null, '2', '2019-04-16 08:38:23', null, '1');
-INSERT INTO `tb_blog` VALUES ('16', '1', 'asd', '<p>打</p>', null, '2', '2019-04-17 09:48:21', '2019-04-19 13:42:33', '1');
-INSERT INTO `tb_blog` VALUES ('17', '6', '哎哎哎', '<p>大萨达</p>', null, '2', '2019-04-19 15:36:45', null, '1');
-INSERT INTO `tb_blog` VALUES ('18', '1', 'aaa', '<h1 style=\"font-size: 32px; font-weight: bold; border-bottom: 2px solid rgb(204, 204, 204); padding: 0px 4px 0px 0px; text-align: center; margin: 0px 0px 20px;\">aaa<br/></h1><p><img src=\"/ueditor/jsp/upload/image/20190422/1555919418613035852.jpg\" title=\"1555919418613035852.jpg\" alt=\"timg (3).jpg\" width=\"1631\" height=\"959\"/></p>', null, '2', '2019-04-22 15:50:45', '2019-04-22 16:27:13', '1');
-INSERT INTO `tb_blog` VALUES ('19', '10', 'dd', '<p>dd<br/></p>', null, '1', '2019-04-22 15:51:26', null, '1');
-INSERT INTO `tb_blog` VALUES ('20', '6', 'ddds', '<p>dd</p>', null, '2', '2019-04-22 16:00:33', null, '1');
-INSERT INTO `tb_blog` VALUES ('21', '1', 'da', '<p>dd</p>', null, '2', '2019-04-22 16:00:54', null, '1');
 
 -- ----------------------------
 -- Table structure for tb_blog_page_img
@@ -68,9 +126,9 @@ CREATE TABLE `tb_blog_page_img` (
 -- ----------------------------
 -- Records of tb_blog_page_img
 -- ----------------------------
-INSERT INTO `tb_blog_page_img` VALUES ('1', '欢迎来到我的个人博客', '58e745a68d631.jpg');
-INSERT INTO `tb_blog_page_img` VALUES ('2', 'Welcome to my personal blog', '58e7459b95c2e.jpg');
-INSERT INTO `tb_blog_page_img` VALUES ('3', '生活就是如此<br>Life is real', '58e745a13cab3.jpg');
+INSERT INTO `tb_blog_page_img` VALUES ('1', '欢迎来到我的个人博客', '页面滚动图1.jpg');
+INSERT INTO `tb_blog_page_img` VALUES ('2', 'Welcome to my personal blog', '页面滚动图2.jpg');
+INSERT INTO `tb_blog_page_img` VALUES ('3', '生活就是如此<br>Life is real', '页面滚动图3.jpg');
 
 -- ----------------------------
 -- Table structure for tb_blog_type
@@ -82,20 +140,11 @@ CREATE TABLE `tb_blog_type` (
   `BLOGTYPE_IMG` varchar(255) DEFAULT NULL COMMENT '博客类型图片路径',
   `BLOGTYPE_DESCRIPTION` varchar(255) DEFAULT NULL COMMENT '博客类型描述',
   PRIMARY KEY (`ID`)
-) ENGINE=InnoDB AUTO_INCREMENT=12 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of tb_blog_type
 -- ----------------------------
-INSERT INTO `tb_blog_type` VALUES ('1', '生活娱乐', '1544433424305.jpg', '生活娱乐生活娱乐生活娱乐生活娱乐生活娱乐生活娱乐生活娱乐生活娱乐生活娱乐生活娱乐生活娱乐生活娱乐生活娱乐生活娱乐生活娱乐生活娱乐生活娱乐生活娱乐生活娱乐生活娱乐生活娱乐生活娱乐生活娱乐生活娱乐生活娱乐生活娱乐生活娱乐生活娱乐生活娱乐生活娱乐生活娱乐生活娱乐生活娱乐生活娱乐生活娱乐生活娱乐生活娱乐生活娱乐生活娱乐生活娱乐生活娱乐生活娱乐生活娱乐生活娱乐生活娱乐生活娱乐生活娱乐生活娱乐');
-INSERT INTO `tb_blog_type` VALUES ('2', '学术技术', 'a.jpg', '学术技术');
-INSERT INTO `tb_blog_type` VALUES ('5', '放飞自我', 'aaa (1).png', '放飞自我');
-INSERT INTO `tb_blog_type` VALUES ('6', 'dd', '58e745a13cab3.jpg', 'aaa');
-INSERT INTO `tb_blog_type` VALUES ('7', 'da的', '58e7459b95c2e.jpg', 'ddd');
-INSERT INTO `tb_blog_type` VALUES ('8', 'das', '58e745a68d631.jpg', 'sad');
-INSERT INTO `tb_blog_type` VALUES ('9', 'daf', '56e62bf27ded5.jpg', 'fs');
-INSERT INTO `tb_blog_type` VALUES ('10', 'fff', '1970eda4e0761c74!500x500.jpg', 'fff');
-INSERT INTO `tb_blog_type` VALUES ('11', 'gg', '7f9c8c4a2d83291e0c0f1305e4323ff.png', 'gg');
 
 -- ----------------------------
 -- Table structure for tb_message
@@ -116,3 +165,19 @@ CREATE TABLE `tb_message` (
 -- ----------------------------
 -- Records of tb_message
 -- ----------------------------
+
+-- ----------------------------
+-- Table structure for tb_user
+-- ----------------------------
+DROP TABLE IF EXISTS `tb_user`;
+CREATE TABLE `tb_user` (
+  `ID` bigint(20) NOT NULL AUTO_INCREMENT COMMENT '用户ID',
+  `USERNAME` varchar(255) DEFAULT NULL COMMENT '用户名',
+  `PASSWORD` varchar(255) DEFAULT NULL COMMENT '密码',
+  PRIMARY KEY (`ID`)
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
+
+-- ----------------------------
+-- Records of tb_user
+-- ----------------------------
+INSERT INTO `tb_user` VALUES ('1', 'gang', '108999gg');
