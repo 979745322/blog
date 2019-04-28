@@ -1,5 +1,6 @@
 package com.rex.blog.web;
 
+import com.google.common.collect.Lists;
 import com.google.common.collect.Maps;
 import com.rex.blog.entity.Blog;
 import com.rex.blog.entity.BlogPageImg;
@@ -23,6 +24,7 @@ import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
 
 import javax.validation.Valid;
+import java.util.List;
 import java.util.Map;
 
 import static com.rex.blog.web.WebURIMappingConstant.URI_BLOGMANAGE;
@@ -39,14 +41,16 @@ public class BlogManageController {
     private final BlogTypeService blogTypeService;
     private final BlogPageImgService blogPageImgService;
     private final BlogMessageService blogMessageService;
+    private final AccessService accessService;
     private final SaveFile saveFile = new SaveFile();
 
     @Autowired
-    public BlogManageController(BlogService blogService, BlogTypeService blogTypeService, BlogPageImgService blogPageImgService, BlogMessageService blogMessageService) {
+    public BlogManageController(BlogService blogService, BlogTypeService blogTypeService, BlogPageImgService blogPageImgService, BlogMessageService blogMessageService, AccessService accessService) {
         this.blogService = blogService;
         this.blogTypeService = blogTypeService;
         this.blogPageImgService = blogPageImgService;
         this.blogMessageService = blogMessageService;
+        this.accessService = accessService;
     }
     /**=======================================登录======================================*/
 
@@ -376,6 +380,22 @@ public class BlogManageController {
         return map;
     }
 
+
+    /**=======================================访问量echarts图======================================*/
+
+    /**
+     * 根据ID删除留言
+     *
+     * @return 返回删除状态
+     */
+    @ResponseBody
+    @RequestMapping("/accessData")
+    public Map<String, Object> accessData() {
+        final Map<String, Object> map = Maps.newHashMap();
+        map.put("accessList", accessService.selectByDate());
+
+        return map;
+    }
 
     /**=======================================页面跳转======================================*/
     /**

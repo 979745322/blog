@@ -6,6 +6,8 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 /**
  * 访问记录接口实现层
  */
@@ -23,5 +25,10 @@ public class AccessServiceImpl implements AccessService {
     public void addAccess(String ip) {
         log.info("新增来访记录，ip:{}",ip);
         accessMapper.addAccess(ip);
+    }
+
+    @Override
+    public List selectByDate() {
+        return accessMapper.selectByDate();
     }
 }

@@ -1,5 +1,6 @@
 package com.rex.blog.utils.shiro;
 
+import com.rex.blog.service.UserService;
 import org.apache.shiro.authc.credential.HashedCredentialsMatcher;
 import org.apache.shiro.cache.MemoryConstrainedCacheManager;
 import org.apache.shiro.cache.ehcache.EhCacheManager;
@@ -11,6 +12,7 @@ import org.apache.shiro.web.mgt.DefaultWebSecurityManager;
 import org.apache.shiro.web.servlet.SimpleCookie;
 import org.apache.shiro.web.session.mgt.DefaultWebSessionManager;
 import org.springframework.aop.framework.autoproxy.DefaultAdvisorAutoProxyCreator;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.DependsOn;
@@ -27,6 +29,14 @@ import java.util.Map;
  */
 @Configuration
 public class ShiroConfig {
+
+
+    final private UserService userService;
+
+    @Autowired
+    public ShiroConfig(UserService userService) {
+        this.userService = userService;
+    }
 
     @Bean(name = "sessionDAO")
     public MemorySessionDAO getMemorySessionDAO() {
@@ -95,7 +105,7 @@ public class ShiroConfig {
     @Bean(name = "shiroRealm")
     @DependsOn("lifecycleBeanPostProcessor")
     public ShiroRealm shiroRealm() {
-        ShiroRealm userRealm = new ShiroRealm(getMemorySessionDAO());
+        ShiroRealm userRealm = new ShiroRealm(userService, getMemorySessionDAO());
 //        userRealm.setCredentialsMatcher(credentialsMatcher());
         return userRealm;
     }

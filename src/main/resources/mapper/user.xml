@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.rex.blog.mapper.UserMapper">
+    <resultMap id="user" type="com.rex.blog.entity.User">
+        <result column="ID" property="id"/>
+        <result column="USERNAME" property="userName"/>
+        <result column="PASSWORD" property="password"/>
+    </resultMap>
+
+    <!-- 根据日期查询来访人数 -->
+    <select id="loginUser" resultType="user">
+       SELECT
+          ID id,
+          USERNAME userName,
+          PASSWORD password
+        FROM
+          tb_user
+        WHERE USERNAME = #{userName} 
+        AND PASSWORD = #{password}
+    </select>
+</mapper>

@@ -49,7 +49,7 @@
                 </li>
                 <li>
                     <a class="J_menuItem">
-                        <i class="fa fa-home"></i>
+                        <i class="fa fa-server"></i>
                         <span class="nav-label">博客管理</span>
                     </a>
                     <ul class="nav nav-second-level">
@@ -63,13 +63,13 @@
                 </li>
                 <li>
                     <a class="J_menuItem" href="${pageContext.request.contextPath}/blogmanage/blogShowPageManage">
-                        <i class="fa fa-home"></i>
+                        <i class="fa fa-tv"></i>
                         <span class="nav-label">博客页面管理</span>
                     </a>
                 </li>
                 <li>
                     <a class="J_menuItem" href="${pageContext.request.contextPath}/blogmanage/blogMessage">
-                        <i class="fa fa-home"></i>
+                        <i class="fa fa-comments"></i>
                         <span class="nav-label">留言管理</span>
                     </a>
                 </li>

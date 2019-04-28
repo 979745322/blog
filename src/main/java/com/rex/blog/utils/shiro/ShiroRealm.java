@@ -1,6 +1,7 @@
 package com.rex.blog.utils.shiro;
 
 import com.rex.blog.entity.User;
+import com.rex.blog.service.UserService;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.shiro.authc.*;
 import org.apache.shiro.authz.AuthorizationInfo;
@@ -21,22 +22,14 @@ import java.util.List;
 @Slf4j
 public class ShiroRealm extends AuthorizingRealm {
 
-//    private final UserService userService;
-
-//    private final ShiroRedisSessionDao shiroRedisSessionDao;
-
+    private final UserService userService;
     private final SessionDAO sessionDAO;
 
     @Autowired
-    public ShiroRealm(SessionDAO sessionDAO) {
+    public ShiroRealm(UserService userService, SessionDAO sessionDAO) {
+        this.userService = userService;
         this.sessionDAO = sessionDAO;
     }
-
-    /*@Autowired
-    public ShiroRealm(UserService userService, SessionDAO sessionDAO, ShiroRedisSessionDao shiroRedisSessionDao) {
-        this.userService = userService;
-        this.shiroRedisSessionDao = shiroRedisSessionDao;
-    }*/
 
     /**
      * 授权
@@ -67,13 +60,7 @@ public class ShiroRealm extends AuthorizingRealm {
         loginUser.setPassword(new String(token.getPassword()));
 
         // 查询符合条件的用户
-//        final User result = userService.login(loginUser);
-        User result = null ;
-        if(loginUser.getUserName().equals("aaa")&&loginUser.getPassword().equals("123"))
-        {
-            result = loginUser;
-        }
-
+        final User result = userService.loginUser(loginUser);
         // 如果用户返回不为null，则登录验证通过
         if (result.getUserName() != null) {
             // 查询已登录用户，发现多处登录，踢出之前登录用户

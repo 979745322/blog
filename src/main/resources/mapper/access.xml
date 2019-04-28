@@ -2,7 +2,10 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.rex.blog.mapper.AccessMapper">
-
+    <resultMap id="accessMap" type="java.util.HashMap">
+        <result column="time" property="time"/>
+        <result column="count" property="count"/>
+    </resultMap>
     <!-- 新增来访记录 -->
     <insert id="addAccess">
         insert into tb_access(
@@ -14,4 +17,14 @@
         )
     </insert>
 
+    <!-- 根据日期查询来访人数 -->
+    <select id="selectByDate" resultMap="accessMap">
+       SELECT
+          DATE_FORMAT(ACCESS_TIME, '%Y-%m-%d') time,
+          count(*) count
+       FROM
+          tb_access
+       GROUP BY
+          time
+    </select>
 </mapper>

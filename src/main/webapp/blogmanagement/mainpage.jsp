@@ -24,8 +24,7 @@
                 <div class="row">
                     <div class="col-sm-12">
                         <div class="ibox float-e-margins">
-                            <%--<div id="gh"></div><!--电器功耗-->
-                            <div id="kg"></div><!--系统开关-->--%>
+                            <div id="div_access" style="height: 100%"></div><!--访问量折线图-->
                         </div>
                     </div>
                 </div>
@@ -47,5 +46,6 @@
 
 <!-- Rickshaw -->
 <script src="${pageContext.request.contextPath}/blogmanagement/js/echarts.js"></script>
+<script src="${pageContext.request.contextPath}/blogmanagement/js/accesscharts.js"></script>
 </body>
 </html>
