@@ -46,15 +46,16 @@ function ContentMethod(replyId, replyName) {
 }
 
 function addBlogMessage() {
+    showBg();
     var email = $("#messageEmail").val();
     if (email != null && email !== "") {
         var reg = /^([a-zA-Z]|[0-9])(\w|\-)+@[a-zA-Z0-9]+\.([a-zA-Z]{2,4})$/;
         if (!reg.test(email)) {
+            closeBg();
             alert("如填写回复提醒邮箱，请填写正确的邮箱格式！");
             return false;
         }
     }
-    showBg();
     var blogMessage = {
         name: $("#messageName").val(),
         email: email,
@@ -62,13 +63,11 @@ function addBlogMessage() {
     };
 
     var ajdata = ajaxdata("/blogpage/addBlogMessage", blogMessage);
-
+    closeBg();
     alert(ajdata.state);
     if (ajdata.state === "发表成功！") {
         window.location.reload();
     }
-    closeBg();
-
 }
 
 function replyBlogMessage(replyId) {
