@@ -91,20 +91,33 @@
                 <script>document.write(I18N_BLOG_SHOW_PAGE_MENUE.BLOG_PAGE_FOOT);</script>
             </p>
             <ul>
-                <li><a data-toggle="popoverhov" data-placement="top" data-content="15235284050" href="javascript:;" onclick="redirect($(this))" val="#"><img src="/blogshowpage/images/phone-fill.png"/></a></li>
-                <li><a data-toggle="popoverhov" data-placement="top" data-content="979745322@qq.com" href="javascript:;" onclick="redirect($(this))" val="#"><img src="/blogshowpage/images/email-fill.png"/></a></li>
-                <li><a data-toggle="popoverhov" data-placement="top" data-content="15235284050" href="javascript:;" onclick="redirect($(this))" val="#"><img src="/blogshowpage/images/wechat-fill.png"/></a></li>
-                <li><a data-toggle="" data-placement="top" data-content="979745322" onclick="redirect($(this))" val="tencent://message/?uin=979745322&Site=qq&Menu=yes"><img src="/blogshowpage/images/qq-fill.png"/></a></li>
+                <li><a data-toggle="popoverhov" data-placement="top" data-content="15235284050" href="javascript:;"
+                       onclick="redirect($(this))" val="#"><img src="/blogshowpage/images/phone-fill.png"/></a></li>
+                <li><a data-toggle="popoverhov" data-placement="top" data-content="979745322@qq.com" href="javascript:;"
+                       onclick="redirect($(this))" val="#"><img src="/blogshowpage/images/email-fill.png"/></a></li>
+                <li><a data-toggle="popoverhov" data-placement="top" data-content="15235284050" href="javascript:;"
+                       onclick="redirect($(this))" val="#"><img src="/blogshowpage/images/wechat-fill.png"/></a></li>
+                <li><a data-toggle="" data-placement="top" data-content="979745322" onclick="redirect($(this))"
+                       val="tencent://message/?uin=979745322&Site=qq&Menu=yes"><img
+                        src="/blogshowpage/images/qq-fill.png"/></a></li>
             </ul>
         </div>
 
     </aside>
 
     <div id="fh5co-main">
-        <div class="fh5co-narrow-content animate-box" data-animate-effect="fadeInLeft">
+        <div id="main">
+            <div id="fullbg"></div>
+            <div id="dialog">
+                <div id="blog_tip"><script>document.write(I18N_BLOG_SHOW_PAGE_DETAIL.MESSAGE_BLOG_TIP);</script></div>
+            </div>
+        </div>
+        <div id="div_contantmain" class="fh5co-narrow-content animate-box" data-animate-effect="fadeInLeft">
             <div class="row">
                 <div class="col-md-4">
-                    <h2><script>document.write(I18N_BLOG_SHOW_PAGE_MENUE.BLOG_CONTACT);</script></h2>
+                    <h2>
+                        <script>document.write(I18N_BLOG_SHOW_PAGE_MENUE.BLOG_CONTACT);</script>
+                    </h2>
                 </div>
             </div>
             <div class="row">
@@ -138,7 +151,7 @@
                     <table class="table_contact">
                         <c:forEach items="${messageList}" var="list">
                             <div>
-                                <%--分割线--%>
+                                    <%--分割线--%>
                                 <tr>
                                     <td colspan="2" class="td_hr_contact col-md-12">
                                         <hr class="hr_blog">
@@ -257,10 +270,6 @@
 <script src="${pageContext.request.contextPath}/blogshowpage/js/blogpage.js"></script>
 <script src="${pageContext.request.contextPath}/blogshowpage/js/blogmessage.js"></script>
 <script src="${pageContext.request.contextPath}/blogshowpage/js/blogpagepopover.js"></script>
-
-<!-- 国际化文档 JS -->
-<script src="${pageContext.request.contextPath}/blogshowpage/js/zh-CN.js"></script>
-
 
 </body>
 </html>

@@ -54,17 +54,21 @@ function addBlogMessage() {
             return false;
         }
     }
+    showBg();
     var blogMessage = {
         name: $("#messageName").val(),
         email: email,
         content: $("#messageContent").val()
     };
-    console.log(JSON.stringify(blogMessage));
+
     var ajdata = ajaxdata("/blogpage/addBlogMessage", blogMessage);
+
     alert(ajdata.state);
     if (ajdata.state === "发表成功！") {
         window.location.reload();
     }
+    closeBg();
+
 }
 
 function replyBlogMessage(replyId) {
@@ -88,4 +92,23 @@ function replyBlogMessage(replyId) {
     if (ajdata.state === "发表成功！") {
         window.location.reload();
     }
+}
+
+//显示灰色 jQuery 遮罩层
+function showBg() {
+    var bh = $("body").height();
+    var bw = $("body").width();
+    var bml = $("#fh5co-aside").width();
+    $("#fullbg").css({
+        height: bh,
+        width: bw,
+        marginLeft: bml,
+        display: "block"
+    });
+    $("#dialog").show();
+}
+
+//关闭灰色 jQuery 遮罩
+function closeBg() {
+    $("#fullbg,#dialog").hide();
 }

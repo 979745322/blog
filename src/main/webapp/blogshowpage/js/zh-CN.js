@@ -19,7 +19,8 @@ var I18N_BLOG_SHOW_PAGE_DETAIL = {
     READ_MORE:"查看更多",
     PLACEHOLDER_USERNAME:"留言昵称",
     PLACEHOLDER_EMAIL:"邮箱，仅用于提醒回复，不会公开",
-    BUTTON_SEND_MESSAGE:"发表留言"
+    BUTTON_SEND_MESSAGE:"发表留言",
+    MESSAGE_BLOG_TIP:"正在发表留言，请稍后..."
 };
 
 //===================================英文==============================================
@@ -40,8 +41,8 @@ var I18N_BLOG_SHOW_PAGE_DETAIL = {
     READ_MORE:"Read More",
     PLACEHOLDER_USERNAME:"name",
     PLACEHOLDER_EMAIL:"email,For reply only,Don't open",
-    BUTTON_SEND_MESSAGE:"send message"
-
+    BUTTON_SEND_MESSAGE:"send message",
+    MESSAGE_BLOG_TIP:"This message is being posted. Please hold on..."
 };*/
 
 

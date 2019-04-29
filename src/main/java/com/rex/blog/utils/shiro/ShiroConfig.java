@@ -24,20 +24,9 @@ import java.util.Map;
 
 /**
  * Shiro的配置
- *
- * @Author Rocky
- * @Create 2018-11-06 10:20
  */
 @Configuration
 public class ShiroConfig {
-
-    /*@Lazy
-    @Autowired
-    final private UserService userService;
-
-    public ShiroConfig(UserService userService) {
-        this.userService = userService;
-    }*/
 
     @Bean(name = "sessionDAO")
     public MemorySessionDAO getMemorySessionDAO() {
