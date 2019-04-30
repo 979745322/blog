@@ -10,10 +10,20 @@
     <insert id="addAccess">
         insert into tb_access(
         ACCESS_TIME,
-        ACCESS_IP
+        ACCESS_IP,
+        IP_CONTRY,
+        IP_REGION,
+        IP_CITY,
+        IP_COUNTY,
+        IP_ISP
         )values (
         now(),
-        #{ip}
+        #{ip},
+        #{country},
+        #{region},
+        #{city},
+        #{county},
+        #{isp}
         )
     </insert>
 

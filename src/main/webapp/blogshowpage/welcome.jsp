@@ -124,7 +124,9 @@
         assert ctx != null;
         AccessService accessService = (AccessService) ctx.getBean("accessService");
 //        accessService.addAccess(ip);
-        getAddressByIp(ip);
+        JSONObject obj = getAddressByIp(ip);
+        //ip country region city county isp
+        accessService.addAccess(ip,String.valueOf(obj.get("country")),String.valueOf(obj.get("region")),String.valueOf(obj.get("city")),String.valueOf(obj.get("county")),String.valueOf(obj.get("isp")));
     }
 %>
 

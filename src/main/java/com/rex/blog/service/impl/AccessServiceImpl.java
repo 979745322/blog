@@ -22,9 +22,9 @@ public class AccessServiceImpl implements AccessService {
     }
 
     @Override
-    public void addAccess(String ip) {
+    public void addAccess(String ip, String country, String region, String city, String county, String isp) {
         log.info("新增来访记录，ip:{}",ip);
-        accessMapper.addAccess(ip);
+        accessMapper.addAccess(ip, country, region, city, county, isp);
     }
 
     @Override
