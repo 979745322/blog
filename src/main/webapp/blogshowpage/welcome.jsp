@@ -3,7 +3,15 @@
 <%@ page import="com.rex.blog.service.impl.AccessServiceImpl" %>
 <%@ page import="org.springframework.context.ApplicationContext" %>
 <%@ page import="org.springframework.web.context.support.WebApplicationContextUtils" %>
-<%@ page import="com.rex.blog.service.AccessService" %><%--
+<%@ page import="com.rex.blog.service.AccessService" %>
+<%@ page import="org.json.JSONObject" %>
+<%@ page import="java.net.URL" %>
+<%@ page import="java.net.HttpURLConnection" %>
+<%@ page import="java.net.ProtocolException" %>
+<%@ page import="java.net.MalformedURLException" %>
+<%@ page import="java.io.IOException" %>
+<%@ page import="java.io.InputStream" %>
+<%@ page import="java.io.ByteArrayOutputStream" %><%--
   Created by IntelliJ IDEA.
   User: rex.li
   Date: 2019/4/16
@@ -40,6 +48,73 @@
         }
         return ip.equals("0:0:0:0:0:0:0:1") ? "127.0.0.1" : ip;
     }
+
+    public JSONObject getAddressByIp(String IP){
+        JSONObject obj2 = null;
+        try{
+            String str = getJsonContent("http://ip.taobao.com/service/getIpInfo.php?ip="+IP);
+            System.out.println(str);
+            JSONObject obj = new JSONObject(str);
+            obj2 =  (JSONObject) obj.get("data");
+        }catch(Exception e){
+            e.printStackTrace();
+        }
+        return obj2;
+    }
+
+    public static String getJsonContent(String urlStr)
+    {
+        try
+        {// 获取HttpURLConnection连接对象
+            URL url = new URL(urlStr);
+            HttpURLConnection httpConn = (HttpURLConnection) url
+                    .openConnection();
+            // 设置连接属性
+            httpConn.setConnectTimeout(3000);
+            httpConn.setDoInput(true);
+            httpConn.setRequestMethod("GET");
+            // 获取相应码
+            int respCode = httpConn.getResponseCode();
+            if (respCode == 200)
+            {
+                return ConvertStream2Json(httpConn.getInputStream());
+            }
+        }
+        catch (MalformedURLException e)
+        {
+            e.printStackTrace();
+        }
+        catch (IOException e)
+        {
+            e.printStackTrace();
+        }
+        return "";
+    }
+    private static String ConvertStream2Json(InputStream inputStream)
+    {
+        String jsonStr = "";
+        // ByteArrayOutputStream相当于内存输出流
+        ByteArrayOutputStream out = new ByteArrayOutputStream();
+        byte[] buffer = new byte[1024];
+        int len = 0;
+        // 将输入流转移到内存输出流中
+        try
+        {
+            while ((len = inputStream.read(buffer, 0, buffer.length)) != -1)
+            {
+                out.write(buffer, 0, len);
+            }
+            // 将内存流转换为字符串
+            jsonStr = new String(out.toByteArray());
+        }
+        catch (IOException e)
+        {
+            // TODO Auto-generated catch block
+            e.printStackTrace();
+        }
+        return jsonStr;
+    }
+
 %>
 <%
     if (session.isNew()) {
@@ -48,7 +123,8 @@
                 WebApplicationContextUtils.getWebApplicationContext(request.getSession().getServletContext());
         assert ctx != null;
         AccessService accessService = (AccessService) ctx.getBean("accessService");
-        accessService.addAccess(ip);
+//        accessService.addAccess(ip);
+        getAddressByIp(ip);
     }
 %>
 
