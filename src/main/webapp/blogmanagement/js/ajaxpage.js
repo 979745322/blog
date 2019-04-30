@@ -13,7 +13,7 @@ function ajaxdata(action, datastr) {
         error: function (data) {
             if (data.status === 401) {
                 console.log("未登录");
-                window.parent.location.href = "/blogmanage/login";
+                window.parent.location.href = "/";
             } else {
                 alert("ajax error");
             }
