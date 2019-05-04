@@ -45,11 +45,9 @@
                                             <option value="3">私密</option>
                                         </select>
                                     </div>
-
                                 </div>
-                                <div></div>
                             </div>
-                            <div id="myEditor"></div>
+                            <div id="myEditor" class="myEditor"></div>
                             <div>
                                 <label class="col-sm-11"></label>
                                 <div class="col-sm-1">

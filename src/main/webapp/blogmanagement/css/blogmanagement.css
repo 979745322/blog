@@ -15,10 +15,28 @@ body {
 .input_blog_title {
     height: 34px;
 }
-
-.div_blog_top {
-    height: 60px;
+.myEditor{
+    margin-top: 0;
 }
+
+@media screen and (max-width: 1218px) {
+    .myEditor{
+        margin-top: 60px;
+    }
+}
+
+@media (min-width: 993px) {
+    .div_blog_top {
+        height: 60px;
+    }
+    .myEditor{
+        margin-top: 0;
+    }
+}
+
+/*.div_blog_title {
+    height: 60px;
+}*/
 
 .div_blog_button {
     margin-top: 20px;
