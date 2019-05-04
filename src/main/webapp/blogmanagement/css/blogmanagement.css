@@ -33,11 +33,6 @@ body {
         margin-top: 0;
     }
 }
-@media (max-width: 992px) {
-    .myEditor{
-        margin-top: 200px;
-    }
-}
 
 /*.div_blog_title {
     height: 60px;
