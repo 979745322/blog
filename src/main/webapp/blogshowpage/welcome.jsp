@@ -1,13 +1,9 @@
-<%@ page import="com.rex.blog.mapper.AccessMapper" %>
-<%@ page import="org.springframework.beans.factory.annotation.Autowired" %>
-<%@ page import="com.rex.blog.service.impl.AccessServiceImpl" %>
 <%@ page import="org.springframework.context.ApplicationContext" %>
 <%@ page import="org.springframework.web.context.support.WebApplicationContextUtils" %>
 <%@ page import="com.rex.blog.service.AccessService" %>
 <%@ page import="org.json.JSONObject" %>
 <%@ page import="java.net.URL" %>
 <%@ page import="java.net.HttpURLConnection" %>
-<%@ page import="java.net.ProtocolException" %>
 <%@ page import="java.net.MalformedURLException" %>
 <%@ page import="java.io.IOException" %>
 <%@ page import="java.io.InputStream" %>
@@ -24,6 +20,7 @@
 <!DOCTYPE html>
 <html class="no-js">
 <head>
+    <title>李永刚的个人博客</title>
     <!-- welcome.css -->
     <link rel="stylesheet" href="${pageContext.request.contextPath}/blogshowpage/css/welcomepage.css">
     <!-- jQuery -->
