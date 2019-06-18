@@ -89,7 +89,7 @@ public class BlogMessageServiceImpl implements BlogMessageService {
 
     /**
      * 发送邮件
-     * @param toBlogMessage 发送到留言人
+     * @param toBlogMessage 发送留言人
      * @param replyBlogMessage 回复留言人
      * @return 返回发送状态
      */
@@ -97,7 +97,7 @@ public class BlogMessageServiceImpl implements BlogMessageService {
         String result = "邮件发送成功!!";
         final String to = toBlogMessage.getEmail();
         final String subject = "留言回复";
-        final String content = "您在个人博客的留言:\""+toBlogMessage.getContent()+"\"有新的回复:\""+replyBlogMessage.getContent()+"\"";
+        final String content = "您在李永刚的个人博客留言:\""+toBlogMessage.getContent()+"\"有新的回复:\""+replyBlogMessage.getContent()+"\"";
         try {
             mailService.sendSimpleMail(to,subject,content);
         }catch (Exception ex){
