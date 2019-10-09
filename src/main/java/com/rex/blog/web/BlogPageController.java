@@ -3,6 +3,7 @@ package com.rex.blog.web;
 import com.google.common.collect.Maps;
 import com.rex.blog.entity.BlogMessage;
 import com.rex.blog.service.*;
+import com.rex.blog.utils.HttpClient;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -172,5 +173,34 @@ public class BlogPageController {
         return map;
     }
 
+    /**
+     * 留言板页面
+     *
+     * @return 返回聊天机器人页面
+     */
+    @RequestMapping("/chatRobot")
+    public ModelAndView chatRobot() {
+        final ModelAndView mav = new ModelAndView();
+        mav.setViewName("blogshowpage/chatrobot");
+
+        return mav;
+    }
+
+    /**
+     * 发送聊天消息
+     *
+     * @return 返回机器人聊天内容
+     */
+    @ResponseBody
+    @RequestMapping("/chatMessage")
+    public Map<String, Object> chatMessage(@RequestBody String chatStr) {
+        chatStr = chatStr.substring(1, chatStr.length() - 1);
+        log.info("chatMessage:{}", chatStr);
+        final Map<String, Object> map = Maps.newHashMap();
+        String url = "http://api.qingyunke.com/api.php?key=free&appid=0&msg=" + chatStr;
+        map.put("chatMessage", HttpClient.doGet(url));
+
+        return map;
+    }
 
 }

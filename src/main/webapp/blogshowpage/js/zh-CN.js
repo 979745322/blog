@@ -9,6 +9,7 @@ var I18N_BLOG_SHOW_PAGE_MENUE = {
     BLOG_BLOG_TYPE:"博客类型",
     BLOG_RECENT_BLOGS:"近期博客",
     BLOG_CONTACT:"留言板",
+    BLOG_CHATROBOT:"机器人",
     BLOG_PAGE_FOOT:"本站仅展示个人博客<br>有其他需要请联系"
 };
 // 详情页面
@@ -31,6 +32,7 @@ var I18N_BLOG_SHOW_PAGE_MENUE = {
     BLOG_BLOG_TYPE:"BlogType",
     BLOG_RECENT_BLOGS:"Blog",
     BLOG_CONTACT:"Contact",
+    BLOG_CHATROBOT:"ChatRobot",
     BLOG_PAGE_FOOT:"This site only shows personal blogs<br>Please contact us if you have other needs."
 };
 // 详情页面

@@ -17,6 +17,7 @@ $(document).ready(function () {
 
 });
 
+
 function ContentMethod(replyId, replyName) {
     return '<div class="row table_contact">\n' +
         '                <div class="col-md-12">\n' +
@@ -110,4 +111,33 @@ function showBg() {
 //关闭灰色 jQuery 遮罩
 function closeBg() {
     $("#fullbg,#dialog").hide();
+}
+
+$("#chatmessage").keyup(function () {
+    if (event.keyCode == 13) {
+        sendChat();
+    }
+});
+
+// 发送聊天消息
+function sendChat() {
+    var chatmessage = $("#chatmessage").val().replace(new RegExp("\n", 'gm'), '').replace(new RegExp(" ", 'gm'), '');
+    $("#chatmessage").val("");
+    if (chatmessage !== ("")) {
+        $("#chatcontent").html($("#chatcontent").val() + '\n' + '我：' + chatmessage);
+        $.ajax({
+            async: true, // 异步
+            url: "/blogpage/chatMessage",
+            data: JSON.stringify(chatmessage),
+            contentType: 'application/json; charset=UTF-8',
+            type: "POST",
+            dataType: "json",
+            success: function (data) {
+                $("#chatcontent").html($("#chatcontent").val() + '\n' + '菲菲：' + JSON.parse(data.chatMessage).content);
+            },
+            error: function (data) {
+                alert("ajax error");
+            }
+        });
+    }
 }
